@@ -1,0 +1,11 @@
+<!-- some.component.html -->
+<zxing-scanner  (scanSuccess)="onCodeResult($event)" [formats]="['QR_CODE', 'EAN_13', 'CODE_128', 'DATA_MATRIX']"></zxing-scanner>
+<section class="results" *ngIf="qrResultString">
+    <section>
+        <div>
+        <small>Result</small>
+        <strong>{{ qrResultString }}</strong>
+        </div>
+        <button mat-icon-button (click)="clearResult()">Reset</button>
+    </section>
+</section>

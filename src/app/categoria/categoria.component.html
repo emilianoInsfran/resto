@@ -1,0 +1,52 @@
+<div class="container">
+    <header class="scroll">
+        <h3> Resto 1 </h3>   
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+           
+            <li class="nav-item"  *ngFor="let data of getPlatosData; let i = index" (click)="cambioCategoria(i)">
+              <a class="nav-link " id="{{i}}-tab" data-toggle="tab" href="#{{i}}" role="tab"  [attr.aria-label]="i"  aria-selected="true">{{data.categoria}}</a>
+            </li>
+
+        </ul>
+    
+    </header>
+    
+    <section class="animate__animated animate__backInUp">
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" *ngFor="let plato of getPlatosData[categoriaSeleccionada].platos; let i = index"  (click)="gotoPage(plato,'pedido')" [id]='i' role="tabpanel" aria-labelledby="home-tab">
+                
+                <div class="box-content-platos">
+                    <div class="row"> 
+                        <div class="col-8 col-md-6">
+                            <h5>{{plato.nombre}}</h5>
+                            <p>{{plato.descripcion}}</p> 
+                            
+                            <div class="row">
+                                
+                                <div class="col-9 col-md-9">
+                                    <div class="icono-content" [ngStyle]="{'background-image':'url(https://w7.pngwing.com/pngs/741/294/png-transparent-veggie-burger-animal-product-veganism-vegetarianism-computer-icons-veg-symbol-leaf-logo-nutrition.png)'}"></div>
+                                    <div class="icono-content" [ngStyle]="{'background-image':'url(https://img2.freepng.es/20190519/sww/kisspng-gluten-free-diet-gluten-free-food-celiac-disease-nutrition-speeches-presentations-nutritional-s-5ce0f87e999a17.0162714315582475506292.jpg)'}"></div>
+                                </div>
+
+                                <div class="col-3 col-md-3">{{plato.precio}}</div>
+                            </div>
+    
+                        </div>
+                        <div class="col-4 col-md-6">
+                            <div class="img"  [ngStyle]="{'background-image':'url(https://www.comedera.com/wp-content/uploads/2014/08/IMG_4792111111.jpg)'}" ></div>
+                        </div>
+    
+                    </div>
+                </div>
+                
+            </div>
+    
+
+          </div>
+    </section>
+    
+</div>
+
+
+
+

@@ -1,0 +1,16 @@
+
+<header>Empresas</header>
+<section class="container home">
+    <h1 class="animate__animated animate__bounce">Resto</h1>
+    <form action="" #form="ngForm" autocomplete="off">
+        <div class="input-wrapper">
+            <input type="number" [value]="fieldvalue" [(ngModel)]="user.codigo" max="3" (keyup)="keyPress($event.target.value)" name="code" id="user" required >
+            <label class="label" for="user">Codigo </label>
+            <i class="fa fa-qrcode" aria-hidden="true" (click)="gotoPage('','scanner')"></i>
+        </div>
+
+    </form>
+
+</section>
+
+

@@ -1,1 +1,66 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~ngx-tab-scroll/tab-scroll-theme-bootstrap';
+@import '~ngx-tab-scroll/tab-scroll-icons';
+h1,h2,h3,h4,h5,p,span{
+    font-family: 'Roboto', sans-serif;
+}
+
+.input-wrapper{
+    position:relative;
+    line-height:14px;
+    margin:0 10px;
+    display:inline-block;
+}
+
+.label{
+    color:#bbb ;
+    font-size:11px;
+    text-transform:uppercase;
+    position:absolute;
+    z-index:2;
+    left:20px;
+    top:14px;
+    padding:0 2px;
+    pointer-events:none;
+    background:white;
+    transition:transform 100ms ease;
+    transform:translateY(-20px);
+}
+
+
+input {
+    font-size:13px;
+    color:#555;
+    outline:none;
+    border:1px solid #bbb;
+    padding:10px 20px;
+    border-radius:20px;
+    position:relative;
+
+    &:invalid + label{
+        transform:translateY(0);
+    }
+        
+    &:focus{
+        border-color:#2b96f1;
+        & + label{
+            color:#2b96f1;
+            transform:translateY(-20px);
+        }
+    }
+
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+

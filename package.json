@@ -1,13 +1,15 @@
 {
   "name": "web",
   "version": "0.0.0",
+  "engines": {
+    "node": "12.17.0",
+    "npm": "6.14.4"
+  },
   "scripts": {
+    "start": "node server.js",
     "ng": "ng",
-    "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "private": true,
   "dependencies": {
@@ -19,9 +21,24 @@
     "@angular/platform-browser": "~9.1.9",
     "@angular/platform-browser-dynamic": "~9.1.9",
     "@angular/router": "~9.1.9",
+    "@zxing/ngx-scanner": "^3.0.0",
+    "angular-font-awesome": "^3.1.2",
+    "animate.css": "^4.1.0",
+    "bootstrap": "^4.5.1",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.5.1",
+    "ngx-tab-scroll": "0.0.1-alpha.6",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-cross": "^1.0.0",
+    "ftp-deploy": "^2.3.7",
+    "hover.css": "^2.3.2",
+    "ng-animate-scroll": "^7.1.0",
+    "nodemailer": "^6.4.10",
+    "path": "^0.12.7"  
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.7",
@@ -42,5 +59,6 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.8.3"
+
   }
 }

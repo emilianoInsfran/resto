@@ -1,0 +1,54 @@
+ .nav-tabs {
+    overflow-x: auto;
+    overflow-y:hidden;
+    flex-wrap: nowrap;
+ }
+ .nav-tabs .nav-link {
+   white-space: nowrap;
+ }
+
+ h3{
+     text-align: center;
+     padding: 10px;
+ }
+
+ .img{
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 116px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.icono-content{
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 30px !important;
+    width: 32px;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 10px;
+    border: 1px solid #e4e4e4;
+    border-radius: 56%;
+}
+
+.box-content-platos{
+    padding: 0 3px;
+    margin-top: 37px;
+    cursor: pointer;
+    -webkit-box-shadow: 50px 31px 38px -22px rgba(196,196,196,1);
+    -moz-box-shadow: 50px 31px 38px -22px rgba(196,196,196,1);
+    box-shadow: 50px 31px 38px -22px rgba(196,196,196,1);
+    border: 1px solid white;
+    &:hover{
+        -webkit-box-shadow: 50px 31px 38px -22px #ffe7e5;
+        -moz-box-shadow: 50px 31px 38px -22px #ffe7e5;
+        box-shadow: 50px 31px 38px -22px #ffe7e5;
+    }
+}
+
+.vegan {
+    background-image:url('../../assets/seliaco.png');
+}
