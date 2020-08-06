@@ -10,7 +10,7 @@ app.use(bodyParser.json())//esto por ejemplo es un midelware que son funciones q
 
 //habilitar la carpeta public para que pueda ser accedida desde el browser
 //app.use(express.static( __dirname, './dist/my-dream-app'));//necesitamos el path que resuelva la ruta
-app.use(express.static(__dirname + '/dist/my-dream-app'));
+app.use(express.static(__dirname + '/dist/web'));
 //congif global de rutas
 //app.use( require('./routes/index'));
 
