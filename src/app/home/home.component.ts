@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
   user:any={
     codigo:null
   };
+  changeText:boolean;
   constructor(private route:Router) {  }
   @Input() fieldvalue = '';
 

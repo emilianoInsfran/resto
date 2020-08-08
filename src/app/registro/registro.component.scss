@@ -1,0 +1,58 @@
+.form-login {
+
+    text-align: center;
+    padding: 10px 25px;
+    margin-top: 5%;
+
+    a{
+        cursor: pointer;
+
+        &:hover{
+            color: #ff9800;
+
+        }
+    }
+
+    button {
+        max-width: 300px;
+        width: 100%;
+        margin: auto;
+        text-align: center;
+        background-color: white;
+        border-radius: 10px;
+        height: 40px;
+        margin-top: 7px;
+        border: 1px solid orange;
+        color: orange;
+
+        &:hover{
+            border: 1px solid white;
+            color: white;
+            background-color: orange;
+        }
+    }
+    .box-message{
+        height: 27px;
+
+        p {
+            color: red;
+        }
+    }
+}
+
+.input-wrapper{
+    width: 100%;
+    margin: 15px 0 15px 0;
+
+    input {
+        width: 100%;
+    }
+}
+
+.no-margin{
+    margin-top: 0;
+    padding-top: 0;
+}
+.no-padding-button{
+    padding-bottom: 0;
+}

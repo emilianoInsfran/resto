@@ -11,6 +11,13 @@ import { HomeComponent } from './home/home.component';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { ScannerComponent } from './scanner/scanner.component';
 import { PedidoComponent } from './pedido/pedido.component';
+import { LoginComponent } from './login/login.component';
+import { RegistroComponent } from './registro/registro.component';
+import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
+import { CheckComponent } from './check/check.component';
+import { PopupComponent } from './popup/popup.component';
+import { SimpleModalModule } from 'ngx-simple-modal';
+import { PerfilComponent } from './perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +25,13 @@ import { PedidoComponent } from './pedido/pedido.component';
     CategoriaComponent,
     HomeComponent,
     ScannerComponent,
-    PedidoComponent
+    PedidoComponent,
+    LoginComponent,
+    RegistroComponent,
+    CheckComponent,
+    PopupComponent,
+    PerfilComponent
+
   ],
   imports: [
     BrowserModule,
@@ -27,7 +40,11 @@ import { PedidoComponent } from './pedido/pedido.component';
     FormsModule,
     ReactiveFormsModule,
     ZXingScannerModule,
-
+    PasswordStrengthMeterModule,
+    SimpleModalModule
+  ],
+  entryComponents: [
+    PopupComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

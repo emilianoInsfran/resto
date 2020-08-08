@@ -1,6 +1,40 @@
+.login {
+    cursor: pointer;
+
+
+
+
+}
+a, u {
+    text-decoration: none !important;
+
+    &:hover {
+        text-decoration: none !important;
+
+    }
+}
+
 .home {
     text-align: center;
     margin-top: 10%;
+
+    .input-wrapper {
+        max-width: 50%;
+        width: 100%;
+        margin-top: 30px;
+    }
+    
+    input{ 
+        width: 100%;
+    }
+    i{
+        position: absolute;
+        right: 27px;
+        top: 1px;
+        font-size: 36px;
+        cursor: pointer;
+    }
+    
 }
 
 header {
@@ -8,24 +42,6 @@ header {
     padding-right: 15px;
     padding-top: 15px;
 }
-
-.input-wrapper {
-    max-width: 50%;
-    width: 100%;
-    margin-top: 30px;
-}
-
-input{ 
-    width: 100%;
-}
-i{
-    position: absolute;
-    right: 27px;
-    top: 1px;
-    font-size: 36px;
-    cursor: pointer;
-}
-
 
 @media (max-width: 700px) { 
     .input-wrapper {

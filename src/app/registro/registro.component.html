@@ -1,0 +1,50 @@
+<div class=" animate__animated animate__bounceIn " >
+    <form class="form-login  no-padding-button"  [formGroup]="profileForm" action="">
+        <div class="input-wrapper">
+            <input type="text"   formControlName="razonSocial" name="razonSocial" id="razonSocial"  required >
+            <label class="label" for="user">Razón social </label>
+        </div>
+    
+        <div class="input-wrapper">
+            <input type="text"  formControlName="direccion"  name="direccion" id="direccion"  required >
+            <label class="label" for="user">Direccón </label>
+        </div>
+    
+        <div class="input-wrapper">
+            <input type="tel" formControlName="telefono"  name="telefono" id="telefono"  required >
+            <label class="label" for="user">Telefono </label>
+        </div>
+    
+        <div class="input-wrapper">
+            <input type="text"   formControlName="email"  formControlName="email"  name="email" id="email"  required >
+            <label class="label" for="user">Email </label>
+        </div>
+    
+        <div class="input-wrapper">
+            <input type="text"  formControlName="nombre" name="nombre" id="nombre"  required >
+            <label class="label" for="user">Nombre de usuario </label>
+        </div>
+    </form>
+
+    <div class="form-login  no-margin">
+        <div class="input-wrapper">
+            <input type="password" [(ngModel)]="registro.pass" name="contrasenia" id="contrasenia" required >
+            <label class="label" for="user">Contraseña </label>
+        </div>
+    
+        <password-strength-meter [password]="registro.pass"></password-strength-meter>
+    
+        <div class="input-wrapper">
+            <input type="password"  [(ngModel)]="registro.repetirPass"   name="repetirPass" id="repetirPass" required >
+            <label class="label" for="user">Repetir contraseña </label>
+        </div>
+    
+        <div class="box-message"><p *ngIf="!profileForm.valid  && profileForm.touched " class="animate__animated animate__flipInX">Todos los campos son obligatorios </p></div>
+        <div class="box-message"><p *ngIf="validatePass" class="animate__animated animate__flipInX">{{messagePasword}} </p></div>
+        
+        <button class="button animate__animated"  type="button" [disabled]="!profileForm.valid" (click)="onSubmit()" [ngClass]="{'animate__pulse': changeText}" (mouseover)="changeText=true" (mouseout)="changeText=false"> Guardar</button>
+    </div>
+</div>
+
+
+
