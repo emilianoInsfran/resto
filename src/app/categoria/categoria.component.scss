@@ -2,6 +2,10 @@
     overflow-x: auto;
     overflow-y:hidden;
     flex-wrap: nowrap;
+
+    .active{
+        border-bottom: 4px solid orange;
+    }
  }
  .nav-tabs .nav-link {
    white-space: nowrap;

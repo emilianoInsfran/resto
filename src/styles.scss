@@ -13,6 +13,21 @@ h1,h2,h3,h4,h5,p,span,a,button{
     display:inline-block;
 }
 
+
+.button1 {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+    border: 1px solid #dc8123;
+    color: #dc8123;
+    &:hover{
+        border: 1px solid white;
+        color: white;
+        background-color: orange;
+    }
+}
+
 .label{
     color:#bbb ;
     font-size:11px;
