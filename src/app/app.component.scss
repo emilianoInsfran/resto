@@ -3,7 +3,7 @@ footer{
     //position: absolute;
     width: 100%;
     overflow: hidden;
-    margin-top: 5%;
+    margin-top: 25%;
     bottom: 0;
     text-align: center;
     background-color: #e8e8e8;
@@ -19,12 +19,13 @@ footer{
     }
 
     ul {
+        padding: 0;
         list-style-type: none;
         li {
             display: inline-block;
             padding: 0 20px;
             border-right: 1px solid grey;
-            
+            font-size: 0.8em;
             &:nth-child(1){
                 border-left: 1px solid grey;
             }
@@ -32,5 +33,25 @@ footer{
         }
         
     }
+
+}
+
+
+@media (max-width: 700px) { 
+    p {
+        font-size: 0.8em !important;
+    }
+
+    button {
+        font-size: 10px;
+    }
+
+    ul{
+        margin-top: 40px;
+        li{
+            padding: 0px 4px !important;
+        }
+    } 
+
 
 }
