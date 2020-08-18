@@ -1,5 +1,5 @@
 <style>
-    
+
 </style>
 <section class="container" [ngStyle]="{'color':color,'background-color':fondo}">
     <h3>Elige tu estilo</h3>
@@ -21,7 +21,7 @@
         <div>
             <p>Texto</p>
             <div [(colorPicker)]="botonesTxt" [style.background]="botonesTxt" class="circle" ></div>
-        </div>   
+        </div>
         <div>
             <p>Fondo</p>
             <div [(colorPicker)]="botonesFondo" [style.background]="botonesFondo" class="circle"></div>
@@ -33,14 +33,14 @@
 
         <button [ngStyle]="{'color':botonesTxt,'background-color':botonesFondo,'border':'1px solid' + botonesBorde}">Guargar</button>
 
-        <h5>Fuente </h5>
+      <!--  <h5>Fuente </h5>
 
         <div [(fontPicker)]="font" [fpWidth]="'320px'" [fpPosition]="'bottom'">
             Seleccione una fuente
-        </div>
+        </div> -->
 
     </form>
-    
+
 </section>
 
 
