@@ -9,26 +9,26 @@
 
         <div>
             <p>Texto </p>
-            <input [(colorPicker)]="color" [style.background]="color" />
+            <div [(colorPicker)]="color" [style.background]="color" class="circle"></div>
         </div>
         <div>
             <p>Fondo </p>
-            <input [(colorPicker)]="fondo" [style.background]="fondo" />
+            <div [(colorPicker)]="fondo" [style.background]="fondo" class="circle"></div>
         </div>
 
         <h5>Botones </h5>
 
         <div>
             <p>Texto</p>
-            <input [(colorPicker)]="botonesTxt" [style.background]="botonesTxt" />  
+            <div [(colorPicker)]="botonesTxt" [style.background]="botonesTxt" class="circle" ></div>
         </div>   
         <div>
             <p>Fondo</p>
-            <input [(colorPicker)]="botonesFondo" [style.background]="botonesFondo" />
+            <div [(colorPicker)]="botonesFondo" [style.background]="botonesFondo" class="circle"></div>
         </div>
         <div>
             <p>Borde</p>
-            <input [(colorPicker)]="botonesBorde" [style.background]="botonesBorde" />
+            <div [(colorPicker)]="botonesBorde" [style.background]="botonesBorde" class="circle"></div>
         </div>
 
         <button [ngStyle]="{'color':botonesTxt,'background-color':botonesFondo,'border':'1px solid' + botonesBorde}">Guargar</button>
