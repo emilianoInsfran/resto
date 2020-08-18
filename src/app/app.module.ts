@@ -2,6 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import	{ HttpClientModule } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ColorPickerModule } from 'ngx-color-picker';
+
+import { FontPickerModule } from 'ngx-font-picker';
+import { FONT_PICKER_CONFIG } from 'ngx-font-picker';
+import { FontPickerConfigInterface } from 'ngx-font-picker';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +33,12 @@ import { EsteticaComponent } from './perfil/estetica/estetica.component';
 import { MenuComponent } from './perfil/menu/menu.component';
 import { PromosComponent } from './perfil/promos/promos.component';
 import { GeneralComponent } from './perfil/general/general.component';
+
+const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
+  // Change this to your Google API key
+  apiKey: 'AIzaSyA9S7DY0khhn9JYcfyRWb1F6Rd2rwtF_mA'
+};
+
 
 @NgModule({
   declarations: [
@@ -56,11 +68,20 @@ import { GeneralComponent } from './perfil/general/general.component';
     PasswordStrengthMeterModule,
     SimpleModalModule,
     CngTabsModule,
+    ColorPickerModule,
+    FontPickerModule,
+
   ],
   entryComponents: [
     PopupComponent
   ],
-  providers: [],
+  providers: [
+    {
+      provide: FONT_PICKER_CONFIG,
+      useValue: DEFAULT_FONT_PICKER_CONFIG
+    },
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

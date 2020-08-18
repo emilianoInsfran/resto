@@ -44,3 +44,10 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+#credenciales
+server.crt
+server.key
+domain-nopassphrase.key
+bundle.pem
+

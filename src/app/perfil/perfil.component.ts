@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class PerfilComponent implements OnInit {
   showPerfil:boolean =true;
+
   constructor(private route:Router) { }
 
   ngOnInit(): void {
