@@ -36,7 +36,7 @@ import { GeneralComponent } from './perfil/general/general.component';
 
 const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
   // Change this to your Google API key
-  apiKey: 'AIzaSyA9S7DY0khhn9JYcfyRWb1F6Rd2rwtF_mA'
+  apiKey: 'AIzaSyAUu7TIQH7gWrFVTAZrYnAV13hWjpue-EQ'
 };
 
 

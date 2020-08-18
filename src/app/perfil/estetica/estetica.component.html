@@ -1,45 +1,63 @@
-<style>
+<section class="container " fxLayout="column" fxLayoutAlign="stretch" [ngStyle]="{'color':color,'background-color':fondo}" >
+    <div [ngStyle]="font?.getStyles()">
+        <div class="preview-content info-container">
+           
+            <form action="">
+                <h5>Color</h5>
 
-</style>
-<section class="container" [ngStyle]="{'color':color,'background-color':fondo}">
-    <h3>Elige tu estilo</h3>
+                <div>
+                    <p>Texto </p>
+                    <div [(colorPicker)]="color" [style.background]="color" class="circle"></div>
+                </div>
+                <div>
+                    <p>Fondo </p>
+                    <div [(colorPicker)]="fondo" [style.background]="fondo" class="circle"></div>
+                </div>
 
-    <form action="">
-        <h5>Color</h5>
+                <h5>Botones </h5>
 
-        <div>
-            <p>Texto </p>
-            <div [(colorPicker)]="color" [style.background]="color" class="circle"></div>
+                <div>
+                    <p>Texto</p>
+                    <div [(colorPicker)]="botonesTxt" [style.background]="botonesTxt" class="circle" ></div>
+                </div>
+                <div>
+                    <p>Fondo</p>
+                    <div [(colorPicker)]="botonesFondo" [style.background]="botonesFondo" class="circle"></div>
+                </div>
+                <div>
+                    <p >Borde</p>
+                    <div [(colorPicker)]="botonesBorde" [style.background]="botonesBorde" class="circle"></div>
+                </div>
+
+                <button [ngStyle]="{'color':botonesTxt,'background-color':botonesFondo,'border':'1px solid' + botonesBorde}" (click)="setFont(font)">Guargar</button>
+            
+                <div class="horizontal-container" fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="stretch" fxFlex>
+                    <div class="vertical-container" fxLayout="column" fxLayoutAlign="stretch" fxFlex="50%">
+                
+                        <div class="action-container" fxLayout="column" fxLayoutAlign="stretch" fxFlex>
+                            <div class="action-button" fxLayout="column" fxLayoutAlign="center center" fxFlex [(fontPicker)]="font" [fpWidth]="'auto'" [fpPosition]="'bottom'" [fpPositionOffset]="'0%'" [fpPositionRelativeToArrow]="false" [fpPresetLabel]="'Preset fonts'" [fpPresetFonts]="presetFonts" [fpSizeSelect]="sizeSelect" [fpStyleSelect]="styleSelect">
+                                {{font?.family}}
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="vertical-container" fxLayout="column" fxLayoutAlign="stretch" fxFlex="50%">
+                        <div class="box-title">Vista previa</div>
+                
+                        <div class="content-container" fxLayout="column" fxLayoutAlign="stretch" fxFlex>
+                        <div [ngStyle]="font?.getStyles()">
+                            <div class="preview-content">
+                                Esto es un texto de prueba :)
+                           </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+             
+
+            </form>
         </div>
-        <div>
-            <p>Fondo </p>
-            <div [(colorPicker)]="fondo" [style.background]="fondo" class="circle"></div>
-        </div>
-
-        <h5>Botones </h5>
-
-        <div>
-            <p>Texto</p>
-            <div [(colorPicker)]="botonesTxt" [style.background]="botonesTxt" class="circle" ></div>
-        </div>
-        <div>
-            <p>Fondo</p>
-            <div [(colorPicker)]="botonesFondo" [style.background]="botonesFondo" class="circle"></div>
-        </div>
-        <div>
-            <p>Borde</p>
-            <div [(colorPicker)]="botonesBorde" [style.background]="botonesBorde" class="circle"></div>
-        </div>
-
-        <button [ngStyle]="{'color':botonesTxt,'background-color':botonesFondo,'border':'1px solid' + botonesBorde}">Guargar</button>
-
-      <!--  <h5>Fuente </h5>
-
-        <div [(fontPicker)]="font" [fpWidth]="'320px'" [fpPosition]="'bottom'">
-            Seleccione una fuente
-        </div> -->
-
-    </form>
+    </div>
 
 </section>
 
