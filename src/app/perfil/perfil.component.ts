@@ -7,14 +7,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./perfil.component.scss']
 })
 export class PerfilComponent implements OnInit {
-
+  showPerfil:boolean =true;
   constructor(private route:Router) { }
 
   ngOnInit(): void {
+    
   }
 
   upload(){
     document.getElementById("myfile").click();
+  }
+
+  seccionTab(){
+    this.showPerfil = false;
+  }
+
+  seccionPerfil(){
+    this.showPerfil = true;
   }
   
   gotoPage(codigo,page){

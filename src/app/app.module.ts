@@ -17,7 +17,16 @@ import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
 import { CheckComponent } from './check/check.component';
 import { PopupComponent } from './popup/popup.component';
 import { SimpleModalModule } from 'ngx-simple-modal';
+import { CngTabsModule } from '@codehint-ng/tabs';
+
+//----------------------
+//PERFIL - secciones
+//----------------------
 import { PerfilComponent } from './perfil/perfil.component';
+import { EsteticaComponent } from './perfil/estetica/estetica.component';
+import { MenuComponent } from './perfil/menu/menu.component';
+import { PromosComponent } from './perfil/promos/promos.component';
+import { GeneralComponent } from './perfil/general/general.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +39,11 @@ import { PerfilComponent } from './perfil/perfil.component';
     RegistroComponent,
     CheckComponent,
     PopupComponent,
-    PerfilComponent
+    PerfilComponent,
+    EsteticaComponent,
+    MenuComponent,
+    PromosComponent,
+    GeneralComponent
 
   ],
   imports: [
@@ -41,7 +54,8 @@ import { PerfilComponent } from './perfil/perfil.component';
     ReactiveFormsModule,
     ZXingScannerModule,
     PasswordStrengthMeterModule,
-    SimpleModalModule
+    SimpleModalModule,
+    CngTabsModule,
   ],
   entryComponents: [
     PopupComponent

@@ -10,13 +10,12 @@ export class HomeComponent implements OnInit {
   user:any={
     codigo:null
   };
+  cookies:boolean=false;
   changeText:boolean;
   constructor(private route:Router) {  }
   @Input() fieldvalue = '';
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {  }
 
   keyPress(event: KeyboardEvent) {
     console.log(event);
@@ -34,9 +33,12 @@ export class HomeComponent implements OnInit {
 
   }
   
-
   onInputChange(data){
     console.log('=>',data);
+  }
+
+  aceptarCookies(){
+    this.cookies = true;
   }
 
   gotoPage(codigo,page){

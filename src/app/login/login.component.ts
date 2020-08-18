@@ -14,8 +14,7 @@ export class LoginComponent implements OnInit {
   changeText:boolean;
   constructor(private route:Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   login(){
     this.gotoPage('','perfil');

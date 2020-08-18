@@ -7,7 +7,7 @@
         <li class="nav-item">
           <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Registrarse</a>
         </li>
-        </ul>
+      </ul>
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <form class="form-login" action="">
@@ -24,7 +24,8 @@
                <div> <a >¿perdiste la contraseña?</a></div>
 
                 <button class="button animate__animated"  [ngClass]="{'animate__pulse': changeText}" (mouseover)="changeText=true" (mouseout)="changeText=false" (click)='login()'> Entrar</button>
-            </form>
+                <div><a (click)="gotoPage('','')"> volver </a></div>
+              </form>
 
         </div>
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">

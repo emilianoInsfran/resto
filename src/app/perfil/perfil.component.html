@@ -1,11 +1,101 @@
-<div class="container">
-    <header >logo | <a (click)="gotoPage('','login')"> salir</a> </header>
-    <section class="box-perfil">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="#">Logo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto ">
+            <li class="nav-item active show-mobile">
+                <a class="dropdown-item"(click)="seccionPerfil()">Perfil</a>
+            </li>
+            <!-- <li class="nav-item dropdown show-mobile">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item show-mobile">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li> -->
+            <li class="nav-item active show-mobile">
+                <a  class="dropdown-item" (click)="gotoPage('','login')"> salir</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <ul class="navbar-nav mr-auto ">
+                <li class="imagen show-mobile">imagen usuario</li>
+                <li class="nav-item dropdown  hide-mobile">
+
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        imagen usuario
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item"(click)="seccionPerfil()">Perfil</a>
+                        <div class="dropdown-divider"></div>
+                        <a  class="dropdown-item" (click)="gotoPage('','login')"> salir</a>
+                    </div>
+                </li>
+
+            </ul>
+        </form>
+    </div>
+</nav>
+
+<div class="container body-profile">
+    <section class="box-perfil" *ngIf="showPerfil">
         <h2>Mejoremos tu perfil</h2>
-        <img id="image" src="http://via.placeholder.com/150x150" style="border-radius:50%" (click)="upload()"/>
-        <input type="file" id="myfile" style="display: none;">
+
+        <form action="">
+            <img id="image" src="http://via.placeholder.com/150x150" style="border-radius:50%" (click)="upload()"/>
+            <input type="file" id="myfile" style="display: none;">
     
-    
+            <div class="box-input">
+                <div class="input-wrapper">
+                    <input type="text"   name="nombreEmpresa" id="nombreEmpresa" required >
+                    <label class="label" for="nombreEmpresa">Nombre de la Empresa </label>
+                </div>
+            </div>
+        </form>
+
     </section>
+
+    <div class="tab-content" id="myTabContent" *ngIf="!showPerfil">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <app-estetica></app-estetica>
+        </div>
+        <div class="tab-pane fade" id="menu" role="tabpanel" aria-labelledby="menu-tab">
+            <app-menu></app-menu>
+        </div>
+        <div class="tab-pane fade" id="promos" role="tabpanel" aria-labelledby="promos-tab">
+            <app-promos></app-promos>
+        </div>
+        <div class="tab-pane fade" id="general" role="tabpanel" aria-labelledby="general-tab">
+            <app-general></app-general>
+        </div>
+    </div>
+
+    <ul class="nav nav-tabs position-tab" id="myTab" role="tablist">
+        <li class="nav-item" (click)="seccionTab()">
+          <a class="nav-link " id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Estética</a>
+        </li>
+        <li class="nav-item" (click)="seccionTab()">
+          <a class="nav-link" id="menu-tab" data-toggle="tab" href="#menu" role="tab" aria-controls="menu" aria-selected="false">Menú</a>
+        </li>
+        <li class="nav-item" (click)="seccionTab()">
+            <a class="nav-link" id="promos-tab" data-toggle="tab" href="#promos" role="tab" aria-controls="promos" aria-selected="false">Promos</a>
+        </li>
+        <li class="nav-item" (click)="seccionTab()">
+            <a class="nav-link" id="general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="general" aria-selected="false">General</a>
+        </li>
+    </ul>
+
 </div>
 

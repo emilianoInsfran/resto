@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~9.1.9",
     "@angular/platform-browser-dynamic": "~9.1.9",
     "@angular/router": "~9.1.9",
+    "@codehint-ng/tabs": "^1.0.3",
     "@zxing/ngx-scanner": "^3.0.0",
     "angular-password-strength-meter": "^2.0.0",
     "animate.css": "^4.1.0",

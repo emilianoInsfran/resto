@@ -1,3 +1,75 @@
 .box-perfil {
     text-align: center;
+
+    img {
+        margin-top: 20px;
+    }
+
+    .box-input{
+        margin-top: 50px;
+    }
 }
+
+.dropdown-menu {
+    left: -45px !important;
+    top: 66px !important;
+    width: 200px;
+}
+
+.position-tab {
+    position: fixed;
+    bottom:0;
+    background-color: white;
+}
+
+.navbar-collapse {
+    li {
+        padding: 10px 0;
+    }
+}
+
+.body-profile {
+    padding-top: 95px;
+    padding-bottom: 70px;
+
+    ul {
+        margin: auto;
+        width: 100%;
+        /* padding: 0; */
+        /* margin: 0; */
+        text-align: center;
+        left: 0;
+        right: 0;
+
+        li {
+            width: 100%;
+        }
+    }
+
+}
+
+.show-mobile {display: none;}
+.hide-mobile {display: inline-block;}
+
+@media (max-width: 700px) { 
+    .padding-mobile {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    select {
+        width: 100%;
+    }
+
+    select {
+        margin-left: 0px;
+    }
+
+ 
+}
+
+@media (max-width: 990px) { 
+    .show-mobile {display: inline-block;}
+    .hide-mobile {display: none;}
+}
+
