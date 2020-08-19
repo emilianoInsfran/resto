@@ -1,0 +1,40 @@
+h3{
+    text-align: center;
+}
+
+ul{
+    padding: 0;
+    li{
+        list-style: none;
+        height: 45px;
+        border-bottom: 1px solid #b3b3b3;
+        padding-left: 16px;
+        padding-top: 10px;
+
+        .arrow {
+            text-align: right;
+        }
+    }
+}
+
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 24px;
+    line-height: 1.33;
+}
+
+.btn-circle {
+    width: 60px;
+    height: 60px;
+    padding: 6px 0px;
+    border-radius: 49px;
+    text-align: center;
+    font-size: 26px;
+    line-height: 1.42857;
+    position: fixed;
+    bottom: 68px;
+    right: 34px;
+}
