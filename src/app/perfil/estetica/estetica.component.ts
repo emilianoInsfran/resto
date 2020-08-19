@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Font } from 'ngx-font-picker';
+
+
 @Component({
   selector: 'app-estetica',
   templateUrl: './estetica.component.html',
@@ -17,6 +19,7 @@ export class EsteticaComponent implements OnInit {
     'font-weight':'bold'
   };
 
+ 
   private _presetFonts = ['Arial', 'Times', 'Courier', 'Lato', 'Open Sans', 'Roboto Slab'];
 
   public font: Font = new Font({
@@ -50,5 +53,6 @@ export class EsteticaComponent implements OnInit {
     console.log("pasado por valiable",this.font);
 
   }
+
 
 }

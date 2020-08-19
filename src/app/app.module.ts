@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import	{ HttpClientModule } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ColorPickerModule } from 'ngx-color-picker';
@@ -34,6 +34,9 @@ import { MenuComponent } from './perfil/menu/menu.component';
 import { PromosComponent } from './perfil/promos/promos.component';
 import { GeneralComponent } from './perfil/general/general.component';
 
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ListaCategoriasComponent } from './perfil/estetica/lista-categorias/lista-categorias.component';
 const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
   // Change this to your Google API key
   apiKey: 'AIzaSyAUu7TIQH7gWrFVTAZrYnAV13hWjpue-EQ'
@@ -55,7 +58,8 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     EsteticaComponent,
     MenuComponent,
     PromosComponent,
-    GeneralComponent
+    GeneralComponent,
+    ListaCategoriasComponent
 
   ],
   imports: [
@@ -70,7 +74,8 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     CngTabsModule,
     ColorPickerModule,
     FontPickerModule,
-
+    DragDropModule,
+    BrowserAnimationsModule
   ],
   entryComponents: [
     PopupComponent
@@ -82,6 +87,7 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     },
 
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
