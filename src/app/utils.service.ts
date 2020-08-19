@@ -14,4 +14,5 @@ export class UtilsService {
 	getData(){
 		return this.data;
 	}
+
 }

@@ -1,4 +1,4 @@
-<div class="modal-content">
+<div class="modal-content" *ngIf="opciones =='confirmacion'">
   <!-- <div class="modal-header">
     <h4>{{title || 'Confirm'}}</h4>
   </div> -->
@@ -9,4 +9,21 @@
   <!-- <div class="modal-footer">
     <button type="button" class="btn btn-primary" (click)="confirm()">OK</button>
   </div> -->
+</div>
+
+
+<div class="modal-content agregar" *ngIf="opciones == 'agregarCategoria'">
+   <div class="modal-header">
+    <h4>{{title || 'Confirm'}}</h4>
+  </div> 
+  <div class="modal-body">
+    <div class="input-wrapper">
+      <input type="text"  [(ngModel)]="categoria" name="nombreCategoria" id="nombreCategoria"  required >
+      <label class="label" for="user">Categoría </label>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-danger" (click)="close()" >Cancelar</button>
+    <button type="button" class="btn btn-primary" (click)="confirm(categoria)" [disabled]="!categoria">Aceptar</button>
+  </div> 
 </div>

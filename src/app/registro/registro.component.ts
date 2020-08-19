@@ -67,7 +67,8 @@ export class RegistroComponent implements OnInit {
   showConfirm() {
     let disposable = this.simpleModalService.addModal(PopupComponent, {
       title: 'Confirm title',
-      message: 'Se registro con exito! :)'
+      message: 'Se registro con exito! :)',
+      opciones:'confirmacion',
     })
     .subscribe((isConfirmed)=>{
         //We get modal result
