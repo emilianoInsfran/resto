@@ -1,61 +1,99 @@
 <app-navbar></app-navbar>
-<section class="top-navbar">
-    <form class="form-login  no-padding-button box-plato"  [formGroup]="altaPlatosForm" action="">
-        <h3>Plato</h3>
+<section class="container top-navbar">
+    <div class="section">
+        <form class="form-login  no-padding-button box-plato"  [formGroup]="altaPlatosForm" action="">
+            <h3>Plato</h3>
+    
 
-        <img id="image" src="http://via.placeholder.com/150x150" style="border-radius:50%" (click)="upload()"/>
-        <input type="file" id="myfile" style="display: none;">
+            <div class="img" [ngStyle]="{'background-image':'url('+ imgURLPreview  +')'}" (click)="upload()"></div>
+            <input type="file"  id="plato" name="slide" (change)="cargarImgPlato($event.target.files)"  placeholder="cargar Imagen"  style="display: none;" >
 
-        <div class="input-wrapper">
-            <input type="text"   formControlName="nombrePlato" name="nombrePlato" id="nombrePlato" autofocus  required >
-            <label class="label" for="nombrePlato">Nombre </label>
-        </div>
+            <h5> Categoría</h5>
 
-        <div class="input-wrapper">
-            <input type="text"   formControlName="descripcionPlato" name="descripcionPlato" id="descripcionPlato" autofocus  required >
-            <label class="label" for="descripcionPlato">Descripcion </label>
-        </div>
+            <select name="select-categoria"  formControlName="categoria" class="browser-default custom-select" >
+                <option *ngFor="let categoria of arrayCategoria" [value]="categoria._id" >{{categoria.nombre}} </option>
+            </select> 
 
-        <h5>Tamaños</h5>
+            <div class="row">
+                <div class="col-12 col-md-4 col-xs-12">
+                    <div class="input-wrapper">
+                        <input type="text"   formControlName="nombrePlato" name="nombrePlato" id="nombrePlato"   required >
+                        <label class="label" for="nombrePlato">Nombre </label>
+                    </div>
+                </div>
+                <div class="col-12 col-md-8 col-xs-12">
+                    <div class="input-wrapper">
+                        <input type="text"   formControlName="descripcionPlato" name="descripcionPlato" id="descripcionPlato"   required >
+                        <label class="label" for="descripcionPlato">Descripcion </label>
+                    </div>
+                </div>
+    
+            </div>
+    
+            <h5>Tamaños</h5>
+    
+            <div class="row ">
+                 <div class="col-6 col-md-4 col-xs-6 tamanio">
+                    <input type="checkbox" formControlName="checkPlatoChico" >
+                    <span>Chico</span>
+                 </div>
+                 <div class="col-6 col-md-4 col-xs-6">
+                    <div class="input-wrapper">
+                        <input type="text"   formControlName="precioPlatoChico" name="precioPlatoChico" id="precioPlatoChico"    >
+                        <label class="label" for="precioPlatoChico">Precio $ </label>
+                    </div>
+                 </div>
+                 <div class="col-12 col-md-4 col-xs-12">     </div>
+            </div>
+    
+            <div class=" row ">
+                <div class="col-6 col-md-4 col-xs-6 tamanio">
+                   <input type="checkbox" formControlName="checkPlatoMediano">
+                   <span>Mediano</span>
+                </div>
+                <div class="col-6 col-md-4 col-xs-6">
+                   <div class="input-wrapper">
+                       <input type="text"   formControlName="precioPlatoMediano" name="precioPlatoMediano" id="precioPlatoMediano"    >
+                       <label class="label" for="precioPlatoMediano">Precio $ </label>
+                   </div>
+                </div>
+                <div class="col-12 col-md-4 col-xs-12">     </div>
+           </div>
+    
+           <div class=" row ">
+                <div class="col-6 col-md-4 col-xs-6 tamanio">
+                    <input type="checkbox" formControlName="checkPlatoGrande">
+                    <span>Grande</span>
+                </div>
+                <div class="col-6 col-md-4 col-xs-6">
+                    <div class="input-wrapper">
+                        <input type="text"   formControlName="precioPlatoGrande" name="precioPlatoGrande" id="precioPlatoGrande"    >
+                        <label class="label" for="precioPlatoGrande">Precio $ </label>
+                    </div>
+                </div>
+                <div class="col-4 col-md-4 col-xs-12">     </div>
+            </div>
 
-        <div class=" row ">
-             <div class="col-4 col-md-4">
-                <p>Chico</p>
-                <input type="checkbox"  >
-             </div>
-             <div class="col-4 col-md-4">
-                <p>Mediano</p>
-                <input type="checkbox"  >
-             </div>
-             <div class="col-4 col-md-4">
-                <p>Grande</p>
-                <input type="checkbox"  >
-             </div>
-        </div>
 
+            <h5>Tipo de comida</h5>
+
+            <select class="browser-default custom-select" formControlName="tipoComida" required>
+                <option value="1">Vegano</option>
+                <option value="2">Celiaco</option>
+                <option value="3">Sin tacc</option>
+            </select>
+
+
+        </form>
+    
         <h5>Ingredientes</h5>
-        <ul>
-            <li *ngFor="let ingrediente of listIngredientes">
-                <input type="checkbox"  > {{ingrediente.nombre}}
-            </li>
-        </ul>
-
-        <select class="browser-default custom-select">
-            <option selected>Tipo de Comida</option>
-            <option value="1">Vegano</option>
-            <option value="2">Celiaco</option>
-            <option value="3">Sin tacc</option>
-        </select>
-
-        <div class="input-wrapper">
-            <input type="text"   formControlName="precioPlato" name="precioPlato" id="precioPlato" autofocus  required >
-            <label class="label" for="precioPlato">Precio $ </label>
+        <tag-input [(ngModel)]="itemsAsObjects"   [identifyBy]="'id'" [displayBy]="'name'" [editable]='true' (onTagEdited)="onTagEdited($event)"></tag-input>
+    
+        <div class="row box-botton">
+            <div  class="col-12 col-md-6"></div>
+            <div class="col-6 col-md-3"><button class="button1" (click)="gotoPage('','listaplatos')">Cancelar</button></div>
+            <div class="col-6 col-md-3"><button class="button1" (click)="agregarPlato()"  [ngClass]="{'disabled':(!altaPlatosForm.valid) }" [disabled]="(!altaPlatosForm.valid && !itemsAsObjects)">Agregar </button></div>
         </div>
-
-        <div class="row">
-            <div class="col-6 col-md-6"><button class="button1" (click)="gotoPage('','listaplatos')">Cancelar</button></div>
-            <div class="col-6 col-md-6"><button class="button1" (click)="agregarPlato()">Agregar</button></div>
-        </div>
-    </form>
+    </div>
 
 </section>

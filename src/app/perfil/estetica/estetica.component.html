@@ -1,67 +1,86 @@
 <app-navbar></app-navbar>
-<section class="container top-navbar" fxLayout="column" fxLayoutAlign="stretch" [ngStyle]="{'color':color,'background-color':fondo}" >
-    <div [ngStyle]="font?.getStyles()">
-        <div class="preview-content info-container">
-            <h3>Elije tu estilo</h3>
-            <form action="">
-                <h5>Color</h5>
+<div [ngStyle]="{'color':color,'background-color':fondo}">
+    <section class="container top-navbar" fxLayout="column" fxLayoutAlign="stretch"  >
+        <div  [ngStyle]="font?.getStyles()">
+            <div class="preview-content info-container">
+                <h3>Elije tu estilo</h3>
+                <form action="">
+                    <h5>Color</h5>
+    
+                    <div>
+                        <p>Texto </p>
+                        <div [(colorPicker)]="color" [style.background]="color" class="circle"></div>
+                    </div>
+                    <div>
+                        <p>Fondo </p>
+                        <div [(colorPicker)]="fondo" [style.background]="fondo" class="circle"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-xs-12 col-md-6">
+                            <h5>Botones </h5>
+    
+                            <div>
+                                <p>Texto</p>
+                                <div [(colorPicker)]="botonesTxt" [style.background]="botonesTxt" class="circle" ></div>
+                            </div>
+                            <div>
+                                <p>Fondo</p>
+                                <div [(colorPicker)]="botonesFondo" [style.background]="botonesFondo" class="circle"></div>
+                            </div>
+                            <div>
+                                <p >Borde</p>
+                                <div [(colorPicker)]="botonesBorde" [style.background]="botonesBorde" class="circle"></div>
+                            </div>
 
-                <div>
-                    <p>Texto </p>
-                    <div [(colorPicker)]="color" [style.background]="color" class="circle"></div>
-                </div>
-                <div>
-                    <p>Fondo </p>
-                    <div [(colorPicker)]="fondo" [style.background]="fondo" class="circle"></div>
-                </div>
+                        </div>
+                        <div class="col-12   col-xs-12  col-md-6">
+                            <button [ngStyle]="{'color':botonesTxt,'background-color':botonesFondo,'border':'1px solid' + botonesBorde}" (click)="setFont(font)">Guargar</button>
+                        </div>
+                    </div>
 
-                <h5>Botones </h5>
+                    <div class="row">
+                        <div class="col-12 col-xs-12 col-md-6">
+                            <h5>Fuente</h5>
 
-                <div>
-                    <p>Texto</p>
-                    <div [(colorPicker)]="botonesTxt" [style.background]="botonesTxt" class="circle" ></div>
-                </div>
-                <div>
-                    <p>Fondo</p>
-                    <div [(colorPicker)]="botonesFondo" [style.background]="botonesFondo" class="circle"></div>
-                </div>
-                <div>
-                    <p >Borde</p>
-                    <div [(colorPicker)]="botonesBorde" [style.background]="botonesBorde" class="circle"></div>
-                </div>
-
-                <button [ngStyle]="{'color':botonesTxt,'background-color':botonesFondo,'border':'1px solid' + botonesBorde}" (click)="setFont(font)">Guargar</button>
-            
-                <div class="horizontal-container" fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="stretch" fxFlex>
-                    <div class="vertical-container" fxLayout="column" fxLayoutAlign="stretch" fxFlex="50%">
-                
-                        <div class="action-container" fxLayout="column" fxLayoutAlign="stretch" fxFlex>
-                            <div class="action-button" fxLayout="column" fxLayoutAlign="center center" fxFlex [(fontPicker)]="font" [fpWidth]="'auto'" [fpPosition]="'bottom'" [fpPositionOffset]="'0%'" [fpPositionRelativeToArrow]="false" [fpPresetLabel]="'Preset fonts'" [fpPresetFonts]="presetFonts" [fpSizeSelect]="sizeSelect" [fpStyleSelect]="styleSelect">
-                                {{font?.family}}
+                            <div class="horizontal-container" fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="stretch" fxFlex>
+                                <div class="vertical-container" fxLayout="column" fxLayoutAlign="stretch" fxFlex="50%">
+                            
+                                    <div class="action-container" fxLayout="column" fxLayoutAlign="stretch" fxFlex>
+                                        <div class="action-button" fxLayout="column" fxLayoutAlign="center center" fxFlex [(fontPicker)]="font" [fpWidth]="'auto'" [fpPosition]="'bottom'" [fpPositionOffset]="'0%'" [fpPositionRelativeToArrow]="false" [fpPresetLabel]="'Preset fonts'" [fpPresetFonts]="presetFonts" [fpSizeSelect]="sizeSelect" [fpStyleSelect]="styleSelect">
+                                            {{font?.family}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-xs-12 col-md-6">
+                            <div class="vertical-container test-font" fxLayout="column" fxLayoutAlign="stretch" fxFlex="50%">
+                                <div class="box-title">Vista previa</div>
+                        
+                                <div class="content-container" fxLayout="column" fxLayoutAlign="stretch" fxFlex>
+                                <div [ngStyle]="font?.getStyles()">
+                                    <div class="preview-content">
+                                        Esto es un texto de prueba :)
+                                   </div>
+                                </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                
-                    <div class="vertical-container" fxLayout="column" fxLayoutAlign="stretch" fxFlex="50%">
-                        <div class="box-title">Vista previa</div>
-                
-                        <div class="content-container" fxLayout="column" fxLayoutAlign="stretch" fxFlex>
-                        <div [ngStyle]="font?.getStyles()">
-                            <div class="preview-content">
-                                Esto es un texto de prueba :)
-                           </div>
-                        </div>
-                        </div>
-                    </div>
+    
+                </form>
+    
+                <app-lista-categorias></app-lista-categorias>
+
+                <div class="row">
+                    <div class="col-12 col-xs-12 col-md-8"></div>
+                    <div class="col-12 col-xs-12 col-md-4"><button class="button1 " >Guadar</button></div>
                 </div>
-                
-
-            </form>
-
-            <app-lista-categorias></app-lista-categorias>
+            </div>
         </div>
-    </div>
-
-</section>
+    
+    </section>
+    
+</div>
 
 

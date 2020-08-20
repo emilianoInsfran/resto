@@ -35,6 +35,7 @@ import { PromosComponent } from './perfil/promos/promos.component';
 import { GeneralComponent } from './perfil/general/general.component';
 
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { TagInputModule } from 'ngx-chips';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListaCategoriasComponent } from './perfil/estetica/lista-categorias/lista-categorias.component';
 import { AltaPlatosComponent } from './perfil/menu/alta-platos/alta-platos.component';
@@ -81,7 +82,8 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     ColorPickerModule,
     FontPickerModule,
     DragDropModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    TagInputModule
   ],
   entryComponents: [
     PopupComponent

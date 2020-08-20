@@ -10,8 +10,7 @@ h5{
     margin-top: 10px;
 }
 
-.box-plato {
-    max-width: 400px;
+.section {
     width: 100%;
     margin: auto;
     box-shadow: 46px 48px 65px 0px #cccccc;
@@ -20,10 +19,28 @@ h5{
     padding: 40px;
 }
 
+.custom-select {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
 .form-login {
 
     text-align: center;
-    padding: 10px 25px;
+
+    .img {
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 31px;
+        width: 100px;
+        cursor: pointer;
+        border-radius: 6px;
+        margin: auto;
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+        border: 1px solid #d0cfcf;
+    }
 
     a{
         cursor: pointer;
@@ -73,8 +90,25 @@ h5{
             }
         }
     }
+
+    .tamanio{ 
+        padding-top: 25px;
+        text-align: left;
+        span {
+            position: relative;
+            left: 20px;
+            top: -5px;
+        }
+    }
+
+
 }
 
+.box-botton {
+    button {
+        margin-top:20px !important;
+    }
+}
 .input-wrapper{
     width: 100%;
     margin: 15px 0 15px 0;

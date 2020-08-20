@@ -38,6 +38,7 @@
     "hover.css": "^2.3.2",
     "jquery": "^3.5.1",
     "ng-animate-scroll": "^7.1.0",
+    "ngx-chips": "^2.1.0",
     "ngx-color-picker": "^10.0.1",
     "ngx-font-picker": "^10.0.1",
     "ngx-simple-modal": "^1.4.13",

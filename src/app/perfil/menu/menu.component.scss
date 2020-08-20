@@ -56,4 +56,12 @@ ul{
 }
 
 
+.bi-trash {
+    cursor: pointer;
+
+    &:hover{
+        color:red;
+    }
+}
+
 

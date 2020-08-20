@@ -65,29 +65,39 @@
         position: relative;
         .bi-pencil {
             position: absolute;
-            border: 1px solid green;
             font-size: 30px;
             padding: 3px;
             border-radius: 64%;
-            color: green;
             margin-right: 20px;
             cursor: pointer;
             right: 19px;
             top: -14px;
             background-color: white;
+            color: gray;
+            border: 1px solid gray;
+            z-index: 999999999999999999999;
+            &:hover {
+                color: green;
+                border: 1px solid green;
+            }
         }
 
         .bi-trash {
             position: absolute;
-            border: 1px solid red;
             font-size: 30px;
             padding: 3px;
             border-radius: 64%;
-            color: red;
             cursor: pointer;
             right: 0px;
             top: -14px;
             background-color: white;
+            color: gray;
+            border: 1px solid gray;
+            z-index: 999999999999999999999;
+            &:hover {
+                color: #f53123;
+                border: 1px solid #f53123;
+            }
         }
 
     }
