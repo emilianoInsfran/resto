@@ -38,6 +38,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListaCategoriasComponent } from './perfil/estetica/lista-categorias/lista-categorias.component';
 import { AltaPlatosComponent } from './perfil/menu/alta-platos/alta-platos.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ListaPlatosComponent } from './perfil/menu/lista-platos/lista-platos.component';
 const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
   // Change this to your Google API key
   apiKey: 'AIzaSyAUu7TIQH7gWrFVTAZrYnAV13hWjpue-EQ'
@@ -61,7 +63,9 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     PromosComponent,
     GeneralComponent,
     ListaCategoriasComponent,
-    AltaPlatosComponent
+    AltaPlatosComponent,
+    NavbarComponent,
+    ListaPlatosComponent
 
   ],
   imports: [

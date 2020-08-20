@@ -13,6 +13,8 @@ import { RegistroComponent } from './registro/registro.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { EsteticaComponent } from './perfil/estetica/estetica.component';
 import { MenuComponent } from './perfil/menu/menu.component';
+import { AltaPlatosComponent } from './perfil/menu/alta-platos/alta-platos.component';
+import { ListaPlatosComponent } from './perfil/menu/lista-platos/lista-platos.component';
 import { PromosComponent } from './perfil/promos/promos.component';
 import { GeneralComponent } from './perfil/general/general.component';
 
@@ -26,6 +28,8 @@ const routes: Routes = [
   { path:'perfil', component: PerfilComponent },
   { path:'estetica', component: EsteticaComponent },
   { path:'menu', component: MenuComponent },
+  { path:'altaplatos', component: AltaPlatosComponent },
+  { path:'listaplatos', component: ListaPlatosComponent },
   { path:'promos', component: PromosComponent },
   { path:'general', component: GeneralComponent },
 ];

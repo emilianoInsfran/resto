@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UtilsService } from "../../../utils.service";
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-alta-platos',
@@ -33,7 +35,7 @@ export class AltaPlatosComponent implements OnInit {
 
     },
   ]
-  constructor() { }
+  constructor(private route:Router, public utils:UtilsService) { }
 
   ngOnInit(): void {
   }
@@ -49,6 +51,11 @@ export class AltaPlatosComponent implements OnInit {
 
   }
 
+  gotoPage(codigo,page){
+    console.log(codigo);
+    this.utils.setData(codigo);
+    this.route.navigate([`${page}`])
+  }
 
   upload(){
     document.getElementById("myfile").click();

@@ -1,0 +1,131 @@
+.listaPlatos {
+    text-align: center;
+
+    .message{
+        font-size: 2em;
+        margin-top: 60px;
+    }
+
+    .img{
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 116px;
+        width: 100%;
+    }
+    
+    .icono-content{
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 30px !important;
+        width: 32px;
+        cursor: pointer;
+        display: inline-block;
+        margin-right: 10px;
+        border: 1px solid #e4e4e4;
+        border-radius: 56%;
+    }
+    
+    .box-content-platos{
+        padding: 0 3px;
+        margin-top: 37px;
+        cursor: pointer;
+        -webkit-box-shadow: 50px 31px 38px -22px rgba(196,196,196,1);
+        -moz-box-shadow: 50px 31px 38px -22px rgba(196,196,196,1);
+        box-shadow: 50px 31px 38px -22px rgba(196,196,196,1);
+        border: 1px solid white;
+        &:hover{
+            -webkit-box-shadow: 50px 31px 38px -22px #ffe7e5;
+            -moz-box-shadow: 50px 31px 38px -22px #ffe7e5;
+            box-shadow: 50px 31px 38px -22px #ffe7e5;
+        }
+    }
+    
+    .vegan {
+        background-image:url('../../../../assets/seliaco.png');
+    }
+
+    .precio {
+        padding: 0;
+    }
+    .iconTipo {
+        padding: 0 5px 0 10px;
+        text-align: left;
+    }
+
+    .descripcion {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .icon {
+        text-align: right;
+        position: relative;
+        .bi-pencil {
+            position: absolute;
+            border: 1px solid green;
+            font-size: 30px;
+            padding: 3px;
+            border-radius: 64%;
+            color: green;
+            margin-right: 20px;
+            cursor: pointer;
+            right: 19px;
+            top: -14px;
+            background-color: white;
+        }
+
+        .bi-trash {
+            position: absolute;
+            border: 1px solid red;
+            font-size: 30px;
+            padding: 3px;
+            border-radius: 64%;
+            color: red;
+            cursor: pointer;
+            right: 0px;
+            top: -14px;
+            background-color: white;
+        }
+
+    }
+
+    .btn-circle.btn-xl {
+        width: 70px;
+        height: 70px;
+        padding: 10px 16px;
+        border-radius: 35px;
+        font-size: 24px;
+        line-height: 1.33;
+    }
+    
+    .btn-circle {
+        width: 60px;
+        height: 60px;
+        padding: 6px 0px;
+        border-radius: 49px;
+        text-align: center;
+        font-size: 26px;
+        line-height: 1.42857;
+        position: fixed;
+        bottom: 68px;
+        right: 34px;
+    }
+    .btn-circleback {
+        width: 60px;
+        height: 60px;
+        padding: 6px 0px;
+        border-radius: 49px;
+        text-align: center;
+        font-size: 26px;
+        line-height: 1.42857;
+        position: fixed;
+        bottom: 68px;
+        left: 34px;
+    }
+    
+
+    
+}
