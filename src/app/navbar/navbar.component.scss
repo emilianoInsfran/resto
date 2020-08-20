@@ -1,3 +1,7 @@
+nav {
+    padding: 4px 8px;
+}
+
 .box-perfil {
     text-align: center;
 
@@ -11,8 +15,8 @@
 }
 
 .dropdown-menu {
-    left: -45px !important;
-    top: 46px !important;
+    left: -105px !important;
+    top: 70px !important;
     width: 200px;
 }
 
@@ -25,6 +29,7 @@
 .navbar-collapse {
     .sub-menu{
         left: 0 !important;
+        top: 56px !important;
     }
     li {
         cursor: pointer;
@@ -54,7 +59,6 @@
 }
 
 .img {
-    background-image: url('../../assets/logo.png');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -62,6 +66,22 @@
     width: 100px;
     cursor: pointer;
     border-radius: 6px;
+}
+
+.logo {
+    background-image: url('../../assets/logo.png');
+
+}
+.user-logo{
+    padding: 0;
+
+    .imagen-bar {
+        background-image: url('../../assets/antares.jpg');
+        height: 60px !important;
+        width: 60px !important;
+        border-radius: 50%;
+        display: inline-block;
+    }
 }
 
 

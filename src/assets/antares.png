@@ -1,0 +1,286 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Cervezas en botellas y barriles</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		
+        <!-- Magnific Popup core CSS file 
+		<link rel="stylesheet" href="magnificpopup/dist/magnific-popup.css">-->
+       <meta name="description" content="Craftbeer distribuidora. Cerveza Antares, Peñon del Águila, Okcidenta, Rabieta y Crafter en porrones y barriles. Para locales y consumidores finales">
+         <script src='https://www.google.com/recaptcha/api.js?render=6LcDv7QZAAAAADPwpQCXXOypcximqIg6uKrC-B8L'> 
+</script>
+<script>
+    grecaptcha.ready(function() {
+    grecaptcha.execute('6LcDv7QZAAAAADPwpQCXXOypcximqIg6uKrC-B8L', {action: 'formulario'})
+    .then(function(token) {
+    var recaptchaResponse = document.getElementById('recaptchaResponse');
+    recaptchaResponse.value = token;
+    });});
+</script>          
+	</head>
+	<body>
+  
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<ul class="contact contact_header">
+								<a href="https://twitter.com/craftbeer_arg" target="_blank"><li class="fa-twitter"></li></a>
+								<a href="https://www.facebook.com/CraftBeerArgentina" target="_blank"><li class="fa-facebook"></li></a>
+                                <a href="https://www.instagram.com/craftbeerarg" target="_blank"><li class="fa-instagram"></li></a>
+                        </ul>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="index.html">PRINCIPAL</a></li>
+								<li><a href="choperas para eventos.html">CHOPERAS PARA EVENTOS</a></li>
+                                <li><a href="locales gastronomicos.html">ATENCI&Oacute;N A LOCALES GASTRON&Oacute;MICOS</a></li>
+								<li><a href="mantenimiento de choperas.html">MANTENIMIENTO DE CHOPERAS</a></li>
+                                <li><a href="venta de equipos y accesorios.html">VENTA DE EQUIPOS Y ACCESORIOS</a></li>
+                                <li><a href="productos.html">BARRILES Y PORRONES</a></li>
+                                <li><a href="merchandising.html">MERCH</a></li>
+                                <li><a href="novedades.html">NOVEDADES</a></li>
+							</ul>
+							<a href="" class="close">Cerrar</a>
+						</div>
+					</nav>
+				<!-- Banner -->
+					<section id="banner">
+						<div class="inner">
+							<div class="logo"><img src="images/logos/nuevo-logo-craftbeer.png"></div>
+							
+						</div>
+					</section>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						
+						<!-- Content -->
+							<section id="one" class="wrapper spotlights fade-up style4">
+                            	<div class="inner">
+								<!--	<span id="span_distri" class="image"><img src="images/choperas/craftbeer-019.png" alt="" /></span>-->
+									<div class="content">
+
+									<section class="features">
+                                    
+                                    <h2 class="major">Disponemos de porrones, botellas y barriles</h2>
+									<p>Trabajamos únicamente con cervecerías artesanales. Para acceder a la lista de precios,
+                                    registrate haciendo click <a href="registro.php">aquí</a></p>
+							
+										<article>
+                                         <div class="row uniform">
+                                         	<div class="4u"></div>
+											<div class="4u image fit"><img src="images/logos/logoantares.png" alt="logo antares" /></div>
+                                            <div class="4u$"></div>
+                                            
+                                         </div>
+											<h3 class="major">Antares</h3>
+											<p> 
+                                            <div class="parent-container">
+                                         
+                                              <a href="images/barriles/antares_barriles.png" target="_blank"><img src="images/barriles/antares_barriles_peq.png" alt="antares" /></a>
+                                    </div>
+                                            </p>
+											
+										</article>
+										<!-- <article>
+                                        	<div class="row uniform">
+                                         	<div class="4u"></div>
+											<div class="4u image fit"><img src="images/logos/logo-kingston.png" alt="logo kingston" /></div>
+                                            <div class="4u$"></div>
+                                            
+                                         </div>
+                                         	<h3 class="major">Kingston</h3>
+											<p> 
+                                            <div class="parent-container">
+                                            <a href="images/barriles/kingston-barriles.png" target="_blank"><img src="images/barriles/kingston-barriles-peq.png" alt="kingston" /></a>	
+                                            </div>
+                                            </p>
+											
+										</article>-->
+                          				
+                                        <article>
+                                        	<div class="row uniform">
+                                         	<div class="4u"></div>
+											<div class="4u image fit"><img src="images/logos/logo-penon.png" alt="logo peñon del águila" /></div>
+                                            <div class="4u$"></div>
+                                            
+                                         </div>
+                                         	<h3 class="major">Peñon del Águila</h3>
+											<p> 
+                                            <div class="parent-container">
+                                              <a href="images/barriles/penon-barriles.png" target="_blank"><img src="images/barriles/penon-barriles-peq.png" alt="peñon del águila" /></a>	
+                                            </div>
+                                            </p>
+											
+										</article>
+										
+										<article>
+                                        	<div class="row uniform">
+                                         	<div class="4u"></div>
+											<div class="4u image fit"><img src="images/logos/logo-crafter.png" alt="logo crafter" /></div>
+                                            <div class="4u$"></div>
+                                            
+                                         </div>
+                                         	<h3 class="major">Crafter</h3>
+											<p> 
+                                            <div class="parent-container">
+                                              <a href="images/barriles/crafter-barriles.png" target="_blank"><img src="images/barriles/crafter-barriles-peq.png" alt="Crafter" /></a>	
+                                            </div>
+                                            </p>
+											
+										</article>
+										<!--<article>
+                                        	<div class="row uniform">
+                                         	<div class="4u"></div>
+											<div class="4u image fit"><img src="images/logos/logo-bronx.png" alt="logo bronx" /></div>
+                                            <div class="4u$"></div>
+                                            
+                                         </div>
+                                         	<h3 class="major">Bronx</h3>
+											<p> 
+                                            <div class="parent-container">
+                                            <a href="images/barriles/prod_bronx_barril.png" target="_blank"><img src="images/barriles/prod_bronx_barril_peq.png" alt="bronx" /></a>	
+            							</div>
+                                            </p>
+											
+										</article>-->
+                                        
+                                        <article>
+                                        	<div class="row uniform">
+                                         	<div class="4u"></div>
+											<div class="4u image fit"><img src="images/logos/logo-okcidenta.png" alt="logo okcidenta" /></div>
+                                            <div class="4u$"></div>
+                                            
+                                         </div>
+                                         	<h3 class="major">Okcidenta</h3>
+											<p> 
+                                            <div class="parent-container">
+                                              <a href="images/barriles/okcidenta_barriles.png" target="_blank"><img src="images/barriles/okcidenta_barriles-peq.png" alt="okcidenta" /></a>	
+                                            </div>
+                                            </p>
+											
+										</article>
+                                        <article>
+                                        	<div class="row uniform">
+                                         	<div class="4u"></div>
+											<div class="4u image fit"><img src="images/logos/logo-rabieta.png" alt="logo rabieta" /></div>
+                                            <div class="4u$"></div>
+                                            
+                                         </div>
+                                         	<h3 class="major">Rabieta</h3>
+											<p> 
+                                            <div class="parent-container">
+                                              <a href="images/barriles/rabieta_barriles.png" target="_blank"><img src="images/barriles/rabieta_barriles-peq.png" alt="okcidenta" /></a>	
+                                            </div>
+                                            </p>
+											
+										</article>
+                                      
+                                        <article>
+                                        	<div class="row uniform">
+                                         	<div class="4u"></div>
+											<div class="4u image fit"><img src="images/logos/logo_cerv_artesanal.png" alt="logo cervecería artesanal" /></div>
+                                            <div class="4u$"></div>
+                                            
+                                         </div>
+                                         	<h3 class="major">Tu cervecería puede estar acá</h3>
+											<p> 
+                                            <div class="parent-container">
+                                              <!--  <a href="images/barriles/b50.png"><img src="images/barriles/b50_peq.png" alt="barril de 50 lts" /></a>
+                                              <a href="images/barriles/b30.png"><img src="images/barriles/b30_peq.png" alt="barril de 30 lts" /></a>
+                                              <a href="images/barriles/b20.png"><img src="images/barriles/b20_peq.png" alt="barril de 20 lts" /></a>	-->
+                                              <span>Si tenés una cervecería o micro cervecería artesanal y querés que distribuyamos tu marca, contactate
+                                              con nosotros o envianos un mail a cervecerias@craftbeer.com.ar</span>
+                                             
+                                            </div>
+                                            </p>
+											
+										</article>
+									</section>
+
+								</div>
+							</div>
+                            </section>
+
+					</section>
+
+				<!-- Footer -->
+					<section id="footer" class="wrapper alt spotlights fade-up style6">
+						<div class="inner">
+							<h2 class="major">Contacto</h2>
+							<form method="post" action="contacto.php">
+								<div class="field">
+									<label for="name">Nombre y apellido</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="tel">Teléfono</label>
+									<input type="tel" name="tel" id="tel" />
+								</div>
+                                <div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Mensaje</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+								<div id="html_captcha"></div>
+                                <br />
+                                <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+								<ul class="actions">
+									<li><input type="submit" value="Enviar" /></li>
+								</ul>
+							</form>
+                            <br />
+							<ul class="contact">
+							<!--	<li class="fa-home">
+									Craftbeer Argentina<br />
+									Tamborini 2771 (CABA)<br />
+								</li> -->
+								<li class="fa-phone"> 11-6027-8217 para at. comercial </li> 
+                                <li class="fa-phone"> 11-2155-4283 para at. comercial </li> 
+                                <li class="fa-phone"> 11-3327-5911 para eventos </li> 
+								<li class="fa-envelope"><a href="">ventas@craftbeer.com.ar</a></li>
+								<li class="fa-twitter"><a href="https://twitter.com/craftbeer_arg" target="_blank">@craftbeer_arg</a></li>
+								<li class="fa-facebook"><a href="https://www.facebook.com/CraftBeerArgentina" target="_blank">facebook.com/CraftBeerArgentina</a></li>
+							</ul>
+							<!--<ul class="copyright">
+								<li>&copy; Craftbeer Argentina. Todos los derechos reservados</li><li>Diseño: <a href="http://www.fotoprod.com.ar">FOTOPROD</a></li>
+							</ul>-->
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+           
+            <script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/jquery.min.js"></script>
+            <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    	    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script> 
+                  
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+            <script src="assets/js/myscripts.js"></script>
+         
+</html>
