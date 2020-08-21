@@ -35,7 +35,7 @@ export class CategoriaComponent implements OnInit {
             nombre:'piza 1 napoliana',
             descripcion:'La pizza napolitana, de masa tierna y delgada pero bordes altos, es la versión propia de la cocina napolitana de la pizza redonda',
             img:'',
-            precio:1000,
+            precio:300,
             iconos:['seliaco','vagano']
     
           },
@@ -44,7 +44,7 @@ export class CategoriaComponent implements OnInit {
             nombre:'piza 2 napoliana',
             descripcion:'La pizza napolitana, de masa tierna y delgada pero bordes altos, es la versión propia de la cocina napolitana de la pizza redonda',
             img:'',
-            precio:1000,
+            precio:300,
             iconos:['seliaco','vagano']
     
           }
@@ -58,7 +58,7 @@ export class CategoriaComponent implements OnInit {
             nombre:'empanada 1 napoliana',
             descripcion:'La pizza napolitana, de masa tierna y delgada pero bordes altos, es la versión propia de la cocina napolitana de la pizza redonda',
             img:'',
-            precio:1000,
+            precio:300,
             iconos:['seliaco','vagano']
     
           },
@@ -67,7 +67,7 @@ export class CategoriaComponent implements OnInit {
             nombre:'empanada 2 napoliana',
             descripcion:'La pizza napolitana, de masa tierna y delgada pero bordes altos, es la versión propia de la cocina napolitana de la pizza redonda',
             img:'',
-            precio:1000,
+            precio:300,
             iconos:['seliaco','vagano']
     
           }
@@ -81,7 +81,7 @@ export class CategoriaComponent implements OnInit {
             nombre:'empanada 1 napoliana',
             descripcion:'La pizza napolitana, de masa tierna y delgada pero bordes altos, es la versión propia de la cocina napolitana de la pizza redonda',
             img:'',
-            precio:1000,
+            precio:300,
             iconos:['seliaco','vagano']
     
           },
@@ -90,7 +90,7 @@ export class CategoriaComponent implements OnInit {
             nombre:'empanada 2 napoliana',
             descripcion:'La pizza napolitana, de masa tierna y delgada pero bordes altos, es la versión propia de la cocina napolitana de la pizza redonda',
             img:'',
-            precio:1000,
+            precio:300,
             iconos:['seliaco','vagano']
     
           }
@@ -104,7 +104,7 @@ export class CategoriaComponent implements OnInit {
             nombre:'empanada 1 napoliana',
             descripcion:'La pizza napolitana, de masa tierna y delgada pero bordes altos, es la versión propia de la cocina napolitana de la pizza redonda',
             img:'',
-            precio:1000,
+            precio:300,
             iconos:['seliaco','vagano']
     
           },
@@ -113,7 +113,7 @@ export class CategoriaComponent implements OnInit {
             nombre:'empanada 2 napoliana',
             descripcion:'La pizza napolitana, de masa tierna y delgada pero bordes altos, es la versión propia de la cocina napolitana de la pizza redonda',
             img:'',
-            precio:1000,
+            precio:300,
             iconos:['seliaco','vagano']
     
           }
@@ -127,7 +127,7 @@ export class CategoriaComponent implements OnInit {
             nombre:'empanada 1 napoliana',
             descripcion:'La pizza napolitana, de masa tierna y delgada pero bordes altos, es la versión propia de la cocina napolitana de la pizza redonda',
             img:'',
-            precio:1000,
+            precio:300,
             iconos:['seliaco','vagano']
     
           },

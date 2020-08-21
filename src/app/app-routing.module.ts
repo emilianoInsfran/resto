@@ -6,7 +6,6 @@ import { ScannerComponent } from './scanner/scanner.component';
 import { PedidoComponent } from './pedido/pedido.component';
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
-
 //----------------------
 //PERFIL - secciones
 //----------------------

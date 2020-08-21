@@ -16,14 +16,20 @@
      padding: 10px;
  }
 
- .img{
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 116px;
-    width: 100%;
-    cursor: pointer;
-}
+ .imagen-plato{
+    padding-right: 10px;
+
+    .img {
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+    }
+ }
+
+
 
 .icono-content{
     background-position: center;
@@ -42,17 +48,22 @@
     padding: 0 3px;
     margin-top: 37px;
     cursor: pointer;
-    -webkit-box-shadow: 50px 31px 38px -22px rgba(196,196,196,1);
-    -moz-box-shadow: 50px 31px 38px -22px rgba(196,196,196,1);
-    box-shadow: 50px 31px 38px -22px rgba(196,196,196,1);
+    -webkit-box-shadow: 50px 31px 38px -22px #e6e6e6;
+    -moz-box-shadow: 50px 31px 38px -22px #e6e6e6;
+    box-shadow: 50px 31px 38px -22px #e6e6e6;
     border: 1px solid white;
     &:hover{
         -webkit-box-shadow: 50px 31px 38px -22px #ffe7e5;
         -moz-box-shadow: 50px 31px 38px -22px #ffe7e5;
         box-shadow: 50px 31px 38px -22px #ffe7e5;
     }
+
+    .precio {
+        text-align: right;
+        color: #009e00;
+    }
+    .vegan {
+        background-image:url('../../assets/seliaco.png');
+    }
 }
 
-.vegan {
-    background-image:url('../../assets/seliaco.png');
-}
