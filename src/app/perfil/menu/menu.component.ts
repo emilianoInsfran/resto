@@ -63,6 +63,29 @@ export class MenuComponent implements OnInit {
     this.seccion = 'altaPlatos';
   }
 
+  //elminar categoria
+  eliminarCategoria(data) {
+    let disposable = this.simpleModalService.addModal(PopupComponent, {
+      title: 'ELIMINAR',
+      message: '¿Seguro que desea eliminar la categoría '+data.nombre+'?',
+      opciones:'eliminar'
+    })
+    .subscribe((isConfirmed)=>{
+        //We get modal result
+        console.log('-',isConfirmed);
+        if(isConfirmed) {
+          this.showConfirmOK("Se elimino correctamente!")
+           // this.guardarCategoría();
+        }
+        else {
+            //alert('declined');
+        }
+    });
+    //We can close modal calling disposable.unsubscribe();
+    //If modal was not closed manually close it by timeout
+  }
+
+
   //agregar categoria
 
   showConfirm() {
@@ -86,6 +109,30 @@ export class MenuComponent implements OnInit {
     });
     //We can close modal calling disposable.unsubscribe();
     //If modal was not closed manually close it by timeout
+  }
+
+
+  showConfirmOK(message) {
+    let disposable = this.simpleModalService.addModal(PopupComponent, {
+      title: 'Confirm title',
+      message: message,
+      opciones:'confirmacion',
+    })
+    .subscribe((isConfirmed)=>{
+        //We get modal result
+        console.log('-',isConfirmed);
+        if(isConfirmed) {
+            //this.gotoPage('','perfil');
+        }
+        else {
+            alert('declined');
+        }
+    });
+    //We can close modal calling disposable.unsubscribe();
+    //If modal was not closed manually close it by timeout
+    setTimeout(()=>{
+        disposable.unsubscribe();
+    },2000);
   }
 
   getSelectCategoria(data){

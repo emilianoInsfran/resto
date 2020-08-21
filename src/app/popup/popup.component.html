@@ -27,3 +27,14 @@
     <button type="button" class="btn btn-primary" (click)="confirm(categoria)" [disabled]="!categoria">Aceptar</button>
   </div> 
 </div>
+
+
+<div class="modal-content agregar" *ngIf="opciones == 'eliminar'">
+ <div class="modal-body">
+    <p>{{message || 'Are you sure?'}}</p>
+ </div>
+ <div class="modal-footer">
+   <button type="button" class="btn btn-outline-danger" (click)="close()" >Cancelar</button>
+   <button type="button" class="btn btn-primary" (click)="confirm(categoria)" >Aceptar</button>
+ </div> 
+</div>
