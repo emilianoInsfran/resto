@@ -2,6 +2,10 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UtilsService } from "../../../utils.service";
 import { Router } from '@angular/router'; 
+import { SimpleModalService } from "ngx-simple-modal";
+import { PopupComponent } from '../../../popup/popup.component';
+
+
 @Component({
   selector: 'app-alta-platos',
   templateUrl: './alta-platos.component.html',
@@ -46,7 +50,7 @@ export class AltaPlatosComponent implements OnInit {
 
     },
   ]
-  constructor(private route:Router, public utils:UtilsService) { }
+  constructor(private route:Router, public utils:UtilsService,private simpleModalService:SimpleModalService) { }
 
   ngOnInit(): void {
     this.arrayCategoria = this.getArrayCategoria();
@@ -61,6 +65,7 @@ export class AltaPlatosComponent implements OnInit {
   agregarPlato(){
     console.log('=>',this.altaPlatosForm.value);
     console.log("itemsAsObjects->",this.itemsAsObjects);
+    this.showConfirm()
   }
 
   gotoPage(codigo,page){
@@ -108,6 +113,34 @@ export class AltaPlatosComponent implements OnInit {
   
   upload(){
     document.getElementById("plato").click();
+  }
+
+
+  showConfirm() {
+    let disposable = this.simpleModalService.addModal(PopupComponent, {
+      title: 'Confirm title',
+      message: 'Se Guardo con exito! :)',
+      opciones:'confirmacion',
+    })
+    .subscribe((isConfirmed)=>{
+        //We get modal result
+        console.log('-',isConfirmed);
+        if(isConfirmed) {
+            //this.gotoPage('','perfil');
+        }
+        else {
+            alert('declined');
+        }
+    });
+    //We can close modal calling disposable.unsubscribe();
+    //If modal was not closed manually close it by timeout
+    setTimeout(()=>{
+        disposable.unsubscribe();
+        this.gotoPage('','perfil');
+
+    },2000);
+    
+
   }
 
 
