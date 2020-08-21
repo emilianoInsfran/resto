@@ -54,6 +54,9 @@ export class AltaPlatosComponent implements OnInit {
 
   ngOnInit(): void {
     this.arrayCategoria = this.getArrayCategoria();
+
+
+    if(this.utils.getData())this.getPlatoEditar(this.utils.getData());
   }
 
   //mostrar list platos 
@@ -62,11 +65,6 @@ export class AltaPlatosComponent implements OnInit {
     this.goBack.emit(page)
   }
 
-  agregarPlato(){
-    console.log('=>',this.altaPlatosForm.value);
-    console.log("itemsAsObjects->",this.itemsAsObjects);
-    this.showConfirm()
-  }
 
   gotoPage(codigo,page){
     console.log(codigo);
@@ -115,7 +113,34 @@ export class AltaPlatosComponent implements OnInit {
     document.getElementById("plato").click();
   }
 
+  //agregar
+  agregarPlato(){
+    console.log('=>',this.altaPlatosForm.value);
+    console.log("itemsAsObjects->",this.itemsAsObjects);
+    this.showConfirm()
+  }
 
+  //editar
+  getPlatoEditar(plato){
+    console.log("EDITANDO",plato);
+    this.altaPlatosForm.setValue({
+      nombrePlato: plato.nombre,
+      descripcionPlato: plato.descripcion,
+      precioPlatoChico:  plato.precioPlatoChico,
+      precioPlatoMediano:  plato.precioPlatoMediano,
+      precioPlatoGrande:  plato.precioPlatoGrande,
+      checkPlatoChico: plato.checkPlatoChico,
+      checkPlatoMediano:  plato.checkPlatoMediano,
+      checkPlatoGrande:  plato.checkPlatoGrande,
+      categoria:  plato.idCategoria,
+      tipoComida:  plato.tipoComida,
+    });
+
+    this.itemsAsObjects = plato.ingredientes;
+  }
+
+
+  //popup
   showConfirm() {
     let disposable = this.simpleModalService.addModal(PopupComponent, {
       title: 'Confirm title',
