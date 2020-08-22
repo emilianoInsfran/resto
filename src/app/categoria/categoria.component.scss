@@ -1,3 +1,21 @@
+ header {
+     text-align: center;
+    .img {
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        cursor: pointer;
+    }
+    .imagen-bar {
+        background-image: url('../../assets/antares.jpg');
+        height: 150px !important;
+        width: 300px !important;
+        border-radius: 50%;
+        display: inline-block;
+        margin: auto;
+    }
+ }
+ 
  .nav-tabs {
     overflow-x: auto;
     overflow-y:hidden;
@@ -7,6 +25,10 @@
         border-bottom: 4px solid orange;
     }
  }
+
+ .is-mobile{display: none;}
+ .is-descktop{display: inline-block;}
+
  .nav-tabs .nav-link {
    white-space: nowrap;
  }
@@ -17,8 +39,21 @@
  }
 
  .imagen-plato{
-    padding-right: 10px;
+    padding-right: 11px;
 
+    .img {
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+    }
+ }
+
+ .imagen-plato-mobile{
+    padding-right: 9px;
+    min-height: 160px;
     .img {
         background-position: center;
         background-size: cover;
@@ -62,8 +97,15 @@
         text-align: right;
         color: #009e00;
     }
+
     .vegan {
         background-image:url('../../assets/seliaco.png');
     }
+}
+
+
+@media (max-width: 700px) { 
+ .is-mobile{display: inline-block ;}
+ .is-descktop{display: none;}
 }
 

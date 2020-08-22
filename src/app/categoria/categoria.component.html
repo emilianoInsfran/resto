@@ -1,6 +1,6 @@
 <div class="container">
     <header class="scroll">
-        <h3> Resto 1 </h3>   
+        <div class="img imagen-bar"></div>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
            
             <li class="nav-item"  *ngFor="let data of getPlatosData; let i = index" (click)="cambioCategoria(i)">
@@ -17,7 +17,11 @@
                 
                 <div class="box-content-platos">
                     <div class="row"> 
-                        <div class="col-8 col-md-8">
+                        <div class="col-12 col-md-4 imagen-plato-mobile is-mobile">
+                            <div class="img"  [ngStyle]="{'background-image':'url(https://www.laespanolaaceites.com/wp-content/uploads/2019/06/pizza-con-chorizo-jamon-y-queso-1080x671.jpg)'}" ></div>
+                        </div>
+    
+                        <div class="col-12 col-md-8">
                             <h5>{{plato.nombre}}</h5>
                             <p>{{plato.descripcion}}</p> 
                             
@@ -32,7 +36,7 @@
                             </div>
     
                         </div>
-                        <div class="col-4 col-md-4 imagen-plato">
+                        <div class="col-12 col-md-4 imagen-plato is-descktop">
                             <div class="img"  [ngStyle]="{'background-image':'url(https://www.laespanolaaceites.com/wp-content/uploads/2019/06/pizza-con-chorizo-jamon-y-queso-1080x671.jpg)'}" ></div>
                         </div>
     
@@ -40,9 +44,7 @@
                 </div>
                 
             </div>
-    
-
-          </div>
+        </div>
     </section>
 </div>
 

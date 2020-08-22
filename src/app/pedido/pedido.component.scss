@@ -1,3 +1,21 @@
+header {
+    text-align: center;
+   .img {
+       background-position: center;
+       background-size: cover;
+       background-repeat: no-repeat;
+       cursor: pointer;
+   }
+   .imagen-bar {
+       background-image: url('../../assets/antares.jpg');
+       height: 150px !important;
+       width: 300px !important;
+       border-radius: 50%;
+       display: inline-block;
+       margin: auto;
+   }
+}
+
 .nav-tabs {
     overflow-x: auto;
     overflow-y:hidden;
@@ -13,8 +31,20 @@
  }
 
  .imagen-plato{
-    padding-right: 10px;
+    padding-right: 11px;
+    .img {
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+    }
+ }
 
+ .imagen-plato-mobile{
+    padding-right: 11px;
+    min-height: 160px;
     .img {
         background-position: center;
         background-size: cover;
@@ -41,7 +71,7 @@
 
 .box-content-platos{
     padding: 0 3px;
-    margin-top: 37px;
+    margin-top: 20px;
     cursor: pointer;
     -webkit-box-shadow: 50px 31px 38px -22px #e6e6e6;
     -moz-box-shadow: 50px 31px 38px -22px #e6e6e6;
@@ -53,10 +83,56 @@
         box-shadow: 50px 31px 38px -22px #ffe7e5;
     }
 
-    
+    #collapseExample{
+        select{
+            width: 60%;
+        }
+
+        .unidad {
+            padding-top: 6px;
+            font-size: 1em;
+            border-right: 1px solid gray;
+        }
+
+        .checkbox {
+            span {
+                position: relative;
+                left: 20px;
+                top: -6px;
+            }
+        }
+
+
+    }
+
+    .opciones-colapse {
+        text-align: center;
+        color: #0abbbb;
+        padding: 10px;
+        margin-top: 10px;
+        border-top: 1px solid #d2d2d2;
+    }
+
     .precio {
         text-align: right;
         color: #009e00;
+    }
+
+    .info-extra {
+        margin-top: 20px;
+        position: relative;
+        span {
+            position: absolute;
+            z-index: 99;
+            left: 15px;
+            top: -13px;
+            background-color: white;
+        }
+        textarea{
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid #e2e2e2;
+        }
     }
 }
 
@@ -78,11 +154,7 @@ select{
 
 }
 
-textarea{
-    width: 100%;
-    border-radius: 10px;
-    border: 1px solid grey;
-}
+
 
 h4{
     margin-top: 20px;
@@ -95,9 +167,19 @@ button {
     background-color: white;
     border: 1px solid #dc8123;
     color: #dc8123;
+    margin-top: 25px;
 }
 
+.box-unidades{
+    margin:  25px 0;
+}
+
+.is-mobile{display: none;}
+.is-descktop{display: inline-block;}
+
 @media (max-width: 700px) { 
+    .is-mobile{display: inline-block ;}
+    .is-descktop{display: none;}
     .padding-mobile {
         margin-top: 20px;
         margin-bottom: 20px;
@@ -110,4 +192,18 @@ button {
     select {
         margin-left: 0px;
     }
+
+
+    #collapseExample{
+        select{
+            width: 100% !important;
+        }
+
+        .unidad {
+            padding-top: 6px;
+            font-size: 1.5em !important;
+            border-right: none ;
+        }
+    }
+
 }

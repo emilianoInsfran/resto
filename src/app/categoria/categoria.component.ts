@@ -35,19 +35,73 @@ export class CategoriaComponent implements OnInit {
             nombre:'piza 1 napoliana',
             descripcion:'La pizza napolitana, de masa tierna y delgada pero bordes altos, es la versión propia de la cocina napolitana de la pizza redonda',
             img:'',
-            precio:300,
-            iconos:['seliaco','vagano']
+            precio:1000,
+            iconos:['seliaco','vagano'],
+            precioPlatoChico: 1,
+            precioPlatoMediano: 1,
+            precioPlatoGrande: 1,
+            checkPlatoChico:true,
+            checkPlatoMediano: true,
+            checkPlatoGrande: true,
+            idCategoria: 1,
+            tipoComida: 1,
+            ingredientes:['ajo','muzzarela']
+    
+          },
+             {
+            id:1,
+            nombre:'piza 1 napoliana',
+            descripcion:'La pizza napolitana, de masa tierna y delgada pero bordes altos, es la versión propia de la cocina napolitana de la pizza redonda',
+            img:'',
+            precio:1000,
+            iconos:['seliaco','vagano'],
+            precioPlatoChico: 1,
+            precioPlatoMediano: 1,
+            precioPlatoGrande: 1,
+            checkPlatoChico:true,
+            checkPlatoMediano: true,
+            checkPlatoGrande: true,
+            idCategoria: 1,
+            tipoComida: 1,
+            ingredientes:['ajo','muzzarela']
     
           },
           {
             id:1,
-            nombre:'piza 2 napoliana',
+            nombre:'piza 1 napoliana',
             descripcion:'La pizza napolitana, de masa tierna y delgada pero bordes altos, es la versión propia de la cocina napolitana de la pizza redonda',
             img:'',
-            precio:300,
-            iconos:['seliaco','vagano']
+            precio:1000,
+            iconos:['seliaco','vagano'],
+            precioPlatoChico: 1,
+            precioPlatoMediano: 1,
+            precioPlatoGrande: 1,
+            checkPlatoChico:true,
+            checkPlatoMediano: true,
+            checkPlatoGrande: true,
+            idCategoria: 1,
+            tipoComida: 1,
+            ingredientes:['ajo','muzzarela']
     
-          }
+          },
+          {
+            id:1,
+            nombre:'piza 1 napoliana',
+            descripcion:'La pizza napolitana, de masa tierna y delgada pero bordes altos, es la versión propia de la cocina napolitana de la pizza redonda',
+            img:'',
+            precio:1000,
+            iconos:['seliaco','vagano'],
+            precioPlatoChico: 1,
+            precioPlatoMediano: 1,
+            precioPlatoGrande: 1,
+            checkPlatoChico:true,
+            checkPlatoMediano: true,
+            checkPlatoGrande: true,
+            idCategoria: 1,
+            tipoComida: 1,
+            ingredientes:['ajo','muzzarela']
+    
+          },
         ]
       },
       {
