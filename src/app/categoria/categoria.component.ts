@@ -12,7 +12,7 @@ export class CategoriaComponent implements OnInit {
   getPlatosData:any;
   categoriaSeleccionada:string='0';
   
-  constructor(private route:Router, private utils:UtilsService  ) {
+  constructor(private route:Router, public utils:UtilsService  ) {
     this.getPlatosData = this.getPlatos() ;
 
    }

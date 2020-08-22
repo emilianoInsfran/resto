@@ -30,44 +30,47 @@
                         <div class="col-12 col-md-4 imagen-plato is-descktop">
                             <div class="img"  [ngStyle]="{'background-image':'url(https://www.laespanolaaceites.com/wp-content/uploads/2019/06/pizza-con-chorizo-jamon-y-queso-1080x671.jpg)'}" ></div>
                         </div>
-    
                     </div>
-                    <div class="collapse" id="collapseExample">
-                        <form action="" novalidate autocomplete="off">
-                            <div class="row">
+                    <div class="collapse option-box" id="a{{i}}">
+                        <form action=""  novalidate autocomplete="off">
+                            <div class="row opciones-plato" *ngFor="let opciones of arrayRepetirPlato; let x = index">
                                 <div class="col-12 col-md-6">
                                     <div class="row">
                                         <div class="col-12 col-md-6 padding-mobile unidad">
-                                            <span>Unidades</span><i class="fa fa-minus-circle" (click)="resta()" aria-hidden="true"></i>{{unidades}}<i class="fa fa-plus-circle" (click)="suma()"  aria-hidden="true"></i>
+                                            <div *ngIf="opciones == 1">
+                                                <span>Unidades</span><i class="fa fa-minus-circle" (click)="popMismoPlato(x,plato)"  aria-hidden="true"></i>{{unidades}}<i class="fa fa-plus-circle" (click)="addMismoPlato(i,plato)"  aria-hidden="true"></i>
+                                            </div>
+                                            <div *ngIf="opciones >= 2">
+                                                <p>Plato {{opciones}}</p>
+                                            </div>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <span>Tamaño</span>
-                                            <select  class="custom-select mr-sm-2" name="" id="">
+                                            <select  id="size{{x}}" class="custom-select mr-sm-2" name="" >
                                                 <option value="chico">Chico</option>
-                                                <option value="chico">Mediano</option>
-                                                <option value="chico">Grande</option>
+                                                <option value="mediano">Mediano</option>
+                                                <option value="grande">Grande</option>
                                             </select>
                                         </div>
-
                                     </div>
                                     
                                     <div class=" info-extra">
                                         <span>¿Queres aclarar algo?</span>
-                                        <textarea name="" id="" cols="30" rows="2" maxlength="100"></textarea>
+                                        <textarea name="" id="detalle{{x}}" cols="30" rows="2" maxlength="100"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 padding-mobile"  >
-                                    <h5>Ingredientes</h5>
+                                    <h5>Lo quiero sin:</h5>
                                     <div class="row">
-                                        <div class="col-12 col-md-6 checkbox" *ngFor="let ingredientes of arrayIngredientes">
-                                            <input type="checkbox" [value]="true"><span>{{ingredientes.nombre}}</span>
+                                        <div class="col-12 col-md-6 checkbox" *ngFor="let ingredientes of arrayIngredientes; let j = index">
+                                            <input type="checkbox" id="sin-ingredientes{{x}}{{j}}" [value]="ingredientes.nombre"><span>{{ingredientes.nombre}}</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </form>
                     </div>
-                    <div class="opciones-colapse " data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" (click)="getNameOpciones(opciones)"><a >{{opciones}}</a></div>
+                    <div class="opciones-colapse " data-toggle="collapse" [attr.href]="'#'+'a'+i" role="button" aria-expanded="false" [attr.aria-controls]="'a'+i" (click)="getNameOpciones(opciones)"><a >-</a></div>
 
                 </div>
 
@@ -77,7 +80,7 @@
 
     <div class="row btn-box">
         <div class="col-12 col-md-6"></div>
-        <div class="col-6 col-md-3"><button>Pedido ({{unidades}}) ${{total}}</button></div>
+        <div class="col-6 col-md-3"><button (click)="setPedido()">Pedido ({{unidades}}) ${{totalPrecio}}</button></div>
         <div class="col-6 col-md-3"><button (click)="gotoPage('','categoria')">Agregar más</button></div>
     </div>
         
