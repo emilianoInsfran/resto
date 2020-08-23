@@ -1,0 +1,28 @@
+.qr{
+    text-align: center;
+}
+zxing-scanner {}
+
+::ng-deep video{
+    object-fit: cover !important;
+    min-height: 80vh !important;
+    z-index: 99999 !important;
+    min-width: 200px !important;
+}
+
+.img {
+    background-image: url('../../assets/scanner.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    height: 250px !important;
+    min-width: 300px !important;
+    width: 100%;
+    position: absolute;
+    top: 25%;
+    left: 0;
+    z-index: 9999999999999999999999999999999999999999999999 !important;
+    right: 0;
+}
+

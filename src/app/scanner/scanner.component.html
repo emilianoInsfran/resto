@@ -1,6 +1,15 @@
 <!-- some.component.html -->
-<zxing-scanner  (scanSuccess)="onCodeResult($event)" [formats]="['QR_CODE', 'EAN_13', 'CODE_128', 'DATA_MATRIX']"></zxing-scanner>
+<section class="container qr">
+    <h3>Escanea el código QR</h3>
+
+</section>
+<zxing-scanner  (scanSuccess)="onCodeResult($event)" [formats]="['QR_CODE', 'EAN_13', 'CODE_128', 'DATA_MATRIX']">
+
+</zxing-scanner>
+<div class="img"></div>
+
 <section class="results" *ngIf="qrResultString">
+    <h5 *ngIf="showMessage">{{message}}</h5>
     <section>
         <div>
         <small>Result</small>
