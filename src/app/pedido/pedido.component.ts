@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UtilsService } from '../../app/utils.service';
 import { Router } from '@angular/router'; 
+import { PopupComponent } from '../popup/popup.component';
+import { SimpleModalService } from "ngx-simple-modal";
 
 @Component({
   selector: 'app-pedido',
@@ -23,7 +25,9 @@ export class PedidoComponent implements OnInit {
   cantidadFinal:number =1;
   totalPrecio:number=0;
   platoSeleccionado:number;
-  constructor(private route:Router, private utils:UtilsService) { 
+
+  confimarPedido:boolean=false;
+  constructor(private route:Router, private utils:UtilsService,private simpleModalService:SimpleModalService) { 
     this.cambioCategoria();
   }
 
@@ -32,6 +36,10 @@ export class PedidoComponent implements OnInit {
   }
 
   cambioCategoria(){
+    console.log("plato agregado->",this.utils.getData());
+    console.log("array de platos->",this.utils.getPlatosPedidos());
+
+
     this.utils.setPlatosPedidos(this.utils.getData());
 
     for (let index = 0; index < this.utils.getPlatosPedidos().length; index++) {
@@ -58,6 +66,7 @@ export class PedidoComponent implements OnInit {
     this.utils.setMessageTotal(`Tenes agregado ${this.unidades} ${palablaPlural}. Total: ${this.totalPrecio}`);
     console.log(codigo);
     this.utils.setData(codigo);
+
     this.route.navigate([`${page}`])
   }
 
@@ -127,13 +136,17 @@ export class PedidoComponent implements OnInit {
 
   }
 
-  removePedido(data){
-    console.log("eliminando",data)
+  removePedido(plato){
+    console.log("eliminando",plato);
+    this.utils.eliminarPlato(plato,1);
+    this.resta(plato);
+    this.getPlatosData = this.utils.getPlatosPedidos();
+    if(this.getPlatosData.length == 0 ) this.gotoPage('','categoria');
+    //this.popMismoPlato('',data);
+
   }
 
   setPedido() {
-
-
     for (let index = 0; index < this.pedido.length; index++) {
       let size = (<HTMLInputElement>document.getElementById(`size${index.toString()}`)).value;
       let detalle = (<HTMLInputElement>document.getElementById(`detalle${index.toString()}`)).value;
@@ -153,8 +166,52 @@ export class PedidoComponent implements OnInit {
     }
 
     console.log("tamaño",this.pedido);
+    this.confimarPedido=true;
 
   } 
+
+
+  //confirmar padido
+  confirmarPedido(){
+    console.log("peddo confirmado");
+    this.getPlatosData = [];
+    this.unidades=0;
+    this.utils.resetArrayPedido();
+    this.utils.setMessageTotal('-');
+    this.showConfirmOK('Su pedido fue confirmado! :)');
+  }
+
+  cancelarCompra(){
+    this.confimarPedido=false;
+  }
+
+
+  showConfirmOK(message) {
+    let disposable = this.simpleModalService.addModal(PopupComponent, {
+      title: 'Confirm title',
+      message: message,
+      opciones:'confirmacion',
+    })
+    .subscribe((isConfirmed)=>{
+        //We get modal result
+        console.log('-',isConfirmed);
+        if(isConfirmed) {
+        }
+        else {
+            alert('declined');
+        }
+    });
+    //We can close modal calling disposable.unsubscribe();
+    //If modal was not closed manually close it by timeout
+    setTimeout(()=>{
+        disposable.unsubscribe();
+
+        this.route.navigate(['categoria'])
+
+    },2000);
+  }
+
+
 
 
 }

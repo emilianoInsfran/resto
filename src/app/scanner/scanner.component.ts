@@ -35,8 +35,6 @@ export class ScannerComponent implements OnInit {
       this.gotoPage('','categoria');
 
     }
-
-
   }
 
   setResetOpenCodigo(){

@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class UtilsService {
 	data:any;
 	//pedido
-	agregarPlatos:string = '';
+	agregarPlatos:string = '-';
 	arrayPlatosPedidos=[];
 	constructor() { }
 
@@ -29,6 +29,14 @@ export class UtilsService {
 
 	setPlatosPedidos(data){
 		this.arrayPlatosPedidos.push(data);
+	}
+
+	eliminarPlato(data,id){
+		this.arrayPlatosPedidos.splice(this.arrayPlatosPedidos.indexOf(data),id);
+	}
+
+	resetArrayPedido(){
+		this.arrayPlatosPedidos = [];
 	}
 
 	getPlatosPedidos(){
