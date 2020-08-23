@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   };
   cookies:boolean=false;
   changeText:boolean;
+  boxCookies:boolean =true;
   constructor(private route:Router) {  }
   @Input() fieldvalue = '';
 
@@ -39,6 +40,17 @@ export class HomeComponent implements OnInit {
 
   aceptarCookies(){
     this.cookies = true;
+  }
+
+  showCookies(){
+    console.log("FOCUS!");
+    this.boxCookies = false;
+  }
+
+  hideCookies(){
+    console.log("BLUR!!");
+    this.boxCookies = true;
+
   }
 
   gotoPage(codigo,page){

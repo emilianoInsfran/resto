@@ -194,8 +194,20 @@ button {
         margin-left: 0px;
     }
 
+    form {
+        margin-top: 0;
 
-    #collapseExample{
+        .name{ 
+            text-align: center;
+            margin-top: 10px;
+        }
+    }
+
+    .precio{
+        text-align: center !important;
+    }
+
+    .option-box{
         select{
             width: 100% !important;
         }

@@ -13,7 +13,7 @@
                             <div class="img"  [ngStyle]="{'background-image':'url(https://www.laespanolaaceites.com/wp-content/uploads/2019/06/pizza-con-chorizo-jamon-y-queso-1080x671.jpg)'}" ></div>
                         </div>
                         <div class="col-12 col-md-8">
-                            <h5>{{plato.nombre}}</h5>
+                            <h5  class="name">{{plato.nombre}}</h5>
                             <p>{{plato.descripcion}}</p> 
                             
                             <div class="row">
@@ -70,7 +70,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="opciones-colapse " data-toggle="collapse" [attr.href]="'#'+'a'+i" role="button" aria-expanded="false" [attr.aria-controls]="'a'+i" (click)="getNameOpciones(opciones)"><a >-</a></div>
+                    <div class="opciones-colapse " data-toggle="collapse" [attr.href]="'#'+'a'+i" role="button" aria-expanded="false" [attr.aria-controls]="'a'+i" (click)="getNameOpciones(opciones)"><a >Opciones</a></div>
 
                 </div>
 
@@ -80,7 +80,7 @@
 
     <div class="row btn-box">
         <div class="col-12 col-md-6"></div>
-        <div class="col-6 col-md-3"><button (click)="setPedido()">Pedido ({{unidades}}) ${{totalPrecio}}</button></div>
+        <div class="col-6 col-md-3"><button (click)="setPedido()">Pedido ({{unidades == 0 ? 1 : unidades}}) ${{totalPrecio}}</button></div>
         <div class="col-6 col-md-3"><button (click)="gotoPage('','categoria')">Agregar más</button></div>
     </div>
         

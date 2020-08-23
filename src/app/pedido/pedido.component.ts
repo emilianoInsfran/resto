@@ -53,7 +53,8 @@ export class PedidoComponent implements OnInit {
   }
 
   gotoPage(codigo,page){
-    let  palablaPlural = this.unidades == 1 ? 'pedido' :'pedidos'
+    let  palablaPlural = this.unidades == 1 ? 'pedido' :'pedidos';
+
     this.utils.setMessageTotal(`Tenes agregado ${this.unidades} ${palablaPlural}. Total: ${this.totalPrecio}`);
     console.log(codigo);
     this.utils.setData(codigo);
@@ -114,12 +115,16 @@ export class PedidoComponent implements OnInit {
   }
 
   popMismoPlato(cantidad,plato){
-    this.resta(plato);
-    this.cantidadFinal = this.cantidadFinal-1;
+    if(this.unidades <= 1) return;
+    else{
+      this.resta(plato);
+      this.cantidadFinal = this.cantidadFinal-1;
+  
+      console.log("->",this.arrayRepetirPlato);
+      this.arrayRepetirPlato.pop();
+      this.pedido.pop();
+    }
 
-    console.log("->",this.arrayRepetirPlato);
-    this.arrayRepetirPlato.pop();
-    this.pedido.pop();
   }
 
   setPedido() {
