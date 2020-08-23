@@ -30,6 +30,28 @@ header {
      padding: 10px;
  }
 
+ .button-nostyle{
+    width: 0;
+    padding: 0;
+    border-radius: 0;
+    background-color: white;
+    border: 0px solid #dc8123;
+    color: red;
+    margin-top: 0;
+ }
+ .delete {
+    position: absolute;
+    z-index: 11111111111111;
+    right: 0px;
+    top: 1px;
+    background-color: white;
+    padding: 10px;
+    margin: auto;
+    width: 35px;
+    height: 46px;
+    border-radius: 2px;
+ }
+
  .imagen-plato{
     padding-right: 11px;
     .img {

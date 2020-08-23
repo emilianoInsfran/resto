@@ -127,6 +127,10 @@ export class PedidoComponent implements OnInit {
 
   }
 
+  removePedido(data){
+    console.log("eliminando",data)
+  }
+
   setPedido() {
 
 
