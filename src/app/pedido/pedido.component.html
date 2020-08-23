@@ -6,13 +6,15 @@
     <section class="animate__animated animate__backInUp">
         <div class="tab-content" id="myTabContent" >
             <div class="tab-pane fade show active" *ngFor="let plato of getPlatosData; let i = index"   [id]='i' role="tabpanel" aria-labelledby="home-tab">
-                <button type="button" class="close button-nostyle delete" (click)="removePedido(plato)" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+
 
                 <div class="box-content-platos">
+    
                     <div class="row" > 
                         <div class="col-12 col-md-4 imagen-plato-mobile is-mobile">
+                            <button type="button" class="close button-nostyle delete" (click)="removePedido(plato)" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
                             <div class="img"  [ngStyle]="{'background-image':'url(https://www.laespanolaaceites.com/wp-content/uploads/2019/06/pizza-con-chorizo-jamon-y-queso-1080x671.jpg)'}" ></div>
                         </div>
                         <div class="col-12 col-md-8">
