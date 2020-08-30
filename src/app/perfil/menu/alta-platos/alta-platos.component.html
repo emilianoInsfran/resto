@@ -3,14 +3,15 @@
     <div class="section">
         <form class="form-login  no-padding-button box-plato"  [formGroup]="altaPlatosForm" action="">
             <h3>Plato</h3>
-    
 
-            <div class="img" [ngStyle]="{'background-image':'url('+ imgURLPreview  +')'}" (click)="upload()"></div>
+            <div class="img" *ngIf="!editando" [ngStyle]="{'background-image':'url('+ imgURLPreview  +')'}" (click)="upload()"></div>
+            <div class="img" *ngIf="editando" [style.background-image]="'url(' +  'data:'+ dataEdit.mimetype+';base64,' + dataEdit.base64 + ')'"  (click)="upload()">  </div> 
+
             <input type="file"  id="plato" name="slide" (change)="cargarImgPlato($event.target.files)"  placeholder="cargar Imagen"  style="display: none;" >
 
             <h5> Categoría</h5>
 
-            <select name="select-categoria"  formControlName="categoria" class="browser-default custom-select" >
+            <select name="select-categoria"   formControlName="categoria"   class="browser-default custom-select" >
                 <option *ngFor="let categoria of arrayCategoria" [value]="categoria._id" >{{categoria.nombre}} </option>
             </select> 
 
@@ -34,12 +35,12 @@
     
             <div class="row ">
                  <div class="col-6 col-md-4 col-xs-6 tamanio">
-                    <input type="checkbox" formControlName="checkPlatoChico" >
-                    <span>Chico</span>
+                    <input type="checkbox" [(ngModel)]="platoChico"  (change)="checkSelectedChico(platoChico)" formControlName="checkPlatoChico" >
+                    <span>Chico  </span>
                  </div>
                  <div class="col-6 col-md-4 col-xs-6">
                     <div class="input-wrapper">
-                        <input type="text"   formControlName="precioPlatoChico" name="precioPlatoChico" id="precioPlatoChico"    >
+                        <input type="number"   formControlName="precioPlatoChico" name="precioPlatoChico" id="precioPlatoChico"    >
                         <label class="label" for="precioPlatoChico">Precio $ </label>
                     </div>
                  </div>
@@ -48,12 +49,12 @@
     
             <div class=" row ">
                 <div class="col-6 col-md-4 col-xs-6 tamanio">
-                   <input type="checkbox" formControlName="checkPlatoMediano">
+                   <input type="checkbox" [(ngModel)]="platoMediano"  (change)="checkSelectedMediano(platoMediano)" formControlName="checkPlatoMediano">
                    <span>Mediano</span>
                 </div>
                 <div class="col-6 col-md-4 col-xs-6">
-                   <div class="input-wrapper">
-                       <input type="text"   formControlName="precioPlatoMediano" name="precioPlatoMediano" id="precioPlatoMediano"    >
+                   <div class="input-wrapper" >
+                       <input type="number" [disabled]="platoMediano" formControlName="precioPlatoMediano" name="precioPlatoMediano" id="precioPlatoMediano"    >
                        <label class="label" for="precioPlatoMediano">Precio $ </label>
                    </div>
                 </div>
@@ -62,29 +63,30 @@
     
            <div class=" row ">
                 <div class="col-6 col-md-4 col-xs-6 tamanio">
-                    <input type="checkbox" formControlName="checkPlatoGrande">
+                    <input type="checkbox"  [(ngModel)]="platoGrande"  (change)="checkSelectedGrande(platoGrande)"  formControlName="checkPlatoGrande">
                     <span>Grande</span>
                 </div>
                 <div class="col-6 col-md-4 col-xs-6">
                     <div class="input-wrapper">
-                        <input type="text"   formControlName="precioPlatoGrande" name="precioPlatoGrande" id="precioPlatoGrande"    >
+                        <input type="number"   formControlName="precioPlatoGrande" name="precioPlatoGrande" id="precioPlatoGrande"    >
                         <label class="label" for="precioPlatoGrande">Precio $ </label>
                     </div>
                 </div>
                 <div class="col-4 col-md-4 col-xs-12">     </div>
             </div>
-
+        </form>
 
             <h5>Tipo de comida</h5>
+            <ng-multiselect-dropdown
+                [placeholder]="'custom placeholder'"
+                [data]="dropdownList"
+                [(ngModel)]="selectedItems"
+                [settings]="dropdownSettings"
+                (onSelect)="onItemSelect($event)"
+                (onSelectAll)="onSelectAll($event)"
+          >
+          </ng-multiselect-dropdown>
 
-            <select class="browser-default custom-select"  formControlName="tipoComida" required>
-                <option value="1">Vegano</option>
-                <option value="2">Celiaco</option>
-                <option value="3">Sin tacc</option>
-            </select>
-
-
-        </form>
     
         <h5>Ingredientes</h5>
         <tag-input [(ngModel)]="itemsAsObjects"   [identifyBy]="'id'" [displayBy]="'name'" [editable]='true' (onTagEdited)="onTagEdited($event)"></tag-input>
@@ -92,7 +94,8 @@
         <div class="row box-botton">
             <div  class="col-12 col-md-6"></div>
             <div class="col-6 col-md-3"><button class="button1" (click)="gotoPage('','listaplatos')">Cancelar</button></div>
-            <div class="col-6 col-md-3"><button class="button1" (click)="agregarPlato()"  [ngClass]="{'disabled':(!altaPlatosForm.valid) }" [disabled]="!altaPlatosForm.valid ">Agregar </button></div>
+            <div class="col-6 col-md-3" *ngIf="!btnActualizar" ><button class="button1" (click)="postPlato()"  [ngClass]="{'disabled':(!altaPlatosForm.valid) }" [disabled]="!altaPlatosForm.valid ">Agregar </button></div>
+            <div class="col-6 col-md-3" *ngIf="btnActualizar" ><button class="button1" (click)="update()"  [ngClass]="{'disabled':(!altaPlatosForm.valid) }" [disabled]="!altaPlatosForm.valid ">Actualizar </button></div>
         </div>
     </div>
 

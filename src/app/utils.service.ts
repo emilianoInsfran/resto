@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,8 @@ export class UtilsService {
 	//pedido
 	agregarPlatos:string = '-';
 	arrayPlatosPedidos=[];
-	constructor() { }
+	private header = new HttpHeaders({ 'content-type': 'application/json','Access-Control-Allow-Origin':'*' });
+	constructor(private http: HttpClient) { }
 
 	setData(data){
 		this.data = data;
@@ -41,6 +43,40 @@ export class UtilsService {
 
 	getPlatosPedidos(){
 		return this.arrayPlatosPedidos;
+	}
+
+	//service
+
+	getConfig(url) {
+		console.log("url",url);
+		return this.http.get(url);
+	}
+
+	postConfig(url,obj) {
+		console.log("url",url);
+		console.log("obj",obj);
+		return this.http.post<any>(url,obj);
+	}
+
+	putConfig(url,obj) {
+		console.log("url",url);
+		console.log("obj",obj);
+		return this.http.put<any>(url,obj);
+	}
+
+	deleteConfig(url,data:any={}) {
+		console.log("url",url);
+		console.log("data",data);
+		return this.http.delete(url,data );
+	}
+
+	urlDev(){
+		return 'http://localhost:3000/';  
+	}
+
+	urlProd(){
+		return 'https://serviceemds.herokuapp.com/';
+	
 	}
 
 }

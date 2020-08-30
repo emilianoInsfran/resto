@@ -3,6 +3,7 @@ import { PopupComponent } from '../../popup/popup.component';
 import { SimpleModalService } from "ngx-simple-modal";
 import { UtilsService } from "../../utils.service";
 import { Router } from '@angular/router'; 
+import { HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-menu',
@@ -14,39 +15,17 @@ export class MenuComponent implements OnInit {
   categoriaAgregada:string;
   getPlatosData:any;
 
-  getCategoria = [
-    {
-      id:1,
-      nombre:'Pizza',
-      descripcion:''
-    },    {
-      id:1,
-      nombre:'Empanada',
-      descripcion:''
-    },    {
-      id:1,
-      nombre:'Estofado',
-      descripcion:''
-    },    {
-      id:1,
-      nombre:'Papas fritas',
-      descripcion:''
-    },    {
-      id:1,
-      nombre:'Milanesa',
-      descripcion:''
-    },   {
-      id:1,
-      nombre:'Hamburguesa',
-      descripcion:''
-    }
-    
-  ];
+  getCategoria = [];
 
-  constructor(private route:Router,private simpleModalService:SimpleModalService, public utils:UtilsService) { 
+  //datos Servior
+  arrayCategoria:any;
+  formDatCategoria = new FormData();
+
+  constructor(private route:Router,private simpleModalService:SimpleModalService, public utils:UtilsService,private http:HttpClient) { 
   }
 
   ngOnInit(): void {
+    this.getCategorias();
   }
 
   agregarPlato(page,categoria){
@@ -74,7 +53,8 @@ export class MenuComponent implements OnInit {
         //We get modal result
         console.log('-',isConfirmed);
         if(isConfirmed) {
-          this.showConfirmOK("Se elimino correctamente!")
+
+          this.popupDelete(data._id)
            // this.guardarCategoría();
         }
         else {
@@ -95,20 +75,17 @@ export class MenuComponent implements OnInit {
       opciones:'agregarCategoria'
     })
     .subscribe((isConfirmed)=>{
-        //We get modal result
-        console.log('-',isConfirmed);
+
         if(isConfirmed) {
           this.seccion = 'listaPlatos';
           console.log("se guardo la categoria",this.seccion);
-          this.getSelectCategoria(this.utils.getData());
-           // this.guardarCategoría();
+          this.postCategoria(this.utils.getData().categoria);
         }
         else {
             //alert('declined');
         }
     });
-    //We can close modal calling disposable.unsubscribe();
-    //If modal was not closed manually close it by timeout
+
   }
 
 
@@ -135,9 +112,72 @@ export class MenuComponent implements OnInit {
     },2000);
   }
 
-  getSelectCategoria(data){
-    this.categoriaAgregada = data.categoria;
+  //GET CATEGORIA
+
+  getCategorias(){
+    console.log("estoy en categorias GET");//_id que te genera mongo
+    let id = 1//userid
+    this.utils.getConfig(this.utils.urlDev()+'categoria/'+id)
+      .subscribe((data) => {
+        //this.showLoading = false;
+        console.log("data->",data);
+        this.getArrayCategoria(data);
+      });
   }
+
+  getArrayCategoria(data){
+    this.getCategoria =data.categoria;
+  }
+
+  //POST CATEGORIA
+  postCategoria(categoria){
+    console.log("estoy en categorias POST",categoria);
+
+      let data = {
+        'nombre':categoria
+      }
+
+      this.utils.postConfig(this.utils.urlDev()+'categoria',data) 
+        .subscribe( 
+          (data) => {
+
+            console.log("data ok ->",data);
+            this.showConfirmOK('La categoria se guardo correctamente!');
+            this.getCategorias();
+
+            //this.saveImg(formDatCategoria)
+
+            //id.reset();
+            //this.imgURLPreview = undefined;
+          },
+          err =>{
+            console.log("ERROR",err);
+          }
+
+        );
+  }
+
+
+  //DELETE CATEGORIA
+
+  popupDelete(id){
+    
+    this.utils.deleteConfig(this.utils.urlDev()+'categoria/'+id)
+      .subscribe(
+        (data) => {
+          console.log("data->",data);
+          this.showConfirmOK("Se elimino correctamente!")
+          this.getCategorias();
+        },
+        err =>{
+          console.log("ERROR",err);
+          alert(err);
+        }
+
+      );
+  }
+
+  //------------
 
   gotoPage(codigo,page){
     console.log(codigo);

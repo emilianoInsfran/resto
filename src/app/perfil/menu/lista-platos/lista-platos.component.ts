@@ -3,31 +3,94 @@ import { UtilsService } from "../../../utils.service";
 import { Router } from '@angular/router'; 
 import { SimpleModalService } from "ngx-simple-modal";
 import { PopupComponent } from '../../../popup/popup.component';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-lista-platos',
   templateUrl: './lista-platos.component.html',
   styleUrls: ['./lista-platos.component.scss']
 })
+
+
 export class ListaPlatosComponent implements OnInit {
   getPlatosData:any;
   arrayCategoria:any;
-
-  constructor(private route:Router, public utils:UtilsService,private simpleModalService:SimpleModalService) { 
-    this.arrayCategoria = this.getArrayCategoria();
-
-    this.getPlatosData = this.getPlatos() ;
+  _idCategoria:number;
+  imagePathshow:any;
+  constructor(private route:Router, public utils:UtilsService,private simpleModalService:SimpleModalService,public _sanitizer: DomSanitizer) { 
   }
 
   ngOnInit(): void {
+
+    this.getCategorias();
+
   }
 
+  //GET CATEGORIA
+
+  getCategorias(){
+    console.log("estoy en categorias GET");//_id que te genera mongo
+    let id = 1//userid
+    this.utils.getConfig(this.utils.urlDev()+'categoria/'+id)
+      .subscribe((data) => {
+        //this.showLoading = false;
+        console.log("data->",data);
+        this.getArrayCategoria(data);
+      });
+  }
+
+  getArrayCategoria(data){
+    this.arrayCategoria = data.categoria;
+  }
+
+  //GET PLATOS
+
+  getSelectAddId(id){
+    console.log('id',id.value);
+    this.getPlatos(id.value);
+  }
+
+  getPlatos(idCategoria){
+    this._idCategoria = idCategoria;
+    console.log("estoy en platos GET");//_id que te genera mongo
+    let id = 1//userid
+    this.utils.getConfig(this.utils.urlDev()+'plato/'+idCategoria+'/'+id)
+      .subscribe((data) => {
+        //this.showLoading = false;
+        console.log("data->",data);
+        this.getArrayPlatos(data);
+      });
+  }
+
+  getArrayPlatos(data){
+    this.getPlatosData = data.plato;
+  }
+
+  //DELETE PLATO
+
+  removePlato(id){
+    
+    this.utils.deleteConfig(this.utils.urlDev()+'plato/'+id)
+      .subscribe(
+        (data) => {
+          console.log("data->",data);
+          this.showConfirmOK("Se elimino correctamente!");
+          this.getPlatos(this._idCategoria);
+        },
+        err =>{
+          console.log("ERROR",err);
+          alert(err);
+        }
+
+      );
+  }
+
+  //--------------------
   gotoPage(codigo,page){
     console.log(codigo);
     this.utils.setData(codigo);
     this.route.navigate([`${page}`])
   }
-
 
    //elminar categoria
    eliminarPlato(data) {
@@ -40,7 +103,7 @@ export class ListaPlatosComponent implements OnInit {
         //We get modal result
         console.log('-',isConfirmed);
         if(isConfirmed) {
-          this.showConfirmOK("Se elimino correctamente!")
+          this.removePlato(data._id);
            // this.guardarCategoría();
         }
         else {
@@ -73,104 +136,4 @@ export class ListaPlatosComponent implements OnInit {
         disposable.unsubscribe();
     },2000);
   }
-
-
-
-  getArrayCategoria(){
-    return [
-      {
-        _id:1,
-        nombre:'Pizza'
-      },
-      {
-        _id:2,
-        nombre:'Empanada'
-      }
-    ]
-  }
-
-
-  getPlatos(){
-    let x= {
-        categoria:'Pizza',
-        platos:[
-          {
-            id:1,
-            nombre:'piza 1 napoliana',
-            descripcion:'La pizza napolitana, de masa tierna y delgada pero bordes altos, es la versión propia de la cocina napolitana de la pizza redonda',
-            img:'',
-            precio:1000,
-            iconos:['seliaco','vagano'],
-            precioPlatoChico: 1,
-            precioPlatoMediano: 1,
-            precioPlatoGrande: 1,
-            checkPlatoChico:true,
-            checkPlatoMediano: true,
-            checkPlatoGrande: true,
-            idCategoria: 1,
-            tipoComida: 1,
-            ingredientes:['ajo','muzzarela']
-    
-          },
-             {
-            id:1,
-            nombre:'piza 1 napoliana',
-            descripcion:'La pizza napolitana, de masa tierna y delgada pero bordes altos, es la versión propia de la cocina napolitana de la pizza redonda',
-            img:'',
-            precio:1000,
-            iconos:['seliaco','vagano'],
-            precioPlatoChico: 1,
-            precioPlatoMediano: 1,
-            precioPlatoGrande: 1,
-            checkPlatoChico:true,
-            checkPlatoMediano: true,
-            checkPlatoGrande: true,
-            idCategoria: 1,
-            tipoComida: 1,
-            ingredientes:['ajo','muzzarela']
-    
-          },
-          {
-            id:1,
-            nombre:'piza 1 napoliana',
-            descripcion:'La pizza napolitana, de masa tierna y delgada pero bordes altos, es la versión propia de la cocina napolitana de la pizza redonda',
-            img:'',
-            precio:1000,
-            iconos:['seliaco','vagano'],
-            precioPlatoChico: 1,
-            precioPlatoMediano: 1,
-            precioPlatoGrande: 1,
-            checkPlatoChico:true,
-            checkPlatoMediano: true,
-            checkPlatoGrande: true,
-            idCategoria: 1,
-            tipoComida: 1,
-            ingredientes:['ajo','muzzarela']
-    
-          },
-          {
-            id:1,
-            nombre:'piza 1 napoliana',
-            descripcion:'La pizza napolitana, de masa tierna y delgada pero bordes altos, es la versión propia de la cocina napolitana de la pizza redonda',
-            img:'',
-            precio:1000,
-            iconos:['seliaco','vagano'],
-            precioPlatoChico: 1,
-            precioPlatoMediano: 1,
-            precioPlatoGrande: 1,
-            checkPlatoChico:true,
-            checkPlatoMediano: true,
-            checkPlatoGrande: true,
-            idCategoria: 1,
-            tipoComida: 1,
-            ingredientes:['ajo','muzzarela']
-    
-          },
-        ]
-      }
-
-    return x;
-
-  }
-
 }

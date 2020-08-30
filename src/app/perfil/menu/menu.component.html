@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
 <div class="container top-navbar">
     <section >
-        <h3>Menú</h3>
-        <ul >
+        <h3>Menú </h3>
+        <ul *ngIf="getCategoria.length > 0">
             <li *ngFor="let categoria of getCategoria" (click)="agregarPlato('listaPlatos',categoria)">
                 <div class="row">
                     <div class="col-10 col-md-10">
@@ -17,8 +17,10 @@
                 </div>
             </li>
     
-            <button type="button" class="btn btn-info btn-circle" (click)="agregarCategoria()"><i class="fa fa-plus" aria-hidden="true"></i>
-            </button>
+
         </ul>
+        <button type="button" class="btn btn-info btn-circle" (click)="agregarCategoria()"><i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+        <h3 class="message-categoria"  *ngIf="getCategoria.length == 0" >Todavía no posees ninguna Categoría!</h3>
     </section>
 </div>

@@ -24,6 +24,7 @@ import { CheckComponent } from './check/check.component';
 import { PopupComponent } from './popup/popup.component';
 import { SimpleModalModule } from 'ngx-simple-modal';
 import { CngTabsModule } from '@codehint-ng/tabs';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 //----------------------
 //PERFIL - secciones
@@ -83,7 +84,8 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     FontPickerModule,
     DragDropModule,
     BrowserAnimationsModule,
-    TagInputModule
+    TagInputModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   entryComponents: [
     PopupComponent
