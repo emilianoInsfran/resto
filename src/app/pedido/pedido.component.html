@@ -16,7 +16,7 @@
                             <button type="button" class="close button-nostyle delete" (click)="removePedido(plato)" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                               </button>
-                            <div class="img"  [ngStyle]="{'background-image':'url(https://www.laespanolaaceites.com/wp-content/uploads/2019/06/pizza-con-chorizo-jamon-y-queso-1080x671.jpg)'}" ></div>
+                              <div class="img "   [style.background-image]="'url(' +  'data:'+ plato.mimetype+';base64,' + plato.base64 + ')'">  </div> 
                         </div>
                         <div class="col-12 col-md-8">
                             <h5  class="name">{{plato.nombre}}</h5>
@@ -25,11 +25,10 @@
                             <div class="row">
                                 
                                 <div class="col-9 col-md-9">
-                                    <div class="icono-content" [ngStyle]="{'background-image':'url(https://w7.pngwing.com/pngs/741/294/png-transparent-veggie-burger-animal-product-veganism-vegetarianism-computer-icons-veg-symbol-leaf-logo-nutrition.png)'}"></div>
-                                    <div class="icono-content" [ngStyle]="{'background-image':'url(https://img2.freepng.es/20190519/sww/kisspng-gluten-free-diet-gluten-free-food-celiac-disease-nutrition-speeches-presentations-nutritional-s-5ce0f87e999a17.0162714315582475506292.jpg)'}"></div>
-                                </div>
+                                    <div   *ngFor="let tipoComida of plato.tipoComida" class="icono-content " [ngClass]="{'vegano': tipoComida.item_id == 1, 'vegetariano': tipoComida.item_id == 3, 'sintacc': tipoComida.item_id == 2 }"  ></div>
+                                 </div>
 
-                                <div class="col-3 col-md-3 precio">$ {{plato.precio}}</div>
+                                <div class="col-3 col-md-3 precio">$ {{plato.precioPlatoGrande  ||  plato.precioPlatoMediano || plato.precioPlatoChico}}</div>
                             </div>
     
                         </div>
@@ -37,7 +36,7 @@
                             <button type="button" class="close button-nostyle delete" (click)="removePedido(plato)" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                               </button>
-                            <div class="img"  [ngStyle]="{'background-image':'url(https://www.laespanolaaceites.com/wp-content/uploads/2019/06/pizza-con-chorizo-jamon-y-queso-1080x671.jpg)'}" ></div>
+                              <div class="img "   [style.background-image]="'url(' +  'data:'+ plato.mimetype+';base64,' + plato.base64 + ')'">  </div> 
                         </div>
                     </div>
                     <div class="collapse option-box" id="a{{i}}">
@@ -47,7 +46,10 @@
                                     <div class="row">
                                         <div class="col-12 col-md-6 padding-mobile unidad">
                                             <div *ngIf="opciones == 1">
-                                                <span>Unidades</span><i class="fa fa-minus-circle" (click)="popMismoPlato(x,plato)"  aria-hidden="true"></i>{{unidades}}<i class="fa fa-plus-circle" (click)="addMismoPlato(i,plato)"  aria-hidden="true"></i>
+                                                <span>Unidades</span>
+                                                <i class="fa fa-minus-circle" (click)="popMismoPlato(x,plato)"  aria-hidden="true"></i>
+                                                {{unidades}}
+                                                <i class="fa fa-plus-circle" (click)="addMismoPlato(i,plato)"  aria-hidden="true"></i>
                                             </div>
                                             <div *ngIf="opciones >= 2">
                                                 <p>Plato {{opciones}}</p>
@@ -71,8 +73,8 @@
                                 <div class="col-12 col-md-6 padding-mobile"  >
                                     <h5>Lo quiero sin:</h5>
                                     <div class="row">
-                                        <div class="col-12 col-md-6 checkbox" *ngFor="let ingredientes of arrayIngredientes; let j = index">
-                                            <input type="checkbox" id="sin-ingredientes{{x}}{{j}}" [value]="ingredientes.nombre"><span>{{ingredientes.nombre}}</span>
+                                        <div class="col-12 col-md-6 checkbox" *ngFor="let ingredientes of plato.tags; let j = index">
+                                            <input type="checkbox" id="sin-ingredientes{{x}}{{j}}" [value]="ingredientes.name"><span>{{ingredientes.name}}</span>
                                         </div>
                                     </div>
                                 </div>

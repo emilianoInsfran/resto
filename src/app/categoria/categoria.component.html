@@ -1,7 +1,7 @@
 <div class="container">
     <header class="scroll">
         <div class="img imagen-bar"></div>
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <ul class="nav nav-tabs" id="myTab" role="tablist" *ngIf="getPlatosData.length > 0">
            
             <li class="nav-item"  *ngFor="let data of getPlatosData; let i = index" (click)="cambioCategoria(i)">
               <a class="nav-link "  [ngClass]="{ active: i == categoriaSeleccionada }"   id="{{i}}-tab" data-toggle="tab" href="#{{i}}" role="tab"  [attr.aria-label]="i"  aria-selected="true">{{data.nombre}}</a>
@@ -11,14 +11,14 @@
     
     </header>
     
-    <section class="animate__animated animate__backInUp" [ngClass]="{'margin-top': utils.getMessageTotal() != ''}">
+    <section class="animate__animated animate__backInUp"  *ngIf="getPlatosData.length > 0"  [ngClass]="{'margin-top': utils.getMessageTotal() != ''}">
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" *ngFor="let plato of getPlatosData[categoriaSeleccionada].platos; let i = index"  (click)="gotoPage(plato,'pedido')" [id]='i' role="tabpanel" aria-labelledby="home-tab">
+            <div class="tab-pane fade show active"  *ngFor="let plato of getPlatosData[categoriaSeleccionada].platos; let i = index" (click)="gotoPage(plato,'pedido')" [id]='i' role="tabpanel" aria-labelledby="home-tab">
                 
-                <div class="box-content-platos">
+                <div class="box-content-platos" *ngIf="getPlatosData[categoriaSeleccionada].platos != []" >
                     <div class="row"> 
                         <div class="col-12 col-md-4 imagen-plato-mobile is-mobile">
-                            <div class="img"  [ngStyle]="{'background-image':'url(https://www.laespanolaaceites.com/wp-content/uploads/2019/06/pizza-con-chorizo-jamon-y-queso-1080x671.jpg)'}" ></div>
+                            <div class="img "   [style.background-image]="'url(' +  'data:'+ plato.mimetype+';base64,' + plato.base64 + ')'">  </div> 
                         </div>
     
                         <div class="col-12 col-md-8">
@@ -28,8 +28,7 @@
                             <div class="row">
                                 
                                 <div class="col-8 col-md-8">
-                                    <div class="icono-content" [ngStyle]="{'background-image':'url(https://w7.pngwing.com/pngs/741/294/png-transparent-veggie-burger-animal-product-veganism-vegetarianism-computer-icons-veg-symbol-leaf-logo-nutrition.png)'}"></div>
-                                    <div class="icono-content" [ngStyle]="{'background-image':'url(https://img2.freepng.es/20190519/sww/kisspng-gluten-free-diet-gluten-free-food-celiac-disease-nutrition-speeches-presentations-nutritional-s-5ce0f87e999a17.0162714315582475506292.jpg)'}"></div>
+                                    <div   *ngFor="let tipoComida of plato.tipoComida; let i = index" class="icono-content " [ngClass]="{'vegano': tipoComida.item_id == 1, 'vegetariano': tipoComida.item_id == 3, 'sintacc': tipoComida.item_id == 2 }"  ></div>
                                 </div>
 
                                 <div class="col-4 col-md-4 precio">$ {{plato.precioPlatoGrande}}</div>
@@ -42,15 +41,48 @@
     
                     </div>
                 </div>
-                
             </div>
         </div>
-
-
     </section>
+
     <div class="messagePedido" *ngIf="utils.getMessageTotal() != '-'"> <p>{{utils.getMessageTotal()}}</p></div>
 
 </div>
+
+
+<div class="shadow-loading" *ngIf="isLoading">
+    <div class="loading">
+      <div class="sk-chase">
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+      </div>
+    </div>
+  </div>
+
+  
+<!-- <div class="loading2">
+    <h1>Cooking in progress..</h1>
+    <div id="cooking">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div id="area">
+            <div id="sides">
+                <div id="pan"></div>
+                <div id="handle"></div>
+            </div>
+            <div id="pancake">
+                <div id="pastry"></div>
+            </div>
+        </div>
+    </div>
+</div> -->
 
 
 

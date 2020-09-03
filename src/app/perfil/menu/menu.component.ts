@@ -14,7 +14,7 @@ export class MenuComponent implements OnInit {
   seccion:string = 'listCategoria';
   categoriaAgregada:string;
   getPlatosData:any;
-
+  isLoading:boolean = true;
   getCategoria = [];
 
   //datos Servior
@@ -23,6 +23,11 @@ export class MenuComponent implements OnInit {
 
   constructor(private route:Router,private simpleModalService:SimpleModalService, public utils:UtilsService,private http:HttpClient) { 
   }
+
+  ngAfterViewInit() {
+    this.isLoading = false;
+  }
+
 
   ngOnInit(): void {
     this.getCategorias();

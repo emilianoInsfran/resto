@@ -78,18 +78,6 @@
 
 
 
-.icono-content{
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 30px !important;
-    width: 32px;
-    cursor: pointer;
-    display: inline-block;
-    margin-right: 10px;
-    border: 1px solid #e4e4e4;
-    border-radius: 56%;
-}
 
 .box-content-platos{
     padding: 0 3px;
@@ -110,9 +98,7 @@
         color: #009e00;
     }
 
-    .vegan {
-        background-image:url('../../assets/seliaco.png');
-    }
+
 }
 
 .margin-top{

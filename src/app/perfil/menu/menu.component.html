@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div class="container top-navbar">
+<div class="container top-navbar" *ngIf="!isLoading">
     <section >
         <h3>Menú </h3>
         <ul *ngIf="getCategoria.length > 0">
@@ -24,3 +24,16 @@
         <h3 class="message-categoria"  *ngIf="getCategoria.length == 0" >Todavía no posees ninguna Categoría!</h3>
     </section>
 </div>
+
+<div class="shadow-loading" *ngIf="isLoading">
+    <div class="loading">
+      <div class="sk-chase">
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+      </div>
+    </div>
+  </div>

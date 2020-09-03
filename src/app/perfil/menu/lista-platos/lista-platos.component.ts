@@ -17,6 +17,7 @@ export class ListaPlatosComponent implements OnInit {
   arrayCategoria:any;
   _idCategoria:number;
   imagePathshow:any;
+  isLoading:boolean=true;
   constructor(private route:Router, public utils:UtilsService,private simpleModalService:SimpleModalService,public _sanitizer: DomSanitizer) { 
   }
 
@@ -24,6 +25,10 @@ export class ListaPlatosComponent implements OnInit {
 
     this.getCategorias();
 
+  }
+
+  ngAfterViewInit() {
+    this.isLoading = false;
   }
 
   //GET CATEGORIA
@@ -41,6 +46,10 @@ export class ListaPlatosComponent implements OnInit {
 
   getArrayCategoria(data){
     this.arrayCategoria = data.categoria;
+    let objIdCategoria ={
+      value: this.arrayCategoria[0]._id
+    }
+    this.getSelectAddId(objIdCategoria);
   }
 
   //GET PLATOS

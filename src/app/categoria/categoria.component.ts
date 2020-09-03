@@ -9,9 +9,9 @@ import { UtilsService } from '../../app/utils.service';
 })
 export class CategoriaComponent implements OnInit {
   
-  getPlatosData:any =this.preArmadoObj();
+  getPlatosData=[] ;
   categoriaSeleccionada:string='0';
-
+  isLoading:boolean = true;
   arrayCategoria:any;
   firstGetCategoria:any;
   arrayPlato:any;
@@ -20,12 +20,15 @@ export class CategoriaComponent implements OnInit {
   ];
   
   constructor(private route:Router, public utils:UtilsService  ) {
-    //this.getPlatosData = this.getPlatos2();
+    this.getPlatosData = this.preArmadoObj();
+  }
+
+  ngAfterViewInit() {
+    this.isLoading = false;
   }
 
   ngOnInit() {
     this.getCategorias();
-    this.getPlatos();
   }
 
   cambioCategoria(idCategoria){
@@ -53,6 +56,9 @@ export class CategoriaComponent implements OnInit {
       this.setMenu.push( this.arrayCategoria[index])
     }
     console.log("this.setMenu",this.setMenu);
+
+    this.getPlatos();
+
   }
 
   //GET PLATOS
@@ -88,34 +94,7 @@ export class CategoriaComponent implements OnInit {
   
   preArmadoObj(){
     //no es el mismo objeto que viene del service y que armo del front (plato y categoria)
-    let x=
-    [
-      {
-        categoria:'Pizza',
-        platos:[
-          {
-            id:1,
-            nombre:'piza 1 napoliana',
-            descripcion:'La pizza napolitana, de masa tierna y delgada pero bordes altos, es la versión propia de la cocina napolitana de la pizza redonda',
-            img:'',
-            precio:1000,
-            iconos:['seliaco','vagano'],
-            precioPlatoChico: 1,
-            precioPlatoMediano: 1,
-            precioPlatoGrande: 1,
-            checkPlatoChico:true,
-            checkPlatoMediano: true,
-            checkPlatoGrande: true,
-            idCategoria: 1,
-            tipoComida: 1,
-            ingredientes:['ajo','muzzarela']
-    
-          }
-        ]
-      },
-    ]
-
-    return x;
+    return [];
   }
 
   gotoPage(codigo,page){

@@ -32,9 +32,9 @@
         margin-top: 37px;
         text-align: left;
         //cursor: pointer;
-        -webkit-box-shadow: 50px 31px 38px -22px rgba(196,196,196,1);
-        -moz-box-shadow: 50px 31px 38px -22px rgba(196,196,196,1);
-        box-shadow: 50px 31px 38px -22px rgba(196,196,196,1);
+        -webkit-box-shadow: 50px 31px 38px -22px #e6e6e6;
+        -moz-box-shadow: 50px 31px 38px -22px #e6e6e6;
+        box-shadow: 50px 31px 38px -22px #e6e6e6;
         border: 1px solid white;
         &:hover{
             -webkit-box-shadow: 50px 31px 38px -22px #ffe7e5;
@@ -43,9 +43,7 @@
         }
     }
     
-    .vegan {
-        background-image:url('../../../../assets/seliaco.png');
-    }
+ 
 
     .precio {
         text-align: right;
