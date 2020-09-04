@@ -32,10 +32,7 @@ export class PedidoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.arrayIngredientes = this.getingredientes();
-
-
-  
+    //this.arrayIngredientes = this.getingredientes();
   }
 
   cambioCategoria(){
@@ -50,6 +47,7 @@ export class PedidoComponent implements OnInit {
 
       //this.totalPrecio = this.totalPrecio + this.utils.getPlatosPedidos()[index].precio || 0;
       this.unidades =this.unidades+1;
+      this.totalPrecio = this.totalPrecio + Number(this.showPrecio(this.utils.getPlatosPedidos()[index]));
     }
 
     console.log('=>', this.utils.getPlatosPedidos());
@@ -59,18 +57,35 @@ export class PedidoComponent implements OnInit {
 
   }
 
+  showPrecio(plato){
+    if(plato.precioPlatoGrande >0){
+      console.log("ENTRO EN 1");
+      return plato.precioPlatoGrande
+    }else if(plato.precioPlatoMediano > 0 ){
+      console.log("ENTRO EN 2");
+
+      return plato.precioPlatoMediano
+    }else {
+      console.log("ENTRO EN 3");
+
+      return plato.precioPlatoChico
+    }
+  }
+
   setObjectDetallePlato(){
     let obj = {
       size : '',
       sinIngredientes:[],
       detalle:''
     }
-    for (let index = 0; index < this.getPlatosData.length; index++) {
-       this.getPlatosData[index].repetirPlato.push(obj);;
-      
-    }
+    this.getPlatosData[this.getPlatosData.length -1].repetirPlato.push(obj);;
+    this.getPlatosData[this.getPlatosData.length -1].cantidadMismoPlato.push(1); 
 
     console.log('pedido actual =>',  this.getPlatosData);
+  }
+
+  onOptionsSelectedSize(size){
+    console.log("tamaño plato",size);
   }
 
   suma(plato){
@@ -89,6 +104,8 @@ export class PedidoComponent implements OnInit {
     this.utils.setMessageTotal(`Tenes agregado ${this.unidades} ${palablaPlural}. Total: ${this.totalPrecio}`);
     console.log(codigo);
     this.utils.setData(codigo);
+
+    this.utils.setMasPedidos(true);
 
     this.route.navigate([`${page}`])
   }
@@ -132,9 +149,9 @@ export class PedidoComponent implements OnInit {
     this.suma(plato);
     console.log("mismo plato",cantidad);
 
-    this.cantidadFinal = this.cantidadFinal+1
+    //this.cantidadFinal = this.cantidadFinal+1
 
-    this.arrayRepetirPlato.push(this.cantidadFinal);
+    //this.arrayRepetirPlato.push(this.cantidadFinal);
 
     //let ingredientesDesabilitados = [];
 
@@ -147,6 +164,7 @@ export class PedidoComponent implements OnInit {
       detalle:''
     }
   
+    this.getPlatosData[cantidad].cantidadMismoPlato.push(parseInt(this.getPlatosData[cantidad].cantidadMismoPlato.length)+1); 
     this.getPlatosData[cantidad].repetirPlato.push(obj); 
     console.log("push=>",this.getPlatosData[cantidad])
   }
@@ -157,8 +175,9 @@ export class PedidoComponent implements OnInit {
       this.resta(plato);
       this.cantidadFinal = this.cantidadFinal-1;
   
-      console.log("->",this.arrayRepetirPlato);
-      this.arrayRepetirPlato.pop();
+      //console.log("->",this.arrayRepetirPlato);
+      //this.arrayRepetirPlato.pop();
+      this.getPlatosData[cantidad].cantidadMismoPlato.pop();
       this.getPlatosData[cantidad].repetirPlato.pop(); 
       console.log("pop=>",this.getPlatosData[cantidad]);
     }
@@ -176,33 +195,34 @@ export class PedidoComponent implements OnInit {
   }
 
   setPedido() {
-    console.log("set pedido",this.getPlatosData);
 
     for (let i = 0; i < this.getPlatosData.length; i++) {
 
+
       for (let index = 0; index < this.getPlatosData[i].repetirPlato.length; index++) {
-        let size = (<HTMLInputElement>document.getElementById(`size${index.toString()}`)).value;
-        let detalle = (<HTMLInputElement>document.getElementById(`detalle${index.toString()}`)).value;
-  
+
+        let size = (<HTMLInputElement>document.getElementById(`size${i.toString()+index.toString()}`)).value;
+        let detalle = (<HTMLInputElement>document.getElementById(`detalle${i.toString()+index.toString()}`)).value;
+
+        this.getPlatosData[i].repetirPlato[index].size = size; 
+        this.getPlatosData[i].repetirPlato[index].detalle = detalle; 
+        let array = [];
         for (let j = 0; j < this.getPlatosData[i].tags.length; j++) {
-          let sinIngredientes = (<HTMLInputElement>document.getElementById(`sin-ingredientes${index.toString()+j.toString()}`)).checked;
-          console.log("sinIngredientes",sinIngredientes);
+          let sinIngredientes = (<HTMLInputElement>document.getElementById(`sin-ingredientes${i.toString()+index.toString()+j.toString()}`)).checked;
           var ingredientes = {
             nombre:this.getPlatosData[i].tags[j].name,
             disabled: sinIngredientes
           }
 
-          console.log("no se que hay ",this.getPlatosData[i].repetirPlato)
-          this.getPlatosData[i].repetirPlato[index].sinIngredientes.push(ingredientes); 
+          array.push(ingredientes); 
 
         }
-        this.getPlatosData[i].repetirPlato[index].size = size; 
-        this.getPlatosData[i].repetirPlato[index].detalle = detalle; 
+        this.getPlatosData[i].repetirPlato[index].sinIngredientes = array
       }
-      
     }
 
-    console.log("tamaño",this.getPlatosData);
+    console.log("tamaño",this.getPlatosData)
+
     this.confimarPedido=true;
   } 
 

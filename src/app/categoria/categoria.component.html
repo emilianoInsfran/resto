@@ -31,7 +31,7 @@
                                     <div   *ngFor="let tipoComida of plato.tipoComida; let i = index" class="icono-content " [ngClass]="{'vegano': tipoComida.item_id == 1, 'vegetariano': tipoComida.item_id == 3, 'sintacc': tipoComida.item_id == 2 }"  ></div>
                                 </div>
 
-                                <div class="col-4 col-md-4 precio">$ {{plato.precioPlatoGrande}}</div>
+                                <div class="col-4 col-md-4 precio">$ {{plato.precioPlatoGrande != '0' ? plato.precioPlatoGrande :  (plato.precioPlatoMediano != '0' ? plato.precioPlatoMediano : plato.precioPlatoChico) }}</div>
                             </div>
     
                         </div>

@@ -9,6 +9,7 @@ export class UtilsService {
 	//pedido
 	agregarPlatos:string = '-';
 	arrayPlatosPedidos=[];
+	masPedido:boolean=false;
 	private header = new HttpHeaders({ 'content-type': 'application/json','Access-Control-Allow-Origin':'*' });
 	constructor(private http: HttpClient) { }
 
@@ -78,6 +79,17 @@ export class UtilsService {
 	urlProd(){
 		return 'https://serviceresto.herokuapp.com/';
 	
+	}
+
+
+	//maspedidos
+
+	getMasPedidos(){
+		return this.masPedido;
+	}
+
+	setMasPedidos(data){
+		this.masPedido = data;
 	}
 
 }

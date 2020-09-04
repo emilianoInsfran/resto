@@ -28,7 +28,7 @@
                                     <div   *ngFor="let tipoComida of plato.tipoComida" class="icono-content " [ngClass]="{'vegano': tipoComida.item_id == 1, 'vegetariano': tipoComida.item_id == 3, 'sintacc': tipoComida.item_id == 2 }"  ></div>
                                  </div>
 
-                                <div class="col-3 col-md-3 precio">$ {{plato.precioPlatoGrande  ||  plato.precioPlatoMediano || plato.precioPlatoChico}}</div>
+                                <div class="col-3 col-md-3 precio">$ {{plato.precioPlatoGrande != '0' ? plato.precioPlatoGrande :  (plato.precioPlatoMediano != '0' ? plato.precioPlatoMediano : plato.precioPlatoChico) }}</div>
                             </div>
     
                         </div>
@@ -41,40 +41,40 @@
                     </div>
                     <div class="collapse option-box" id="a{{i}}">
                         <form action=""  novalidate autocomplete="off">
-                            <div class="row opciones-plato" *ngFor="let opciones of arrayRepetirPlato; let x = index">
-                                <div class="col-12 col-md-6">
+                            <div class="row opciones-plato" *ngFor="let opciones of plato.cantidadMismoPlato; let x = index">
+                                <div class="col-12 col-md-7">
                                     <div class="row">
-                                        <div class="col-12 col-md-6 padding-mobile unidad">
-                                            <div *ngIf="opciones == 1">
+                                        <div class="col-12 col-md-5 padding-mobile unidad">
+                                            <div *ngIf="plato.cantidadMismoPlato[x] == 1 ">
                                                 <span>Unidades</span>
                                                 <i class="fa fa-minus-circle" (click)="popMismoPlato(x,plato)"  aria-hidden="true"></i>
-                                                {{unidades}}
+                                                {{plato.cantidadMismoPlato[x]}}
                                                 <i class="fa fa-plus-circle" (click)="addMismoPlato(i,plato)"  aria-hidden="true"></i>
                                             </div>
-                                            <div *ngIf="opciones >= 2">
-                                                <p>Plato {{opciones}}</p>
+                                            <div *ngIf="plato.cantidadMismoPlato[x] >= 2 ">
+                                                <p>Plato  {{plato.cantidadMismoPlato[x]}}</p>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-md-6">
+                                        <div class="col-12 col-md-7">
                                             <span>Tamaño</span>
-                                            <select  id="size{{x}}" class="custom-select mr-sm-2" name="" >
-                                                <option value="chico">Chico</option>
-                                                <option value="mediano">Mediano</option>
-                                                <option value="grande">Grande</option>
+                                            <select  id="size{{i}}{{x}}"  #size class="custom-select mr-sm-2" name=""  (change)='onOptionsSelectedSize(size.value)' >
+                                                <option *ngIf="plato.precioPlatoGrande != '0'" value="grande">Grande $ {{plato.precioPlatoGrande}}</option>
+                                                <option *ngIf="plato.precioPlatoMediano != '0'"  value="mediano">Mediano $ {{plato.precioPlatoMediano}}</option>
+                                                <option *ngIf="plato.precioPlatoChico != '0'"  value="chico">Chico $ {{plato.precioPlatoChico}}</option>
                                             </select>
                                         </div>
                                     </div>
                                     
                                     <div class=" info-extra">
                                         <span>¿Queres aclarar algo?</span>
-                                        <textarea name="" id="detalle{{x}}" cols="30" rows="2" maxlength="100"></textarea>
+                                        <textarea name="" id="detalle{{i}}{{x}}" cols="30" rows="2" maxlength="100"></textarea>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-6 padding-mobile"  >
+                                <div class="col-12 col-md-5 padding-mobile"  >
                                     <h5>Lo quiero sin:</h5>
                                     <div class="row">
                                         <div class="col-12 col-md-6 checkbox" *ngFor="let ingredientes of plato.tags; let j = index">
-                                            <input type="checkbox" id="sin-ingredientes{{x}}{{j}}" [value]="ingredientes.name"><span>{{ingredientes.name}}</span>
+                                            <input type="checkbox" id="sin-ingredientes{{i}}{{x}}{{j}}" [value]="ingredientes.name"><span>{{ingredientes.name}}</span>
                                         </div>
                                     </div>
                                 </div>
