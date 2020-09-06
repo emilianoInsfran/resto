@@ -3,6 +3,7 @@ import { UtilsService } from '../../app/utils.service';
 import { Router } from '@angular/router'; 
 import { PopupComponent } from '../popup/popup.component';
 import { SimpleModalService } from "ngx-simple-modal";
+import { format } from 'path';
 
 @Component({
   selector: 'app-pedido',
@@ -25,6 +26,7 @@ export class PedidoComponent implements OnInit {
   cantidadFinal:number =1;
   totalPrecio:number=0;
   platoSeleccionado:number;
+  desabilitarCambio:boolean =  false;
 
   confimarPedido:boolean=false;
   constructor(private route:Router, private utils:UtilsService,private simpleModalService:SimpleModalService) { 
@@ -32,6 +34,8 @@ export class PedidoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("==>>",this.totalPrecio);
+
     //this.arrayIngredientes = this.getingredientes();
   }
 
@@ -45,32 +49,35 @@ export class PedidoComponent implements OnInit {
     for (let index = 0; index < this.utils.getPlatosPedidos().length; index++) {
       this.getPlatosData.push(this.utils.getPlatosPedidos()[index]);
 
-      //this.totalPrecio = this.totalPrecio + this.utils.getPlatosPedidos()[index].precio || 0;
-      this.unidades =this.unidades+1;
-      this.totalPrecio = this.totalPrecio + Number(this.showPrecio(this.utils.getPlatosPedidos()[index]));
     }
 
-    console.log('=>', this.utils.getPlatosPedidos());
+    console.log('=>', this.getPlatosData);
 
-
+    
     this.setObjectDetallePlato();
+    this.setTotalPrecio(this.getPlatosData);
 
   }
 
-  showPrecio(plato){
-    if(plato.precioPlatoGrande >0){
-      console.log("ENTRO EN 1");
-      return plato.precioPlatoGrande
-    }else if(plato.precioPlatoMediano > 0 ){
-      console.log("ENTRO EN 2");
+  setTotalPrecio(platos){
+    let precioPlatoTotal = 0
+    for (let index = 0; index < platos.length; index++) {
 
-      return plato.precioPlatoMediano
-    }else {
-      console.log("ENTRO EN 3");
+      console.log("repetirPlato",platos[index].repetirPlato)
+      for (let i = 0; i < platos[index].repetirPlato.length; i++) {
+        this.suma({});
+        if(platos[index].precioPlatoGrande >0) precioPlatoTotal = precioPlatoTotal + platos[index].precioPlatoGrande;
+        else if(platos[index].precioPlatoMediano >0) precioPlatoTotal = precioPlatoTotal + platos[index].precioPlatoMediano;
+        else precioPlatoTotal = precioPlatoTotal + platos[index].precioPlatoChico;
 
-      return plato.precioPlatoChico
+        console.log("precioPlatoTotal ->",precioPlatoTotal);
+      }
     }
+
+    this.totalPrecio = precioPlatoTotal;
+    console.log("totalPrecio ->",this.totalPrecio);
   }
+
 
   setObjectDetallePlato(){
     let obj = {
@@ -82,6 +89,7 @@ export class PedidoComponent implements OnInit {
     this.getPlatosData[this.getPlatosData.length -1].cantidadMismoPlato.push(1); 
 
     console.log('pedido actual =>',  this.getPlatosData);
+
   }
 
   onOptionsSelectedSize(size){
@@ -90,12 +98,11 @@ export class PedidoComponent implements OnInit {
 
   suma(plato){
     this.unidades = this.unidades +1;
-    //this.totalPrecio = this.totalPrecio +plato.precio;
   }
   
   resta(plato){
+    if(this.unidades <= 0) return;
     this.unidades = this.unidades -1;
-    //this.totalPrecio = this.totalPrecio - plato.precio;
   }
 
   gotoPage(codigo,page){
@@ -138,7 +145,7 @@ export class PedidoComponent implements OnInit {
     ]
   }
 
-  addMismoPlato(cantidad,plato) {
+  addMismoPlato(cantidad,posicionMismoPlato,plato) {
     /*la solución es agregar del lado back una propiedad que diga repetirplato = [] -> agregar todos los platos para mandarlos en el pedido .
     se agregara el id del plato en el platos mas la nueva propiedad repetirplato [{   size : '',
       sinIngredientes:[],
@@ -157,6 +164,20 @@ export class PedidoComponent implements OnInit {
 
     //let sinIngredientes = (<HTMLInputElement>document.getElementById('sin-ingredientes')).value;
     //let aclarar = (<HTMLInputElement>document.getElementById('aclarar')).value;
+    let size = (<HTMLInputElement>document.getElementById(`size${cantidad.toString()+posicionMismoPlato.toString()}`)).value;
+    console.log("tamaño del plato: ",size);
+
+    if(size == 'chico'){
+      this.totalPrecio = this.totalPrecio + this.getPlatosData[cantidad].precioPlatoChico;
+    }
+    else if(size == 'mediano'){
+      this.totalPrecio = this.totalPrecio + this.getPlatosData[cantidad].precioPlatoMediano;
+    }
+    else {
+      this.totalPrecio = this.totalPrecio + this.getPlatosData[cantidad].precioPlatoGrande;
+    }
+
+    console.log("totalPrecio: ",this.totalPrecio);
 
     let obj = {
       size : '',
@@ -169,8 +190,9 @@ export class PedidoComponent implements OnInit {
     console.log("push=>",this.getPlatosData[cantidad])
   }
 
-  popMismoPlato(cantidad,plato){
-    if(this.unidades <= 1) return;
+  popMismoPlato(cantidad,posicionMismoPlato,plato){
+    console.log("unidades",this.unidades);
+    if(this.getPlatosData[cantidad].cantidadMismoPlato.length <= 1) return;
     else{
       this.resta(plato);
       this.cantidadFinal = this.cantidadFinal-1;
@@ -180,21 +202,63 @@ export class PedidoComponent implements OnInit {
       this.getPlatosData[cantidad].cantidadMismoPlato.pop();
       this.getPlatosData[cantidad].repetirPlato.pop(); 
       console.log("pop=>",this.getPlatosData[cantidad]);
+
+
+      let size = (<HTMLInputElement>document.getElementById(`size${cantidad.toString()+posicionMismoPlato.toString()}`)).value;
+      console.log("tamaño del plato: ",size);
+  
+      if(size == 'chico'){
+        this.totalPrecio = this.totalPrecio - this.getPlatosData[cantidad].precioPlatoChico;
+      }
+      else if(size == 'mediano'){
+        this.totalPrecio = this.totalPrecio - this.getPlatosData[cantidad].precioPlatoMediano;
+      }
+      else {
+        this.totalPrecio = this.totalPrecio - this.getPlatosData[cantidad].precioPlatoGrande;
+      }
+  
+      console.log("totalPrecio: ",this.totalPrecio);
     }
 
   }
 
-  removePedido(plato){
+  getPrecioCantidadMismoPlato(position){
+    let precioPlatoTotal = 0;
+
+    for (let index = 0; index < this.getPlatosData[position].cantidadMismoPlato.length; index++) {
+      this.resta({});
+
+      let size = (<HTMLInputElement>document.getElementById(`size${position.toString()+index.toString()}`)).value;
+      if(size == 'chico'){
+        precioPlatoTotal = precioPlatoTotal + this.getPlatosData[position].precioPlatoChico;
+      }
+      else if(size == 'mediano'){
+        precioPlatoTotal = precioPlatoTotal + this.getPlatosData[position].precioPlatoMediano;
+      }
+      else {
+        precioPlatoTotal = precioPlatoTotal + this.getPlatosData[position].precioPlatoGrande;
+      }
+
+    }
+
+    return precioPlatoTotal;
+  }
+
+  removePedido(plato,position){
+    this.totalPrecio = this.totalPrecio - this.getPrecioCantidadMismoPlato(position);
+    console.log("totalPrecio",this.totalPrecio);
+
     console.log("eliminando",plato);
     this.utils.eliminarPlato(plato,1);
-    this.resta(plato);
     this.getPlatosData = this.utils.getPlatosPedidos();
+
+
     if(this.getPlatosData.length == 0 ) this.gotoPage('','categoria');
     //this.popMismoPlato('',data);
-
   }
 
   setPedido() {
+    this.desabilitarCambio = true;
 
     for (let i = 0; i < this.getPlatosData.length; i++) {
 
@@ -238,6 +302,7 @@ export class PedidoComponent implements OnInit {
   }
 
   cancelarCompra(){
+    this.desabilitarCambio=false;
     this.confimarPedido=false;
 
     for (let index = 0; index < this.getPlatosData.length; index++) {

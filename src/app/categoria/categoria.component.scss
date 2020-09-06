@@ -1,19 +1,19 @@
  header {
      text-align: center;
-    .img {
+     .img {
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
         cursor: pointer;
-    }
-    .imagen-bar {
-        background-image: url('../../assets/antares.jpg');
-        height: 150px !important;
-        width: 300px !important;
-        border-radius: 50%;
-        display: inline-block;
-        margin: auto;
-    }
+   }
+   .imagen-bar {
+       background-image: url('../../assets/antares.jpg');
+       height: 100px !important;
+       width: 200px !important;
+       border-radius: 50%;
+       display: inline-block;
+       margin: auto;
+   }
  }
 
  .messagePedido {

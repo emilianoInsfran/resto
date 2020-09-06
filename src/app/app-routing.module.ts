@@ -16,6 +16,7 @@ import { AltaPlatosComponent } from './perfil/menu/alta-platos/alta-platos.compo
 import { ListaPlatosComponent } from './perfil/menu/lista-platos/lista-platos.component';
 import { PromosComponent } from './perfil/promos/promos.component';
 import { GeneralComponent } from './perfil/general/general.component';
+import { TomarPedidosComponent } from './perfil/tomar-pedidos/tomar-pedidos.component';
 
 const routes: Routes = [
   { path:'', component: HomeComponent },
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path:'listaplatos', component: ListaPlatosComponent },
   { path:'promos', component: PromosComponent },
   { path:'general', component: GeneralComponent },
+  { path:'tomarPedidos', component: TomarPedidosComponent },
 ];
 
 @NgModule({

@@ -42,6 +42,7 @@ import { ListaCategoriasComponent } from './perfil/estetica/lista-categorias/lis
 import { AltaPlatosComponent } from './perfil/menu/alta-platos/alta-platos.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ListaPlatosComponent } from './perfil/menu/lista-platos/lista-platos.component';
+import { TomarPedidosComponent } from './perfil/tomar-pedidos/tomar-pedidos.component';
 const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
   // Change this to your Google API key
   apiKey: 'AIzaSyAUu7TIQH7gWrFVTAZrYnAV13hWjpue-EQ'
@@ -67,7 +68,8 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     ListaCategoriasComponent,
     AltaPlatosComponent,
     NavbarComponent,
-    ListaPlatosComponent
+    ListaPlatosComponent,
+    TomarPedidosComponent
 
   ],
   imports: [

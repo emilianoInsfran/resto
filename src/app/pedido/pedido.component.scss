@@ -1,15 +1,15 @@
 header {
     text-align: center;
    .img {
-       background-position: center;
-       background-size: cover;
-       background-repeat: no-repeat;
-       cursor: pointer;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        cursor: pointer;
    }
    .imagen-bar {
        background-image: url('../../assets/antares.jpg');
-       height: 150px !important;
-       width: 300px !important;
+       height: 100px !important;
+       width: 200px !important;
        border-radius: 50%;
        display: inline-block;
        margin: auto;
@@ -236,6 +236,15 @@ button {
     color: gray;
 }
 
+.desabilitar-opciones{
+    height: 37px;
+    width: 99%;
+    background-color: #8080801a;
+    position: absolute;
+    bottom: -1px;
+}
+
+
 @media (max-width: 700px) { 
     .is-mobile{display: inline-block ;}
     .is-descktop{display: none;}
@@ -262,7 +271,8 @@ button {
     }
 
     .precio{
-        text-align: center !important;
+        //text-align: center !important;
+        padding-right: 6%;
     }
 
     .option-box{

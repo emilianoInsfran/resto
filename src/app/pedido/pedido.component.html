@@ -13,7 +13,7 @@
     
                     <div class="row" > 
                         <div class="col-12 col-md-4 imagen-plato-mobile is-mobile">
-                            <button type="button" class="close button-nostyle delete" (click)="removePedido(plato)" aria-label="Close">
+                            <button type="button" class="close button-nostyle delete" (click)="removePedido(plato,i)" aria-label="Close" [disabled]="desabilitarCambio">
                                 <span aria-hidden="true">&times;</span>
                               </button>
                               <div class="img "   [style.background-image]="'url(' +  'data:'+ plato.mimetype+';base64,' + plato.base64 + ')'">  </div> 
@@ -24,22 +24,22 @@
                             
                             <div class="row">
                                 
-                                <div class="col-9 col-md-9">
+                                <div class="col-6 col-md-9">
                                     <div   *ngFor="let tipoComida of plato.tipoComida" class="icono-content " [ngClass]="{'vegano': tipoComida.item_id == 1, 'vegetariano': tipoComida.item_id == 3, 'sintacc': tipoComida.item_id == 2 }"  ></div>
                                  </div>
 
-                                <div class="col-3 col-md-3 precio">$ {{plato.precioPlatoGrande != '0' ? plato.precioPlatoGrande :  (plato.precioPlatoMediano != '0' ? plato.precioPlatoMediano : plato.precioPlatoChico) }}</div>
+                                <div class="col-6 col-md-3 precio"><span *ngIf="plato.cantidadMismoPlato.length > 1">(x{{plato.cantidadMismoPlato.length}})</span> $ {{plato.precioPlatoGrande != '0' ? plato.precioPlatoGrande :  (plato.precioPlatoMediano != '0' ? plato.precioPlatoMediano : plato.precioPlatoChico) }}</div>
                             </div>
     
                         </div>
                         <div class="col-12 col-md-4 imagen-plato is-descktop">
-                            <button type="button" class="close button-nostyle delete" (click)="removePedido(plato)" aria-label="Close">
+                            <button type="button" class="close button-nostyle delete" (click)="removePedido(plato,i)" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                               </button>
                               <div class="img "   [style.background-image]="'url(' +  'data:'+ plato.mimetype+';base64,' + plato.base64 + ')'">  </div> 
                         </div>
                     </div>
-                    <div class="collapse option-box" id="a{{i}}">
+                    <div class="collapse option-box" id="a{{i}}"  *ngIf="!desabilitarCambio" >
                         <form action=""  novalidate autocomplete="off">
                             <div class="row opciones-plato" *ngFor="let opciones of plato.cantidadMismoPlato; let x = index">
                                 <div class="col-12 col-md-7">
@@ -47,9 +47,9 @@
                                         <div class="col-12 col-md-5 padding-mobile unidad">
                                             <div *ngIf="plato.cantidadMismoPlato[x] == 1 ">
                                                 <span>Unidades</span>
-                                                <i class="fa fa-minus-circle" (click)="popMismoPlato(x,plato)"  aria-hidden="true"></i>
+                                                <i class="fa fa-minus-circle" (click)="popMismoPlato(i,x,plato)"  aria-hidden="true"></i>
                                                 {{plato.cantidadMismoPlato[x]}}
-                                                <i class="fa fa-plus-circle" (click)="addMismoPlato(i,plato)"  aria-hidden="true"></i>
+                                                <i class="fa fa-plus-circle" (click)="addMismoPlato(i,x,plato)"  aria-hidden="true"></i>
                                             </div>
                                             <div *ngIf="plato.cantidadMismoPlato[x] >= 2 ">
                                                 <p>Plato  {{plato.cantidadMismoPlato[x]}}</p>
@@ -81,7 +81,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="opciones-colapse " data-toggle="collapse" [attr.href]="'#'+'a'+i" role="button" aria-expanded="false" [attr.aria-controls]="'a'+i" (click)="getNameOpciones(opciones)"><a >Opciones</a></div>
+                    <div class="opciones-colapse " data-toggle="collapse" [attr.href]="'#'+'a'+i" role="button" aria-expanded="false" [attr.aria-controls]="'a'+i" (click)="getNameOpciones(opciones)" *ngIf="!desabilitarCambio" ><a >Opciones</a></div>
 
                 </div>
 
