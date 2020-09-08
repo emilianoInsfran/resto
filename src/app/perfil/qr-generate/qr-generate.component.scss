@@ -1,0 +1,66 @@
+.box {
+    width: 100%;
+    margin: auto;
+    box-shadow: 46px 48px 65px 0px #cccccc;
+    border: 1px solid #f7f7f7;
+    border-radius: 10px;
+    padding: 40px;
+    margin-top: 85px !important;
+    text-align: center;
+
+    .box-input {
+        position: relative;
+        top: 6px;
+    }
+
+    .qr {
+        width: 100%;
+    }
+    .separador {
+        border: 1px solid #c1c1c1;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+    .h3{
+        margin-bottom:35px;
+    }
+    .delete {
+        position: absolute;
+        right: 23px;
+        top: 0;
+    }
+
+    
+    .btn-circle {
+        width: 60px;
+        height: 60px;
+        padding: 6px 0px;
+        border-radius: 49px;
+        text-align: center;
+        font-size: 26px;
+        line-height: 1.42857;
+        position: fixed;
+        bottom: 68px;
+        right: 34px;
+    }
+
+}
+
+@media (max-width:700px){
+    .box{
+        padding-top: 10px;
+
+        .button1 {
+            margin-top: 43px;
+        }
+        .box-input {
+            top:16px
+        }
+
+        .btn-dowload{
+            margin-top: 0 !important;
+        }
+    }
+
+}

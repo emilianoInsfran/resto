@@ -32,7 +32,7 @@ export class ScannerComponent implements OnInit {
       setTimeout(()=>{                           //<<<---using ()=> syntax
         this.setResetOpenCodigo();
       }, 5000);
-      this.gotoPage('','categoria');
+      //this.gotoPage('','categoria');
 
     }
   }

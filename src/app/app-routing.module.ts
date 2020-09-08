@@ -17,6 +17,7 @@ import { ListaPlatosComponent } from './perfil/menu/lista-platos/lista-platos.co
 import { PromosComponent } from './perfil/promos/promos.component';
 import { GeneralComponent } from './perfil/general/general.component';
 import { TomarPedidosComponent } from './perfil/tomar-pedidos/tomar-pedidos.component';
+import { QrGenerateComponent } from './perfil/qr-generate/qr-generate.component';
 
 const routes: Routes = [
   { path:'', component: HomeComponent },
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path:'promos', component: PromosComponent },
   { path:'general', component: GeneralComponent },
   { path:'tomarPedidos', component: TomarPedidosComponent },
+  { path:'qr', component: QrGenerateComponent },
 ];
 
 @NgModule({

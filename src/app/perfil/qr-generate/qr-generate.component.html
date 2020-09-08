@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+<section class="container  box">
+    <div class="box-primera-cantidad" *ngIf="showGenerarPrimerasMesas">
+        <div class="row">
+
+            <div class="col-12 col-md-6 col-xs-12"><h5>¿Con cuantas mesas queres empezar?</h5></div>
+            <div class="col-12 col-md-3 col-xs-12">
+                <div class="box-input">
+                    <div class="input-wrapper">
+                        <input type="text" [(ngModel)]="cantidadMesas"  name="mesas" id="mesas" required >
+                        <label class="label" for="mesas">Cantidad de mesas </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-3 col-xs-12">
+                <button class="button1" (click)="addQR()">Generar qr!</button>
+            </div>
+        </div>
+    </div>
+    <div class="box-qr-generados"  *ngIf="!showGenerarPrimerasMesas">
+        <h3 class="h3">Códigos Generados</h3>
+        <div class="row">
+            <div *ngFor="let qr of arrayQRData; let i = index" class="qr col-12 col-md-3 col-xs-12">
+                <div class="separador">
+                    <button type="button" class="close button-nostyle delete" aria-label="Close" (click)="eliminarCategoria(qr)" >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    <h5>Mesa {{qr.qr.split('.')[2]}}   </h5>
+                    <qr-code [value]="qr.qr" size="100" errorCorrectionLevel="M"></qr-code>
+                    <button class="button1 btn btn-dowload"><i class="fa fa-download"></i> Descargar</button>
+
+                </div>
+
+            </div>
+        </div>
+        <button type="button" class="btn btn-info btn-circle"  (click)="addMesa()"><i class="fa fa-plus" aria-hidden="true"></i> </button>
+
+    </div>
+
+
+
+
+</section>
+

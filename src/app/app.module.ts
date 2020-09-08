@@ -7,7 +7,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import { FontPickerModule } from 'ngx-font-picker';
 import { FONT_PICKER_CONFIG } from 'ngx-font-picker';
 import { FontPickerConfigInterface } from 'ngx-font-picker';
-
+import { QrCodeModule } from 'ng-qrcode';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -43,6 +43,8 @@ import { AltaPlatosComponent } from './perfil/menu/alta-platos/alta-platos.compo
 import { NavbarComponent } from './navbar/navbar.component';
 import { ListaPlatosComponent } from './perfil/menu/lista-platos/lista-platos.component';
 import { TomarPedidosComponent } from './perfil/tomar-pedidos/tomar-pedidos.component';
+import { QrGenerateComponent } from './perfil/qr-generate/qr-generate.component';
+
 const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
   // Change this to your Google API key
   apiKey: 'AIzaSyAUu7TIQH7gWrFVTAZrYnAV13hWjpue-EQ'
@@ -69,7 +71,8 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     AltaPlatosComponent,
     NavbarComponent,
     ListaPlatosComponent,
-    TomarPedidosComponent
+    TomarPedidosComponent,
+    QrGenerateComponent
 
   ],
   imports: [
@@ -87,6 +90,7 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     DragDropModule,
     BrowserAnimationsModule,
     TagInputModule,
+    QrCodeModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
   entryComponents: [
