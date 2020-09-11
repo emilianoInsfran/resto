@@ -17,23 +17,27 @@
             </div>
         </div>
     </div>
+
     <div class="box-qr-generados"  *ngIf="!showGenerarPrimerasMesas">
-        <h3 class="h3">Códigos Generados</h3>
+        <h3 class="h3">Códigos Generados </h3>
+        <p><a (click)="downloadAll()">Descargar todo <i class="fa fa-download"></i></a></p>
         <div class="row">
-            <div *ngFor="let qr of arrayQRData; let i = index" class="qr col-12 col-md-3 col-xs-12">
+            <div *ngFor="let qr of arrayQRData; let i = index" class="qr col-12 col-md-4 col-xs-12">
                 <div class="separador">
                     <button type="button" class="close button-nostyle delete" aria-label="Close" (click)="eliminarCategoria(qr)" >
                         <span aria-hidden="true">&times;</span>
-                      </button>
-                    <h5>Mesa {{qr.qr.split('.')[2]}}   </h5>
-                    <qr-code [value]="qr.qr" size="100" errorCorrectionLevel="M"></qr-code>
-                    <button class="button1 btn btn-dowload"><i class="fa fa-download"></i> Descargar</button>
+                    </button>
+                    <div #oneQR [id]="i"  class="mesa-qr">
+                        <h5>Mesa {{qr.qr.split('.')[2]}}   </h5>
+                        <qr-code [value]="qr.qr"   errorCorrectionLevel="M"></qr-code>
+                    </div>
+                <button class="button1 btn btn-dowload" (click)="exportAsPDF(i)"><i class="fa fa-download"></i> Descargar</button>
 
                 </div>
 
             </div>
         </div>
-        <button type="button" class="btn btn-info btn-circle"  (click)="addMesa()"><i class="fa fa-plus" aria-hidden="true"></i> </button>
+        <button type="button" class="btn btn-info btn-circle"  (click)="addOneQR()"><i class="fa fa-plus" aria-hidden="true"></i> </button>
 
     </div>
 

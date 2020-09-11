@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PopupComponent } from '../../popup/popup.component';
 import { SimpleModalService } from "ngx-simple-modal";
 import { UtilsService } from "../../utils.service";
+ import  jspdf from 'jspdf';
+ import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-qr-generate',
@@ -12,7 +14,7 @@ export class QrGenerateComponent implements OnInit {
   cantidadMesas:number;
   arrayQRData:any=[];
   showGenerarPrimerasMesas: boolean = true;
-  constructor(private simpleModalService:SimpleModalService,public utils:UtilsService) { }
+  constructor(private simpleModalService:SimpleModalService,public utils:UtilsService ) { }
 
   ngOnInit(): void {
     this.getQR();
@@ -33,6 +35,9 @@ export class QrGenerateComponent implements OnInit {
     if(data.qr.length != 0){
       this.showGenerarPrimerasMesas =false;
       this.arrayQRData = data.qr;
+    }else{
+      this.showGenerarPrimerasMesas =true;
+
     }
    
   }
@@ -79,6 +84,93 @@ export class QrGenerateComponent implements OnInit {
 
       );
 
+  }
+
+  addOneQR(){
+    let codigoResto= 111;
+    console.log("->",this.arrayQRData[this.arrayQRData.length-1])
+    let qrData = codigoResto.toString() + '.' + (1+ Number ((this.arrayQRData[this.arrayQRData.length-1]).qr.split('.')[1])).toString() + '.' + this.arrayQRData.length.toString()
+
+    console.log("QR", qrData);
+
+    let formData = new FormData();
+
+    formData.append('id_admin',codigoResto.toString() );
+    formData.append('codigo',qrData);
+
+    this.utils.postConfig(this.utils.urlDev()+'oneqr',formData)
+      .subscribe(
+        (data) => {
+          console.log("data->",data);
+          //this.showLoading =false;
+          this.showConfirm('Se agrego correctamente :)');
+          this.getQR();
+        },
+        err =>{
+          console.log("ERROR",err);
+          alert(err);
+        }
+
+      );
+
+  }
+
+
+  
+  exportAsPDF(i)
+  {
+    let data =document.getElementById(`${i}`);  
+
+    html2canvas(data).then(function(canvas) {
+      // Convert the canvas to blob
+      canvas.toBlob(function(blob){
+          // To download directly on browser default 'downloads' location
+          let link = document.createElement("a");
+          link.download = "image.png";
+          link.href = URL.createObjectURL(blob);
+          link.click();
+
+          // To save manually somewhere in file explorer
+         // window.saveAs(blob, 'image.png');
+
+      },'image/png');
+    })
+
+    /*html2canvas(data).then(canvas => { //PDF
+      const contentDataURL = canvas.toDataURL('image/png')  
+      let pdf = new jspdf('l', 'cm', 'a4'); //Generates PDF in landscape mode
+      // let pdf = new jspdf('p', 'cm', 'a4'); Generates PDF in portrait mode
+      pdf.addImage(contentDataURL, 'PNG', 0, 0, 0, 0);  
+      pdf.save('Filename.pdf');   
+    }); */
+  }
+
+  downloadAll(){
+    for (let index = 0; index < this.arrayQRData.length; index++) {
+      let data = document.getElementById(`${index}`);  
+
+      html2canvas(data).then(function(canvas) {
+        // Convert the canvas to blob
+        canvas.toBlob(function(blob){
+            // To download directly on browser default 'downloads' location
+            let link = document.createElement("a");
+            link.download = "image.png";
+            link.href = URL.createObjectURL(blob);
+            link.click();
+  
+            // To save manually somewhere in file explorer
+           // window.saveAs(blob, 'image.png');
+  
+        },'image/png');
+      })
+      /*html2canvas(data).then(canvas => {
+        const contentDataURL = canvas.toDataURL('image/png')  
+        let pdf = new jspdf('l', 'cm', 'a4'); //Generates PDF in landscape mode
+        // let pdf = new jspdf('p', 'cm', 'a4'); Generates PDF in portrait mode
+        pdf.addImage(contentDataURL, 'PNG', 0, 0, 0, 0);  
+        pdf.save('Filename.pdf');   
+      }); */
+    }
   }
 
     //elminar categoria
