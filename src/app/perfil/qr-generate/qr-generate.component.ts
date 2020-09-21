@@ -96,7 +96,7 @@ export class QrGenerateComponent implements OnInit {
   }
 
   addOneQR(){
-    let codigoResto= 111;
+    let codigoResto= this.utils.getIdResto().resto.id_admin;
     console.log("->",this.arrayQRData[this.arrayQRData.length-1])
     let qrData = codigoResto.toString() + '.' + (1+ Number ((this.arrayQRData[this.arrayQRData.length-1]).qr.split('.')[1])).toString() + '.' + this.arrayQRData.length.toString()
 
