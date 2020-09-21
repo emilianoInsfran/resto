@@ -14,7 +14,7 @@ export class TomarPedidosComponent implements OnInit {
   getArrayMesas=[];
   arrayQRData:any;
   mesasQR:boolean=false;
-  pedido:boolean;
+  pedido:boolean=true;
   confirmado:boolean;
   preparacion:boolean;
   elaborado:boolean;
@@ -24,6 +24,8 @@ export class TomarPedidosComponent implements OnInit {
 
   ngOnInit() {
     this.getData();
+    this.utils.setIsCallservicePedido(true);
+    this.utils.setCallServicePedidoInit(1);
     // this.connectionSendPedido();
   }
 
@@ -70,7 +72,8 @@ export class TomarPedidosComponent implements OnInit {
     if(data.qr.length != 0){
       this.mesasQR =true;
       this.getArrayCodigo = data.qr;
-      this.getpeidoMesas();
+      console.log("NUMERO**",this.utils.callServicePedidoInit() )
+      if(this.utils.callServicePedidoInit() <= 1) this.getpeidoMesas();
     }else{
       this.mesasQR =false;
 
@@ -87,7 +90,13 @@ export class TomarPedidosComponent implements OnInit {
         this.getArrayPedidos(data);
       });
 
-      setTimeout(()=>{this.getpeidoMesas(); }, 9000);
+      console.log("numero de llamadas->",this.utils.callServicePedidoInit());
+        if(this.utils.isCallservicePedido()){
+          setTimeout(()=>{
+            this.getpeidoMesas(); 
+          }, 9000);
+        }
+
   }
 
   getArrayPedidos(data){
@@ -95,6 +104,51 @@ export class TomarPedidosComponent implements OnInit {
     this.clean()
     this.setPedidoMesas();
   }
+
+
+
+  //PUT 
+  updateEstado(estado,id){
+    console.log("estado",estado,id);
+    this.utils.putConfig(this.utils.urlDev()+'qr/'+id,{estado:estado})
+    .subscribe(
+      (data) => {
+        console.log("data->",data);
+        //this.showConfirm();
+      },
+      err =>{
+        //this.showLoading =false;
+        console.log("ERROR",err);
+        alert('Intente Nuevamente y verifique que todos los campos esten correctos');
+      }
+
+    );
+  }
+
+  updateToken(id){
+    console.log("token",id);
+    this.utils.putConfig(this.utils.urlDev()+'qrToken/'+id,{})
+    .subscribe(
+      (data) => {
+        console.log("data->",data);
+        this.setToken(data);
+        //this.showConfirm();
+      },
+      err =>{
+        //this.showLoading =false;
+        console.log("ERROR",err);
+        alert('Intente Nuevamente y verifique que todos los campos esten correctos');
+      }
+
+    );
+  }
+
+  setToken(data){
+    for (let index = 0; index < this.getArrayCodigo.length; index++) {
+      if(this.getArrayCodigo[index]._id == data.categoria._id) this.getArrayCodigo[index].token = data.categoria.token;
+    }
+  }
+  //--
 
   clean(){
     for (let i = 0; i < this.getArrayCodigo.length; i++) {
@@ -109,5 +163,11 @@ export class TomarPedidosComponent implements OnInit {
   gotoPage(codigo,page){
     console.log(codigo);
     this.route.navigate([`${page}`])
+  }
+
+  ngOnDestroy() {
+    console.log("se destruye!")
+    this.utils.setIsCallservicePedido(false);
+    this.utils.setCallServicePedidoInit(-1);
   }
 }

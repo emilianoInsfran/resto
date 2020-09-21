@@ -36,6 +36,19 @@
             }
         }
     }
+
+    .token {
+        text-align: center;
+    }
+}
+
+.box-mesas-info {
+    text-align: center;
+    a {
+        font-size: 0.8em;
+        color: #007bff;
+        cursor: pointer;
+    }
 }
 
 .red {
@@ -82,6 +95,8 @@ ul{
 
 
 .checkbox {
+    margin-top: 13px;
+
     span {
         position: relative;
         left: 20px;

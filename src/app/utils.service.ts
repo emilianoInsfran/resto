@@ -13,6 +13,8 @@ export class UtilsService {
 	idRestoChat:any;
 	restoCliente:any;
 	restoClienteCodigo:string;
+	servicePedido:number=0;
+	callService:boolean = true;
 	private header = new HttpHeaders({ 'content-type': 'application/json','Access-Control-Allow-Origin':'*' });
 	constructor(private http: HttpClient) { }
 
@@ -122,6 +124,20 @@ export class UtilsService {
 
 	setIdRestoClienteCodigo(data){
 		this.restoClienteCodigo = data;
+	}
+
+	callServicePedidoInit(){
+		return this.servicePedido;
+	}
+	setCallServicePedidoInit(data){
+		this.servicePedido = this.servicePedido +data
+	}
+
+	isCallservicePedido(){
+		return this.callService
+	}
+	setIsCallservicePedido(data){
+		this.callService = data
 	}
 
 
