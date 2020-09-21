@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { UtilsService } from '../../../app/utils.service';
 import { Router } from '@angular/router'; 
-import { Socket } from 'ngx-socket-io';
 
 @Component({
   selector: 'app-tomar-pedidos',
@@ -20,7 +19,7 @@ export class TomarPedidosComponent implements OnInit {
   preparacion:boolean;
   elaborado:boolean;
 
-  constructor(private utils:UtilsService,private route:Router,private socket: Socket) { 
+  constructor(private utils:UtilsService,private route:Router) { 
   }
 
   ngOnInit() {
@@ -106,43 +105,6 @@ export class TomarPedidosComponent implements OnInit {
       }
     }
   }
-
-  	//chat
-
-	 //CHAT disconnect
-	 connectionSendPedido(){
-
-    console.log('entro en 1')
-      this.socket.on('connect', ()=> {
-        console.log('Conectado al servidor');
-        let usuario = {
-        mensaje:'hola resto'
-        }
-        this.socket.emit('entrarChat', usuario, (resp)=> {
-          console.log('Usuarios conectados', resp);
-          //this.utils.setIdResto(resp);
-        });
-    
-        this.getMessage();
-    
-      });
-   }
- 
-   /*sendMessage(msg: string){
-   this.socket.emit("message", msg);
-   }*/
- 
-   putIdRestoPedido(){
- 
-   }
- 
-   getMessage() {
-    this.socket.on('mensajePrivado', (mensaje) => {
-      console.log('Mensaje Privado:', mensaje);
-    });
-   }
-   //-----
-
 
   gotoPage(codigo,page){
     console.log(codigo);

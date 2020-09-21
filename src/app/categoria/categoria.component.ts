@@ -20,7 +20,6 @@ export class CategoriaComponent implements OnInit {
   ];
   
   constructor(private route:Router, public utils:UtilsService  ) {
-    this.getPlatosData = this.preArmadoObj();
   }
 
   ngAfterViewInit() {
@@ -28,9 +27,10 @@ export class CategoriaComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("user?",this.utils.getIdRestoCliente())
+    if(this.utils.getIdRestoCliente() ){
+      this.getPlatosData = this.preArmadoObj();
 
-    console.log("user?",this.utils.getIdResto())
-    if(this.utils.getIdResto() ){
       //this.getQRMesas(this.utils.getIdResto().resto)
       this.getCategorias();
     }

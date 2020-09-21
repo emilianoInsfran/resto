@@ -42,7 +42,9 @@
         <div class="box-message"><p *ngIf="!profileForm.valid  && profileForm.touched " class="animate__animated animate__flipInX">Todos los campos son obligatorios </p></div>
         <div class="box-message"><p *ngIf="validatePass" class="animate__animated animate__flipInX">{{messagePasword}} </p></div>
         
-        <button class="button animate__animated"  type="button" [disabled]="!profileForm.valid" (click)="onSubmit()" [ngClass]="{'animate__pulse': changeText}" (mouseover)="changeText=true" (mouseout)="changeText=false"> Guardar</button>
+        <button class="button animate__animated"  type="button" [disabled]="!profileForm.valid" (click)="onSubmit()" [ngClass]="{'animate__pulse': changeText}" (mouseover)="changeText=true" (mouseout)="changeText=false">
+            <div class="spinner-border spinner" *ngIf="showLoading"></div>
+            <span *ngIf="!showLoading">Guardar</span> <span *ngIf="showLoading">Cargando...</span> </button>
     </div>
 </div>
 

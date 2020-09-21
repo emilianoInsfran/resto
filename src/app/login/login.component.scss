@@ -47,11 +47,17 @@
             border: 1px solid orange;
             color: orange;
             margin-bottom: 22px;
-
+            position: relative;
             &:hover{
                 border: 1px solid white;
                 color: white;
                 background-color: orange;
+            }
+
+            .spinner {
+                position: absolute;
+                left: 63px;
+                top: 4px;
             }
         }
     }

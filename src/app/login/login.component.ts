@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   }
   messageErroLogin:boolean = false;
   changeText:boolean;
+  showLoading:boolean=false;
   constructor(private route:Router,public utils:UtilsService) { }
 
   ngOnInit(): void {}
@@ -22,16 +23,17 @@ export class LoginComponent implements OnInit {
 
   login(){
     console.log("estoy en login GET",this.empresa);//_id que te genera mongo
-
+    this.showLoading = true;
     this.utils.getConfig(this.utils.urlDev()+'login/'+this.empresa.nombre+'/'+this.empresa.pass)
       .subscribe((data) => {
         //this.showLoading = false;
         console.log("data->",data);
-
+        this.showLoading = false;
         this.action(data);
         // this.gotoPage('','perfil');
       },
       error=>{
+        this.showLoading = false;
         this.action(error.error);
       });
   }

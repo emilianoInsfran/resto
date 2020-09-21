@@ -21,7 +21,6 @@ export class HomeComponent implements OnInit {
   keyPress(event: KeyboardEvent) {
     console.log(event);
 
-
     if( event.toString().length >= 3 ) {
       this.user.codigo = parseInt(event.toString());
       this.gotoPage(this.user.codigo,'categoria')

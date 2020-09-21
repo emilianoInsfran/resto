@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { PopupComponent } from '../popup/popup.component';
 import { SimpleModalService } from "ngx-simple-modal";
 import { format } from 'path';
-import { Socket } from 'ngx-socket-io';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -33,7 +32,7 @@ export class PedidoComponent implements OnInit {
   desabilitarCambio:boolean =  false;
   idResto:string;
   confimarPedido:boolean=false;
-  constructor(private route:Router, private utils:UtilsService,private simpleModalService:SimpleModalService,private socket: Socket) { 
+  constructor(private route:Router, private utils:UtilsService,private simpleModalService:SimpleModalService) { 
     //this.cambioCategoria();
   }
 
@@ -49,38 +48,6 @@ export class PedidoComponent implements OnInit {
     }
 
   }
-
-  //CHAT
-  connectionSendPedido(){
-    this.socket.on('connect', ()=> {
-      console.log('Conectado al servidor');
-      let usuario = {
-        mensaje:'hola Emiliano'
-      }
-      this.socket.emit('entrarChat', usuario, (resp)=> {
-          console.log('Usuarios conectados', resp);
-      });
-
-    });
-  }
-
-  sendMessage(){
-
-    let obj = {
-      para: this.idResto
-    }
-    console.log("obj socket",obj);
-    this.socket.emit("mensajePrivado", obj);
-  }
-/*
- getMessage() {
-     return this.socket
-         .fromEvent("message")
-         .pipe(map((data) =>{
-           console.log("get message socket",data)
-         } ));
-  }*/
-  //-----
 
   cambioCategoria(){
     console.log("plato agregado->",this.utils.getData());
@@ -298,7 +265,6 @@ export class PedidoComponent implements OnInit {
   }
 
   setPedido() {
-    this.sendMessage(); 
     this.desabilitarCambio = true;
 
     for (let i = 0; i < this.getPlatosData.length; i++) {

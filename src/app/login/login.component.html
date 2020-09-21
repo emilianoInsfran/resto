@@ -26,7 +26,8 @@
                  <p *ngIf="messageErroLogin" class="error  animate__animated animate__fadeInUp">  Usuario o Contraseña INCORRECTO </p>
                </div>
 
-                <button class="button animate__animated"  [ngClass]="{'animate__pulse': changeText}" (mouseover)="changeText=true" (mouseout)="changeText=false" (click)='login()'> Entrar</button>
+                <button class="button animate__animated"  [ngClass]="{'animate__pulse': changeText}" (mouseover)="changeText=true" (mouseout)="changeText=false" (click)='login()'> <div class="spinner-border spinner" *ngIf="showLoading"></div>
+                  <span *ngIf="!showLoading">Entrar</span> <span *ngIf="showLoading">Cargando...</span></button>
                 <div><a (click)="gotoPage('','')"> volver </a></div>
               </form>
 

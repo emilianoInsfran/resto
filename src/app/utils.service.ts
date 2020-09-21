@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Socket } from 'ngx-socket-io';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +14,7 @@ export class UtilsService {
 	restoCliente:any;
 	restoClienteCodigo:string;
 	private header = new HttpHeaders({ 'content-type': 'application/json','Access-Control-Allow-Origin':'*' });
-	constructor(private http: HttpClient,private socket: Socket) { }
+	constructor(private http: HttpClient) { }
 
 	setData(data){
 		this.data = data;

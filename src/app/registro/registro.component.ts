@@ -23,6 +23,7 @@ export class RegistroComponent implements OnInit {
     pass:'',
     repetirPass:''
   }
+  showLoading:boolean=false;
 
   messagePasword:string='La contraseña es obligatoria'
   validatePass:boolean=false;
@@ -62,7 +63,6 @@ export class RegistroComponent implements OnInit {
     console.log('pass=>',this.registro.pass);
     console.log('repetirPass=>', this.registro.repetirPass);
     console.log('=>',this.profileForm.value);
-
     let obj  = {
       id_admin:this.randomizeInteger(100, 999),
       nombre: this.profileForm.value.nombre,
@@ -98,15 +98,17 @@ export class RegistroComponent implements OnInit {
   postResto(obj) {
     //this.showLoading =true;
     console.log("formData",obj);
+    this.showLoading = true;
   
     this.utils.postConfig(this.utils.urlDev()+'resto',obj)
         .subscribe(
           (data) => {
             console.log("data registro->",data);
-
+            this.showLoading = false;
             this.showConfirm();
           },
           err =>{
+            this.showLoading = false;
             console.log("ERROR",err);
             alert(err);
           }
