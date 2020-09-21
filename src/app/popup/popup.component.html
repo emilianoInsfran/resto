@@ -46,4 +46,25 @@
       <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
     </svg><span>{{message}}</span></p>
   </div>
+</div>
+
+
+ <div class="modal-content agregar" *ngIf="opciones == 'tokenPedido'">
+  <div class="modal-header">
+   <h4>{{message }}</h4>
+ </div> 
+ <div class="modal-body">
+   <div class="input-wrapper btn-token">
+     <input type="text"  [(ngModel)]="nombreCliente" name="nombreClienten" id="nombreClienten"  required >
+     <label class="label" for="user">Mí Nombre </label>
+   </div>
+   <div class="input-wrapper ">
+      <input type="number"  [(ngModel)]="tokenPedido" name="tokenPedidon" id="tokenPedidon"  required >
+      <label class="label" for="user">Token </label>
+  </div>
  </div>
+ <div class="modal-footer">
+   <button type="button" class="btn btn-outline-danger" (click)="close()" >Cancelar</button>
+   <button type="button" class="btn btn-primary" (click)="token(nombreCliente,tokenPedido)" [disabled]="!nombreCliente && !tokenPedido ">Aceptar</button>
+ </div> 
+</div>

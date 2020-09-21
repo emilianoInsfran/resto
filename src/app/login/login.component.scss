@@ -8,6 +8,11 @@
     border-radius: 10px;
     padding: 10px;
 
+    .box-error-login {
+        height: 20px;
+        color: red;
+    }
+
     ul{
         li{
             width: 50%;
@@ -38,7 +43,7 @@
             background-color: white;
             border-radius: 10px;
             height: 40px;
-            margin-top: 27px;
+            margin-top: 7px;
             border: 1px solid orange;
             color: orange;
             margin-bottom: 22px;

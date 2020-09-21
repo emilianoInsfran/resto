@@ -31,7 +31,8 @@
                         <h5>Mesa {{qr.qr.split('.')[2]}}   </h5>
                         <qr-code [value]="qr.qr"   errorCorrectionLevel="M"></qr-code>
                     </div>
-                <button class="button1 btn btn-dowload" (click)="exportAsPDF(i)"><i class="fa fa-download"></i> Descargar</button>
+                    <p>TOKEN: {{qr.token}}</p>
+                    <button class="button1 btn btn-dowload" (click)="exportAsPDF(i)"><i class="fa fa-download"></i> Descargar</button>
 
                 </div>
 

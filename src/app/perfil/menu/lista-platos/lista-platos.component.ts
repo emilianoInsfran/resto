@@ -22,9 +22,14 @@ export class ListaPlatosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.getCategorias();
-
+    console.log("user?",this.utils.getIdResto())
+    if(this.utils.getIdResto() ){
+      //this.getQRMesas(this.utils.getIdResto().resto)
+      this.getCategorias(this.utils.getIdResto().resto);
+    }
+    else{
+      this.gotoPage('','login')
+    }
   }
 
   ngAfterViewInit() {
@@ -33,9 +38,9 @@ export class ListaPlatosComponent implements OnInit {
 
   //GET CATEGORIA
 
-  getCategorias(){
+  getCategorias(data){
     console.log("estoy en categorias GET");//_id que te genera mongo
-    let id = 1//userid
+    let id = data.id_admin//userid
     this.utils.getConfig(this.utils.urlDev()+'categoria/'+id)
       .subscribe((data) => {
         //this.showLoading = false;
@@ -62,7 +67,7 @@ export class ListaPlatosComponent implements OnInit {
   getPlatos(idCategoria){
     this._idCategoria = idCategoria;
     console.log("estoy en platos GET");//_id que te genera mongo
-    let id = 1//userid
+    let id = this.utils.getIdResto().resto.id_admin//userid
     this.utils.getConfig(this.utils.urlDev()+'plato/'+idCategoria+'/'+id)
       .subscribe((data) => {
         //this.showLoading = false;

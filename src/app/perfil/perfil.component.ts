@@ -12,7 +12,6 @@ export class PerfilComponent implements OnInit {
   constructor(private route:Router) { }
 
   ngOnInit(): void {
-    
   }
 
   upload(){
@@ -26,6 +25,7 @@ export class PerfilComponent implements OnInit {
   seccionPerfil(){
     this.showPerfil = true;
   }
+
   
   gotoPage(codigo,page){
     console.log(codigo);

@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { PopupComponent } from '../../popup/popup.component';
 import { SimpleModalService } from "ngx-simple-modal";
 import { UtilsService } from "../../utils.service";
- import  jspdf from 'jspdf';
- import html2canvas from 'html2canvas';
+import  jspdf from 'jspdf';
+import html2canvas from 'html2canvas';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-qr-generate',
@@ -14,14 +15,22 @@ export class QrGenerateComponent implements OnInit {
   cantidadMesas:number;
   arrayQRData:any=[];
   showGenerarPrimerasMesas: boolean = true;
-  constructor(private simpleModalService:SimpleModalService,public utils:UtilsService ) { }
+  constructor(private simpleModalService:SimpleModalService,public utils:UtilsService,private router:Router ) { }
 
   ngOnInit(): void {
-    this.getQR();
+
+    console.log("user?",this.utils.getIdResto())
+    if(this.utils.getIdResto() ){
+      this.getQR(this.utils.getIdResto().resto);
+    }
+    else{
+      this.gotoPage('','login')
+    }
+
   }
 
-  getQR(){
-    let id = 111//userid
+  getQR(data){
+    let id = data.id_admin//userid
     this.utils.getConfig(this.utils.urlDev()+'qr/'+id)
       .subscribe((data) => {
         //this.showLoading = false;
@@ -37,9 +46,8 @@ export class QrGenerateComponent implements OnInit {
       this.arrayQRData = data.qr;
     }else{
       this.showGenerarPrimerasMesas =true;
-
+      this.arrayQRData = [];
     }
-   
   }
 
   addMesa(){
@@ -51,7 +59,7 @@ export class QrGenerateComponent implements OnInit {
   }
 
   addQR(){
-    let codigoResto= 111;
+    let codigoResto= this.utils.getIdResto().resto.id_admin;
 
     for (let index = 0; index < this.cantidadMesas; index++) {
 
@@ -65,17 +73,18 @@ export class QrGenerateComponent implements OnInit {
     console.log("QR", this.arrayQRData);
 
     let formData = new FormData();
+    let obj = {
+      id_admin:codigoResto.toString(),
+      qrArray:this.arrayQRData
+    }
 
-    formData.append('id_admin',codigoResto.toString() );
-    formData.append('qrArray',this.arrayQRData);
-
-    this.utils.postConfig(this.utils.urlDev()+'qr',formData)
+    this.utils.postConfig(this.utils.urlDev()+'qr',obj)
       .subscribe(
         (data) => {
           console.log("data->",data);
           //this.showLoading =false;
           this.showConfirm('Se generaron correctamente :)');
-          this.getQR();
+          this.getQR(this.utils.getIdResto().resto);
         },
         err =>{
           console.log("ERROR",err);
@@ -104,7 +113,7 @@ export class QrGenerateComponent implements OnInit {
           console.log("data->",data);
           //this.showLoading =false;
           this.showConfirm('Se agrego correctamente :)');
-          this.getQR();
+          this.getQR(this.utils.getIdResto().resto);
         },
         err =>{
           console.log("ERROR",err);
@@ -202,7 +211,7 @@ export class QrGenerateComponent implements OnInit {
           (data) => {
             console.log("data->",data);
             this.showConfirm("Se elimino correctamente!")
-            this.getQR();
+            this.getQR(this.utils.getIdResto().resto);
           },
           err =>{
             console.log("ERROR",err);
@@ -237,6 +246,11 @@ export class QrGenerateComponent implements OnInit {
           //this.gotoPage('','listaplatos');
   
       },2000);
+    }
+
+    gotoPage(codigo,page){
+      console.log(codigo);
+      this.router.navigate([`${page}`])
     }
 
 }

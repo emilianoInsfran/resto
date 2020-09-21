@@ -28,7 +28,16 @@ export class CategoriaComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getCategorias();
+
+    console.log("user?",this.utils.getIdResto())
+    if(this.utils.getIdResto() ){
+      //this.getQRMesas(this.utils.getIdResto().resto)
+      this.getCategorias();
+    }
+    else{
+      this.gotoPage('','')
+    }
+
   }
 
   cambioCategoria(idCategoria){
@@ -39,7 +48,7 @@ export class CategoriaComponent implements OnInit {
 
   getCategorias(){
     console.log("estoy en categorias GET");//_id que te genera mongo
-    let id = 1//userid
+    let id = this.utils.getIdResto().resto.id_admin//userid
     this.utils.getConfig(this.utils.urlDev()+'categoria/'+id)
       .subscribe((data) => {
         //this.showLoading = false;
@@ -66,7 +75,7 @@ export class CategoriaComponent implements OnInit {
   getPlatos(){
 
     console.log("estoy en platos GET");//_id que te genera mongo
-    let id = 1//userid
+    let id = this.utils.getIdResto().resto.id_admin//userid
     this.utils.getConfig(this.utils.urlDev()+'allPlato/'+id)
       .subscribe((data) => {
         //this.showLoading = false;

@@ -51,9 +51,20 @@ export class AltaPlatosComponent implements OnInit {
   constructor(private route:Router, public utils:UtilsService,private simpleModalService:SimpleModalService) { }
 
   ngOnInit(): void {
+
+    console.log("user?",this.utils.getIdResto())
+    if(this.utils.getIdResto() ){
+      //this.getQRMesas(this.utils.getIdResto().resto)
+      this.getCategorias(this.utils.getIdResto().resto);
+      this.getTipoComida(this.utils.getIdResto().resto);
+    }
+    else{
+      this.gotoPage('','login')
+    }
+
     console.log("que trajo",this.utils.getData());
-    this.getCategorias();
-    this.getTipoComida();
+    //this.getCategorias();
+    //this.getTipoComida();
 
   }
   //mostrar list platos 
@@ -159,9 +170,9 @@ export class AltaPlatosComponent implements OnInit {
 
    //GET CATEGORIA
 
-   getCategorias(){
+   getCategorias(data){
     console.log("estoy en categorias GET");//_id que te genera mongo
-    let id = 1//userid
+    let id = data.id_admin//userid
     this.utils.getConfig(this.utils.urlDev()+'categoria/'+id)
       .subscribe((data) => {
         //this.showLoading = false;
@@ -208,6 +219,7 @@ export class AltaPlatosComponent implements OnInit {
   
         formData.append('upload',this.imagen  );
         formData.append('id_categoria',obj.categoria);
+        formData.append('id_admin',this.utils.getIdResto().resto.id_admin);
         formData.append('checkPlatoChico',obj.checkPlatoChico);
         formData.append('checkPlatoMediano',obj.checkPlatoMediano);
         formData.append('checkPlatoGrande',obj.checkPlatoGrande);
@@ -249,6 +261,7 @@ export class AltaPlatosComponent implements OnInit {
     let plato = this.altaPlatosForm.value;
 
     formData.append('id_categoria',plato.categoria);
+    formData.append('id_admin',this.utils.getIdResto().resto.id_admin);
     formData.append('checkPlatoChico',plato.checkPlatoChico);
     formData.append('checkPlatoMediano',plato.checkPlatoMediano);
     formData.append('checkPlatoGrande',plato.checkPlatoGrande);
@@ -371,9 +384,9 @@ export class AltaPlatosComponent implements OnInit {
 
     //GET TIPO COMIDA
 
-    getTipoComida(){
+    getTipoComida(data){
       console.log("estoy en categorias GET");//_id que te genera mongo
-      let id = 1//userid
+      let id = data.id_admin//userid
       this.utils.getConfig(this.utils.urlDev()+'categoria/'+id)
         .subscribe((data) => {
           //this.showLoading = false;

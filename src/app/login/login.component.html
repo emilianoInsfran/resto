@@ -17,11 +17,14 @@
                 </div>
 
                 <div class="input-wrapper">
-                    <input type="password"  [(ngModel)]="empresa.contrasenia"   name="pass" id="pass"  required >
+                    <input type="password"  [(ngModel)]="empresa.pass"   name="pass" id="pass"  required >
                     <label class="label" for="user">Contraseña </label>
                 </div>
 
                <div> <a >¿perdiste la contraseña?</a></div>
+               <div class="box-error-login">
+                 <p *ngIf="messageErroLogin" class="error  animate__animated animate__fadeInUp">  Usuario o Contraseña INCORRECTO </p>
+               </div>
 
                 <button class="button animate__animated"  [ngClass]="{'animate__pulse': changeText}" (mouseover)="changeText=true" (mouseout)="changeText=false" (click)='login()'> Entrar</button>
                 <div><a (click)="gotoPage('','')"> volver </a></div>

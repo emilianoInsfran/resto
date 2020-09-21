@@ -45,6 +45,10 @@ import { ListaPlatosComponent } from './perfil/menu/lista-platos/lista-platos.co
 import { TomarPedidosComponent } from './perfil/tomar-pedidos/tomar-pedidos.component';
 import { QrGenerateComponent } from './perfil/qr-generate/qr-generate.component';
 
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+
 const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
   // Change this to your Google API key
   apiKey: 'AIzaSyAUu7TIQH7gWrFVTAZrYnAV13hWjpue-EQ'
@@ -91,6 +95,7 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     BrowserAnimationsModule,
     TagInputModule,
     QrCodeModule,
+    SocketIoModule.forRoot(config),
     NgMultiSelectDropDownModule.forRoot()
   ],
   entryComponents: [

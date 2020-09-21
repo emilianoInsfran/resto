@@ -21,6 +21,8 @@ export class PopupComponent extends SimpleModalComponent<ConfirmModel, boolean> 
   message: string;
   opciones: string;
   categoria:string;
+  nombreCliente:string;
+  tokenPedido:string;
   constructor( private utils:UtilsService) {
     super();
   }
@@ -28,6 +30,12 @@ export class PopupComponent extends SimpleModalComponent<ConfirmModel, boolean> 
     // we set modal result as true on click on confirm button,
     // then we can get modal result from caller code
     this.utils.setData({categoria:data})
+    this.result = true;
+    this.close();
+  }
+
+  token(nombre,token){
+    this.utils.setData({nombre:nombre,token:token})
     this.result = true;
     this.close();
   }

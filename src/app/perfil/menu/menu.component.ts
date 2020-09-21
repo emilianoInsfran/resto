@@ -30,7 +30,14 @@ export class MenuComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getCategorias();
+    console.log("user?",this.utils.getIdResto())
+    if(this.utils.getIdResto() ){
+      //this.getQRMesas(this.utils.getIdResto().resto)
+      this.getCategorias(this.utils.getIdResto().resto);
+    }
+    else{
+      this.gotoPage('','login')
+    }
   }
 
   agregarPlato(page,categoria){
@@ -119,9 +126,9 @@ export class MenuComponent implements OnInit {
 
   //GET CATEGORIA
 
-  getCategorias(){
+  getCategorias(data){
     console.log("estoy en categorias GET");//_id que te genera mongo
-    let id = 1//userid
+    let id = data.id_admin//userid
     this.utils.getConfig(this.utils.urlDev()+'categoria/'+id)
       .subscribe((data) => {
         //this.showLoading = false;
@@ -139,6 +146,7 @@ export class MenuComponent implements OnInit {
     console.log("estoy en categorias POST",categoria);
 
       let data = {
+        'id_admin':this.utils.getIdResto().resto.id_admin,
         'nombre':categoria
       }
 
@@ -148,7 +156,7 @@ export class MenuComponent implements OnInit {
 
             console.log("data ok ->",data);
             this.showConfirmOK('La categoria se guardo correctamente!');
-            this.getCategorias();
+            this.getCategorias(this.utils.getIdResto().resto);
 
             //this.saveImg(formDatCategoria)
 
@@ -172,7 +180,7 @@ export class MenuComponent implements OnInit {
         (data) => {
           console.log("data->",data);
           this.showConfirmOK("Se elimino correctamente!")
-          this.getCategorias();
+          this.getCategorias(this.utils.getIdResto().resto);
         },
         err =>{
           console.log("ERROR",err);

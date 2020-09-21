@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router'; 
 import { PopupComponent } from '../popup/popup.component';
 import { SimpleModalService } from "ngx-simple-modal";
+import { UtilsService } from "../utils.service";
 
 @Component({
   selector: 'app-registro',
@@ -35,7 +36,7 @@ export class RegistroComponent implements OnInit {
 
   });
 
-  constructor(private route:Router,private simpleModalService:SimpleModalService) { }
+  constructor(private route:Router,private simpleModalService:SimpleModalService,public utils:UtilsService) { }
 
   ngOnInit(): void {
   }
@@ -61,7 +62,55 @@ export class RegistroComponent implements OnInit {
     console.log('pass=>',this.registro.pass);
     console.log('repetirPass=>', this.registro.repetirPass);
     console.log('=>',this.profileForm.value);
-    this.showConfirm();
+
+    let obj  = {
+      id_admin:this.randomizeInteger(100, 999),
+      nombre: this.profileForm.value.nombre,
+      razon_social:this.profileForm.value.razonSocial ,
+      direccion:this.profileForm.value.direccion ,
+      telefono:this.profileForm.value.telefono ,
+      email: this.profileForm.value.email,  
+      password: this.registro.pass,
+    }
+
+    this.postResto(obj);
+
+  }
+
+  randomizeInteger(min, max) {
+  	if(max == null) {
+    	max = (min == null ? Number.MAX_SAFE_INTEGER : min);
+      	min = 0;
+    }
+
+    min = Math.ceil(min);  // inclusive min
+    max = Math.floor(max); // exclusive max
+
+  	if(min > max - 1) {
+    	throw new Error("Incorrect arguments.");
+    }
+
+    return min + Math.floor((max - min + 1) * Math.random());
+  }
+
+
+
+  postResto(obj) {
+    //this.showLoading =true;
+    console.log("formData",obj);
+  
+    this.utils.postConfig(this.utils.urlDev()+'resto',obj)
+        .subscribe(
+          (data) => {
+            console.log("data registro->",data);
+
+            this.showConfirm();
+          },
+          err =>{
+            console.log("ERROR",err);
+            alert(err);
+          }
+    );
   }
 
   showConfirm() {

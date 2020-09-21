@@ -1,12 +1,12 @@
 <div class="container">
     <header class="scroll">
         <div class="img imagen-bar"></div>
+
+
         <ul class="nav nav-tabs" id="myTab" role="tablist" *ngIf="getPlatosData.length > 0">
-           
             <li class="nav-item"  *ngFor="let data of getPlatosData; let i = index" (click)="cambioCategoria(i)">
               <a class="nav-link "  [ngClass]="{ active: i == categoriaSeleccionada }"   id="{{i}}-tab" data-toggle="tab" href="#{{i}}" role="tab"  [attr.aria-label]="i"  aria-selected="true">{{data.nombre}}</a>
             </li>
-
         </ul>
     
     </header>

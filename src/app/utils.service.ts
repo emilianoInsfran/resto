@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Socket } from 'ngx-socket-io';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,11 @@ export class UtilsService {
 	agregarPlatos:string = '-';
 	arrayPlatosPedidos=[];
 	masPedido:boolean=false;
+	idRestoChat:any;
+	restoCliente:any;
+	restoClienteCodigo:string;
 	private header = new HttpHeaders({ 'content-type': 'application/json','Access-Control-Allow-Origin':'*' });
-	constructor(private http: HttpClient) { }
+	constructor(private http: HttpClient,private socket: Socket) { }
 
 	setData(data){
 		this.data = data;
@@ -49,7 +53,6 @@ export class UtilsService {
 	//service
 
 	getConfig(url) {
-		console.log("url",url);
 		return this.http.get(url);
 	}
 
@@ -91,5 +94,38 @@ export class UtilsService {
 	setMasPedidos(data){
 		this.masPedido = data;
 	}
+
+	
+	//maspedidos restoCliente
+
+	getIdResto(){
+		console.log("utils2",this.idRestoChat);
+		return this.idRestoChat;
+	}
+
+	setIdResto(data){
+		this.idRestoChat = data;
+		console.log("utils",this.idRestoChat);
+	}
+
+	//maspedidos restoCliente
+
+	getIdRestoCliente(){
+		return this.restoCliente;
+	}
+
+	setIdRestoCliente(data){
+		this.restoCliente = data;
+	}
+	getIdRestoClienteCodigo(){
+		return this.restoClienteCodigo;
+	}
+
+	setIdRestoClienteCodigo(data){
+		this.restoClienteCodigo = data;
+	}
+
+
+
 
 }

@@ -7,7 +7,7 @@
 
 </zxing-scanner>
 <div class="img"></div>
-
+<p *ngIf="messageErroLogin">UPS! Algo salió mal, intenta denuevo. </p>
 <section class="results" *ngIf="qrResultString">
     <h5 *ngIf="showMessage">{{message}}</h5>
     <section>

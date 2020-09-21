@@ -1,0 +1,111 @@
+
+.mesa {
+    border: 1px solid #d0cfcf;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    .opciones-colapse {
+        text-align: center;
+        color: #0abbbb;
+        padding: 5px;
+        margin-top: 5px;
+        border-top: 1px solid #d2d2d2;
+    }
+    .opciones-plato{
+        border: 1px solid #d0cfcf;
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .name{
+        position: relative;
+
+        .box-estados {
+            position: absolute;
+            top: 8px;
+            right: 0;
+
+            .circle {
+                height: 15px;
+                width: 15px;
+                border-radius: 50%;
+                border: 1px solid #c5c5c5;
+                display: inline-block;
+                margin-right: 5px;
+            }
+        }
+    }
+}
+
+.red {
+    background-color: red;
+}
+.yellow {
+    background-color: #d4d401;
+}
+.orange {
+    background-color: orange;
+}
+.green {
+    background-color: green;
+}
+
+
+.no-mesas {
+    text-align: center;
+
+    a {
+        color: orange;
+        cursor: pointer;
+    }
+}
+
+
+h5,h3 {
+    text-align: center;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+    li{
+        width: max-content;
+        display: inline-block;
+        padding: 0 10px;
+        border-left:1px solid gray;
+    }
+}
+
+.is-mobile{display: none;}
+.is-descktop{display: inline-block;}
+
+
+.checkbox {
+    span {
+        position: relative;
+        left: 20px;
+        top: -6px;
+    }
+}
+
+@media (max-width: 700px) { 
+    .is-mobile{display: inline-block  !important;}
+    .is-descktop{display: none !important;}
+
+    .name{
+        margin: auto;
+        text-align: center;
+        width: 100%;
+
+        .box-estados {
+            position: relative !important;
+            top: 0 !important;
+            right: 0 !important;
+            text-align: center;
+            margin: auto;
+            width: 100%;
+        }
+    }
+}
+
