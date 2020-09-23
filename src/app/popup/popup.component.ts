@@ -23,6 +23,8 @@ export class PopupComponent extends SimpleModalComponent<ConfirmModel, boolean> 
   categoria:string;
   nombreCliente:string;
   tokenPedido:string;
+  codigoMesa:number;
+  aceptarCodigo:boolean = false;
   constructor( private utils:UtilsService) {
     super();
   }
@@ -38,5 +40,14 @@ export class PopupComponent extends SimpleModalComponent<ConfirmModel, boolean> 
     this.utils.setData({nombre:nombre,token:token})
     this.result = true;
     this.close();
+  }
+
+  sendCodigoMesa(){
+    if(this.codigoMesa.toString().length == 4 && this.codigoMesa){
+      this.utils.setCodigoMesa(this.codigoMesa);
+      this.result = true;
+      this.close();
+    }
+
   }
 }

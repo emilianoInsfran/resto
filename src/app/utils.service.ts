@@ -15,6 +15,8 @@ export class UtilsService {
 	restoClienteCodigo:string;
 	servicePedido:number=0;
 	callService:boolean = true;
+	typeLogin:boolean = false //si es qr es false y me logie con codigo es true
+	codigoMesa:string;
 	private header = new HttpHeaders({ 'content-type': 'application/json','Access-Control-Allow-Origin':'*' });
 	constructor(private http: HttpClient) { }
 
@@ -26,14 +28,27 @@ export class UtilsService {
 		return this.data;
 	}
 
+	setTypeLogin(data){
+		this.typeLogin = data;
+	}
+
+	getTypeLogin(){
+		return this.typeLogin;
+	}
+
 	//pedidos
 	setMessageTotal(data){
+		console.log('data-->**',data);
+
 		this.agregarPlatos = data;
 	}
 
 	getMessageTotal(){
+		console.log('-->**',this.agregarPlatos);
 		return this.agregarPlatos;
 	}
+
+	//-
 
 	setPlatosPedidos(data){
 		this.arrayPlatosPedidos.push(data);
@@ -126,7 +141,7 @@ export class UtilsService {
 		this.restoClienteCodigo = data;
 	}
 
-	callServicePedidoInit(){
+	callServicePedidoInit(){//evita que se sume el time y se llame cada vez mas rapido
 		return this.servicePedido;
 	}
 	setCallServicePedidoInit(data){
@@ -136,8 +151,17 @@ export class UtilsService {
 	isCallservicePedido(){
 		return this.callService
 	}
+	
 	setIsCallservicePedido(data){
 		this.callService = data
+	}
+
+	//entre por codigo resto y ahora tengo que ingresar el codigo de mesa para comletar el codigo  ej 100.100.1
+	setCodigoMesa(data){
+		this.codigoMesa = data
+	}
+	getCodigoMesa(){
+		return this.codigoMesa;
 	}
 
 

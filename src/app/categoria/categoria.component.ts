@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { UtilsService } from '../../app/utils.service';
+import { PopupComponent } from '../popup/popup.component';
+import { SimpleModalService } from "ngx-simple-modal";
 
 @Component({
   selector: 'app-categoria',
@@ -19,7 +21,7 @@ export class CategoriaComponent implements OnInit {
     {}
   ];
   
-  constructor(private route:Router, public utils:UtilsService  ) {
+  constructor(private route:Router, public utils:UtilsService,private simpleModalService:SimpleModalService  ) {
   }
 
   ngAfterViewInit() {
@@ -107,9 +109,33 @@ export class CategoriaComponent implements OnInit {
   }
 
   gotoPage(codigo,page){
-    console.log(codigo);
+    if(this.utils.getTypeLogin()){
+      this.setTipoPedido('Selecciona el tipo de pedido')
+    }
     this.utils.setData(codigo);
     this.route.navigate([`${page}`])
+  }
+
+  setTipoPedido(message) {
+    let disposable = this.simpleModalService.addModal(PopupComponent, {
+      title: 'Confirm title',
+      message: message,
+      opciones:'tipoPedido',
+    })
+    .subscribe((isConfirmed)=>{
+        //We get modal result
+        console.log('-',isConfirmed);
+        if(isConfirmed) {
+            console.log("pedido",this.utils.getIdRestoClienteCodigo(),this.utils.getCodigoMesa());
+            let codigo = this.utils.getIdRestoClienteCodigo().toString()+'.'+this.utils.getCodigoMesa().toString().slice(0, 3)+'.'+this.utils.getCodigoMesa().toString()[3];
+            console.log('codigo',codigo);
+            this.utils.setIdRestoClienteCodigo(codigo);
+            this.utils.setTypeLogin(false);
+        }
+        else {
+        }
+    });
+
   }
 
 }

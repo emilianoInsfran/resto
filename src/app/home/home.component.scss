@@ -77,6 +77,19 @@ footer{
 
 }
 
+.message-error {
+    color: red;
+}
+
+.spinner-login {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: orange;
+}
+
 
 @media (max-width: 700px) { 
     p {

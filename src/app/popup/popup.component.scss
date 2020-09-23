@@ -48,6 +48,39 @@
     }
 }
 
+#button-ok{
+    width: 100% !important;
+    margin-bottom: 20px ;
+    height: 35px;
+    padding: 0;
+}
+.btn-box {
+    margin: 0;
+    padding: 0;
+    padding-top: 17px;
+
+    .ml{
+        margin-left: 0px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    .mr{
+        margin-right: 0px !important;
+    }
+
+    .volver {
+        text-align: center;
+        width: 100%;
+        margin-top: 16px;
+        cursor: pointer;
+        color: orange;
+    }
+}
+
+.heigth-type-pedido {
+    height: 29vh !important;
+}
+
 @media (max-width: 700px) { 
     .agregar{
         margin-top: 40%;

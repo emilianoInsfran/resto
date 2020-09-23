@@ -359,7 +359,8 @@ export class PedidoComponent implements OnInit {
     this.unidades=0;
     this.utils.resetArrayPedido();
     this.utils.setMessageTotal('-');
-    this.gotoPage('','categoria');
+    this.route.navigate(['categoria']);
+
     //this.showConfirmOK('Su pedido fue confirmado! :)');
   }
 
@@ -418,14 +419,7 @@ export class PedidoComponent implements OnInit {
             alert('declined');
         }
     });
-    //We can close modal calling disposable.unsubscribe();
-    //If modal was not closed manually close it by timeout
-    //setTimeout(()=>{
-        //disposable.unsubscribe();
 
-        //this.route.navigate(['categoria'])
-        
-    //},2000);
   }
 
   

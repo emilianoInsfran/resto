@@ -4,11 +4,12 @@
     <h1 class="animate__animated animate__bounce">Resto</h1>
     <form action="" #form="ngForm" autocomplete="off">
         <div class="input-wrapper">
-            <input type="number" [value]="fieldvalue" [(ngModel)]="user.codigo" max="3" (keyup)="keyPress($event.target.value)"  name="code" id="user" (focus)="showCookies()"  (blur)="hideCookies()"  required >
+            <input type="number" [disabled]="loading" [value]="fieldvalue" [(ngModel)]="user.codigo" max="3" (keyup)="keyPress($event.target.value)"  name="code" id="user" (focus)="showCookies()"  (blur)="hideCookies()"  required >
             <label class="label" for="user">Codigo </label>
+            <div class="spinner-border spinner-login" *ngIf="loading" role="status">  </div>
             <i class="fa fa-qrcode" aria-hidden="true" (click)="gotoPage('','scanner')"></i>
         </div>
-
+        <div *ngIf="messageErroLogin" class="message-error animate__animated animate__fadeInUp">Ups! algo salío mal, intente nuevamente.</div>
     </form>
 
     <span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=fYFYDhMli9Ipck2Eu0JIvt5oomW8vx96KC6lO06dYUmyeKA6UMfV0c6lfDFz"></script></span>
