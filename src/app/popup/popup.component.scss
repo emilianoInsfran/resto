@@ -78,7 +78,13 @@
 }
 
 .heigth-type-pedido {
-    height: 29vh !important;
+    height: 286px!important;
+    h4 {
+        font-size: 1em;
+    }
+    input {
+        width: 100%;
+    }
 }
 
 @media (max-width: 700px) { 

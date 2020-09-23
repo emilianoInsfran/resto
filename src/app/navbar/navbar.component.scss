@@ -58,6 +58,22 @@ nav {
 
 }
 
+.sub-menu-icon {
+    ul {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        text-align: center;
+
+        .content-submenu{
+            height: 50vh;
+            overflow-y: scroll;
+            width: 100%;
+        }
+    }
+
+}
+
 .img {
     background-position: center;
     background-size: cover;

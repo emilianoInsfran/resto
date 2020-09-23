@@ -110,13 +110,16 @@ export class CategoriaComponent implements OnInit {
 
   gotoPage(codigo,page){
     if(this.utils.getTypeLogin()){
-      this.setTipoPedido('Selecciona el tipo de pedido')
+      this.setTipoPedido('Selecciona el tipo de pedido',codigo,page);
+    }else{
+      this.utils.setData(codigo);
+      this.route.navigate([`${page}`])
     }
-    this.utils.setData(codigo);
-    this.route.navigate([`${page}`])
+
   }
 
-  setTipoPedido(message) {
+  setTipoPedido(message,codigo,page) {
+    console.log('datos',codigo,page)
     let disposable = this.simpleModalService.addModal(PopupComponent, {
       title: 'Confirm title',
       message: message,
@@ -126,11 +129,12 @@ export class CategoriaComponent implements OnInit {
         //We get modal result
         console.log('-',isConfirmed);
         if(isConfirmed) {
-            console.log("pedido",this.utils.getIdRestoClienteCodigo(),this.utils.getCodigoMesa());
-            let codigo = this.utils.getIdRestoClienteCodigo().toString()+'.'+this.utils.getCodigoMesa().toString().slice(0, 3)+'.'+this.utils.getCodigoMesa().toString()[3];
-            console.log('codigo',codigo);
-            this.utils.setIdRestoClienteCodigo(codigo);
+            let codigoFinal = this.utils.getIdRestoClienteCodigo().toString()+'.'+this.utils.getCodigoMesa().toString().slice(0, 3)+'.'+this.utils.getCodigoMesa().toString()[3];
+            console.log('codigo',codigoFinal);
+            this.utils.setIdRestoClienteCodigo(codigoFinal);
             this.utils.setTypeLogin(false);
+            this.utils.setData(codigo);
+            this.route.navigate([`${page}`])
         }
         else {
         }

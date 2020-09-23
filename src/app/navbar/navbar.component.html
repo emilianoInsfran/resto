@@ -29,7 +29,7 @@
             </li>
 
         </ul>
-        <form class="form-inline my-2 my-lg-0">
+        <form class="form-inline my-2 my-lg-0 sub-menu-icon">
             <ul class="navbar-nav mr-auto ">
                 <li class="nav-item dropdown ">
 
@@ -37,7 +37,9 @@
                         <div class="img imagen-bar"></div>
                     </a>
 
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu content-submenu " aria-labelledby="navbarDropdown"> 
+                        <a class="dropdown-item" >RESTO #{{idResto}}</a>
+                        <div class="dropdown-divider"></div> 
                         <a class="dropdown-item" (click)="gotoPage('','perfil')">Perfil</a>
                         <div class="dropdown-divider"></div>
                         <a  class="dropdown-item"  (click)="gotoPage('','login')"> Resto</a>
