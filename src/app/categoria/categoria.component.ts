@@ -104,7 +104,7 @@ export class CategoriaComponent implements OnInit {
   }
   
   preArmadoObj(){
-    //no es el mismo objeto que viene del service y que armo del front (plato y categoria)
+    //no es el mismo objeto que viene del service y que armo del front (plato y categoria) 658
     return [];
   }
 

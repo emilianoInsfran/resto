@@ -23,62 +23,63 @@
                         <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
                         <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
                       </svg> Actualizar TOKEN</a>
+                      <br>
+                    <a (click)="cerrarMesa(codigo.qr,codigo._id)">Cerrar Mesa</a>
                 </div>
     
                 <div class="col-12 col-md-10 col-xs-12 box-content-platos"  *ngIf="codigo.pedidos.length != 0" >
 
                     <div  *ngFor="let plato of codigo.pedidos; let i = index">
                             <h5  class="name">{{plato.nombre}} - Cantidad: {{plato.cantidad}}
-                              <div class="box-estados is-descktop">
-                                    <div class="circle" [ngClass]="{'red': plato.estado == 'pedido'}"></div>
-                                    <div class="circle" [ngClass]="{'yellow': plato.estado == 'confirmado'}"></div>
-                                    <div class="circle" [ngClass]="{'orange': plato.estado == 'preparacion'}"></div>
-                                    <div class="circle" [ngClass]="{'green': plato.estado == 'elaborado'}"></div>
-                                </div> 
-                            </h5>
-                            <div class="name is-mobile">
-                                <div class="box-estados ">
-                                    <div class="circle" [ngClass]="{'red': plato.estado == 'pedido'}"></div>
-                                    <div class="circle" [ngClass]="{'yellow': plato.estado == 'confirmado'}"></div>
-                                    <div class="circle" [ngClass]="{'orange': plato.estado == 'preparacion'}"></div>
-                                    <div class="circle" [ngClass]="{'green': plato.estado == 'elaborado'}"></div>
-                                </div>
-                            </div>
+                                <div class="box-estados is-descktop">
+                                      <div class="circle" [ngClass]="{'red': plato.estado == 'pedido'}"></div>
+                                      <div class="circle" [ngClass]="{'yellow': plato.estado == 'confirmado'}"></div>
+                                      <div class="circle" [ngClass]="{'orange': plato.estado == 'preparacion'}"></div>
+                                      <div class="circle" [ngClass]="{'green': plato.estado == 'elaborado'}"></div>
+                                  </div> 
+                              </h5>
+                              <div class="name is-mobile">
+                                  <div class="box-estados ">
+                                      <div class="circle" [ngClass]="{'red': plato.estado == 'pedido'}"></div>
+                                      <div class="circle" [ngClass]="{'yellow': plato.estado == 'confirmado'}"></div>
+                                      <div class="circle" [ngClass]="{'orange': plato.estado == 'preparacion'}"></div>
+                                      <div class="circle" [ngClass]="{'green': plato.estado == 'elaborado'}"></div>
+                                  </div>
+                              </div>
+  
+      
+                              <!-- <div class="collapse option-box" id="a{{j}}{{i}}"  > -->
+                              <div class="row">
+                                  <div class="col-12 col-md-8 col-xs-12">
+                                      <div class="opciones-plato row" *ngFor="let opciones of plato.informacion; let x = index">
+                                          <div  class="col-12 col-md-8 " >
+                                              <span><strong>Para:</strong> {{plato.para}}</span><br>
+                                              <span><strong>Tamaño:</strong> {{opciones.size}}</span><br>
+                                              <span><strong>Sin:</strong> </span>
+                                              <ul *ngIf="opciones.sinIngredientes.length > 0">
+                                                  <li  *ngFor="let ingrediente of opciones.sinIngredientes; let x = index" [hidden]="!ingrediente.disabled">
+                                                      {{ingrediente.nombre}}
+                                                  </li>
+                                              </ul>
+                                              <span *ngIf="opciones.sinIngredientes.length == 0">-</span>
+                  
+                                              <p><strong>Descripción: </strong>  <span *ngIf="opciones.detalle != ''">{{opciones.detalle}}</span><span *ngIf="opciones.detalle == ''"> -</span></p>
+                  
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-12 col-md-4 col-xs-12 checkbox ">
+                                      <div><input type="checkbox" id="pedido" [value]="pedido" [ngModel]="plato.estado == 'pedido'" (click)="updateEstado('pedido',plato._id)"><span>Pedido</span> </div>
+                                      <div><input type="checkbox" id="confirmado" [value]="confirmado" [ngModel]="plato.estado == 'confirmado'" (click)="updateEstado('confirmado',plato._id)"><span>Confirmado</span></div>
+                                      <div><input type="checkbox" id="preparacion" [value]="preparacion" [ngModel]="plato.estado == 'preparacion'" (click)="updateEstado('preparacion',plato._id)"><span>en Preparación</span></div>
+                                      <div><input type="checkbox" id="elaborado" [value]="elaborado" [ngModel]="plato.estado == 'elaborado'" (click)="updateEstado('elaborado',plato._id)"><span>Elaborado</span></div>
+                                  </div>
+                              </div>
+  
+                              <!-- </div> -->
+                              <!-- <div class="opciones-colapse " data-toggle="collapse" [attr.href]="'#'+'a'+j+i" role="button" aria-expanded="false" [attr.aria-controls]="'a'+j+i" ><a >DETALLE</a></div> -->
 
-    
-                            <!-- <div class="collapse option-box" id="a{{j}}{{i}}"  > -->
-                            <div class="row">
-                                <div class="col-12 col-md-8 col-xs-12">
-                                    <div class="opciones-plato row" *ngFor="let opciones of plato.informacion; let x = index">
-                                        <div  class="col-12 col-md-8 " >
-                                            <span><strong>Para:</strong> {{plato.para}}</span><br>
-                                            <span><strong>Tamaño:</strong> {{opciones.size}}</span><br>
-                                            <span><strong>Sin:</strong> </span>
-                                            <ul *ngIf="opciones.sinIngredientes.length > 0">
-                                                <li  *ngFor="let ingrediente of opciones.sinIngredientes; let x = index" [hidden]="!ingrediente.disabled">
-                                                    {{ingrediente.nombre}}
-                                                </li>
-                                            </ul>
-                                            <span *ngIf="opciones.sinIngredientes.length == 0">-</span>
-                
-                                            <p><strong>Descripción: </strong>  <span *ngIf="opciones.detalle != ''">{{opciones.detalle}}</span><span *ngIf="opciones.detalle == ''"> -</span></p>
-                
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-4 col-xs-12 checkbox ">
-                                    <div><input type="checkbox" id="pedido" [value]="pedido" [ngModel]="plato.estado == 'pedido'" (click)="updateEstado('pedido',plato._id)"><span>Pedido</span> </div>
-                                    <div><input type="checkbox" id="confirmado" [value]="confirmado" [ngModel]="plato.estado == 'confirmado'" (click)="updateEstado('confirmado',plato._id)"><span>Confirmado</span></div>
-                                    <div><input type="checkbox" id="preparacion" [value]="preparacion" [ngModel]="plato.estado == 'preparacion'" (click)="updateEstado('preparacion',plato._id)"><span>en Preparación</span></div>
-                                    <div><input type="checkbox" id="elaborado" [value]="elaborado" [ngModel]="plato.estado == 'elaborado'" (click)="updateEstado('elaborado',plato._id)"><span>Elaborado</span></div>
-                                </div>
-                            </div>
-
-                            <!-- </div> -->
-                            <!-- <div class="opciones-colapse " data-toggle="collapse" [attr.href]="'#'+'a'+j+i" role="button" aria-expanded="false" [attr.aria-controls]="'a'+j+i" ><a >DETALLE</a></div> -->
-    
                     </div>
-
                 </div>
 
                 <div  class="col-12 col-md-10 col-xs-12"  *ngIf="codigo.pedidos.length == 0">

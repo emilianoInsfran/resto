@@ -50,4 +50,9 @@ export class PopupComponent extends SimpleModalComponent<ConfirmModel, boolean> 
     }
 
   }
+
+  cerrarMesa(){
+    this.result = true;
+    this.close();
+  }
 }

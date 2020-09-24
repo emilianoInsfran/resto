@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { UtilsService } from '../../../app/utils.service';
 import { Router } from '@angular/router'; 
+import { SimpleModalService } from "ngx-simple-modal";
+import { PopupComponent } from '../../popup/popup.component';
 
 @Component({
   selector: 'app-tomar-pedidos',
@@ -19,7 +21,7 @@ export class TomarPedidosComponent implements OnInit {
   preparacion:boolean;
   elaborado:boolean;
 
-  constructor(private utils:UtilsService,private route:Router) { 
+  constructor(private utils:UtilsService,private route:Router,private simpleModalService:SimpleModalService) { 
   }
 
   ngOnInit() {
@@ -32,7 +34,7 @@ export class TomarPedidosComponent implements OnInit {
   setPedidoMesas(){
     for (let i = 0; i < this.getArrayCodigo.length; i++) {
       for (let index = 0; index < this.getArrayPedido.length; index++) {
-        if(this.getArrayPedido[index].codigo.split('.')[0] == this.getArrayCodigo[i].qr.split('.')[0] && this.getArrayPedido[index].codigo.split('.')[1] == this.getArrayCodigo[i].qr.split('.')[1]){
+        if(this.getArrayPedido[index].codigo.split('.')[0] == this.getArrayCodigo[i].qr.split('.')[0] && this.getArrayPedido[index].codigo.split('.')[1] == this.getArrayCodigo[i].qr.split('.')[1] && this.getArrayPedido[index].estado != 'cerrado'  ){
           this.getArrayCodigo[i].pedidos.push(this.getArrayPedido[index]);
         }
       }
@@ -150,6 +152,28 @@ export class TomarPedidosComponent implements OnInit {
   }
   //--
 
+  //POST 
+  cerrarMesa(qrCode,idToken){
+    this.showConfirm(qrCode,idToken)
+  }
+
+  cerrarMesaConfirmada(qrCode,idToken){
+ 
+    this.utils.putConfig(this.utils.urlDev()+'cerrarMesa/'+qrCode,{})
+    .subscribe(
+      (data) => {
+        console.log("cerrarMesa   OK   ->",data);
+        this.updateToken(idToken);
+      },
+      err =>{
+        //this.showLoading =false;
+        console.log("ERROR",err);
+        this.warning('Algo salío mal intente nuevamente')
+      }
+
+    );
+  }
+
   clean(){
     for (let i = 0; i < this.getArrayCodigo.length; i++) {
       for (let index = 0; index < this.getArrayPedido.length; index++) {
@@ -170,4 +194,47 @@ export class TomarPedidosComponent implements OnInit {
     this.utils.setIsCallservicePedido(false);
     this.utils.setCallServicePedidoInit(-1);
   }
+
+    //popup
+    showConfirm(qrCode,token) {
+      let disposable = this.simpleModalService.addModal(PopupComponent, {
+        title: 'Confirm title',
+        message: '¿Seguro que queres cerrar la mesa?',
+        opciones:'cerrarMesa',
+      })
+      .subscribe((isConfirmed)=>{
+          //We get modal result
+          console.log('-',isConfirmed);
+          if(isConfirmed) {
+            this.cerrarMesaConfirmada(qrCode,token);
+          }
+          else {
+              alert('declined');
+          }
+      });
+    }
+  
+     //popup
+     warning(message) {
+      let disposable = this.simpleModalService.addModal(PopupComponent, {
+        title: 'Confirm title',
+        message: message,
+        opciones:'warning',
+      })
+      .subscribe((isConfirmed)=>{
+          //We get modal result
+          console.log('-',isConfirmed);
+          if(isConfirmed) {
+              //this.gotoPage('','perfil');
+          }
+          else {
+              alert('declined');
+          }
+      });
+      //We can close modal calling disposable.unsubscribe();
+      //If modal was not closed manually close it by timeout
+      setTimeout(()=>{
+          disposable.unsubscribe();
+      },4000);
+    }
 }

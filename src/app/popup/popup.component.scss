@@ -87,6 +87,17 @@
     }
 }
 
+.cerrar-mesa {
+    .volver {
+        margin-top: 24px;
+    }
+    h4{
+        font-size: 1em;
+        color: gray;
+    }
+
+}
+
 @media (max-width: 700px) { 
     .agregar{
         margin-top: 40%;

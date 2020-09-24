@@ -96,3 +96,17 @@
 
     </div>
 </div>
+
+<div class="modal-content agregar container cerrar-mesa" *ngIf="opciones == 'cerrarMesa'">
+  <div class="modal-header">
+    <h4>{{message }}</h4>
+  </div> 
+  <div class="modal-body">
+    <button type="button"class="button1 "(click)="cerrarMesa()" >aceptar</button>
+
+    <div class="volver">
+      <a (click)="close()" >Volver </a>
+
+    </div>
+  </div>
+</div>
