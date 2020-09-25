@@ -99,8 +99,6 @@ export class UtilsService {
 		return 'https://serviceresto.herokuapp.com/';
 	
 	}
-
-
 	//maspedidos
 
 	getMasPedidos(){
@@ -110,8 +108,6 @@ export class UtilsService {
 	setMasPedidos(data){
 		this.masPedido = data;
 	}
-
-	
 	//maspedidos restoCliente
 
 	getIdResto(){

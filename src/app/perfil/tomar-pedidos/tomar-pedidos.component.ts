@@ -34,10 +34,11 @@ export class TomarPedidosComponent implements OnInit {
   setPedidoMesas(){
     for (let i = 0; i < this.getArrayCodigo.length; i++) {
       for (let index = 0; index < this.getArrayPedido.length; index++) {
-        if(this.getArrayPedido[index].codigo.split('.')[0] == this.getArrayCodigo[i].qr.split('.')[0] && this.getArrayPedido[index].codigo.split('.')[1] == this.getArrayCodigo[i].qr.split('.')[1] && this.getArrayPedido[index].estado != 'cerrado'  ){
+        if(this.getArrayPedido[index].codigo.split('.')[0] == this.getArrayCodigo[i].qr.split('.')[0] && this.getArrayPedido[index].codigo.split('.')[1] == this.getArrayCodigo[i].qr.split('.')[1]   ){
           this.getArrayCodigo[i].pedidos.push(this.getArrayPedido[index]);
         }
       }
+
     }
     console.log("=>",this.getArrayCodigo)
   }
@@ -102,11 +103,12 @@ export class TomarPedidosComponent implements OnInit {
   }
 
   getArrayPedidos(data){
+ 
     this.getArrayPedido = data.pedido;
     this.clean()
     this.setPedidoMesas();
+ 
   }
-
 
 
   //PUT 
@@ -164,6 +166,7 @@ export class TomarPedidosComponent implements OnInit {
       (data) => {
         console.log("cerrarMesa   OK   ->",data);
         this.updateToken(idToken);
+        this.resetpedidosCerrarMesa(qrCode);
       },
       err =>{
         //this.showLoading =false;
@@ -172,6 +175,16 @@ export class TomarPedidosComponent implements OnInit {
       }
 
     );
+  }
+
+  
+  resetpedidosCerrarMesa(qrCode){
+    console.log("qrCode",qrCode,this.getArrayCodigo)
+    for (let i = 0; i < this.getArrayCodigo.length; i++) {
+      if(this.getArrayCodigo[i].qr == qrCode){
+        this.getArrayCodigo[i].pedidos = [];
+      }
+    }
   }
 
   clean(){

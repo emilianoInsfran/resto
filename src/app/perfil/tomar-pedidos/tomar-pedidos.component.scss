@@ -1,4 +1,7 @@
 
+h1,h2,h3,h4,h5,p,span,a,button{
+    font-family: 'Roboto', sans-serif !important;
+}
 .mesa {
     border: 1px solid #d0cfcf;
     padding: 10px;
@@ -48,6 +51,18 @@
         font-size: 0.8em;
         color: #007bff;
         cursor: pointer;
+    }
+}
+
+.box-token-mesa {
+    border: 1px solid orange;
+    padding: 5px;
+    border-radius: 9px;
+    margin-bottom: 3px;
+    color: #352c2c;
+
+    p {
+        margin: 0;
     }
 }
 
