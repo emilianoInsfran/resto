@@ -98,8 +98,19 @@
 
 }
 
+.top {
+    margin-top:40%;
+}
+
+.modal-content {
+    z-index: 999999999999999999999999999999999999999999999999999999999999999999999999 !important;
+}
+
 @media (max-width: 700px) { 
     .agregar{
         margin-top: 40%;
+    }
+    .top {
+        margin-top:50%;
     }
 }

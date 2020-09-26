@@ -17,6 +17,7 @@ export class CategoriaComponent implements OnInit {
   arrayCategoria:any;
   firstGetCategoria:any;
   arrayPlato:any;
+  menuAnimation:boolean=false;
   setMenu=[
     {}
   ];
@@ -118,6 +119,12 @@ export class CategoriaComponent implements OnInit {
 
   }
 
+
+  salir(page){
+    this.route.navigate([`${page}`])
+
+  }
+
   setTipoPedido(message,codigo,page) {
     console.log('datos',codigo,page)
     let disposable = this.simpleModalService.addModal(PopupComponent, {
@@ -140,6 +147,17 @@ export class CategoriaComponent implements OnInit {
         }
     });
 
+  }
+
+  //menu
+  openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    this.menuAnimation = true;
+  }
+  
+  closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    this.menuAnimation = false;
   }
 
 }

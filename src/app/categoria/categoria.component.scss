@@ -1,4 +1,14 @@
  header {
+    position: fixed;
+    height: 151px;
+    width: 100%;
+    background-color: white;
+    z-index: 1111111;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding-left: 7%;
+    padding-right: 7%;
      text-align: center;
      .img {
         background-position: center;
@@ -14,6 +24,7 @@
        display: inline-block;
        margin: auto;
    }
+
  }
 
  .messagePedido {
@@ -103,11 +114,93 @@
 
 .margin-top{
     margin-bottom: 20%;
+    margin-top: 160px;
+}
+
+
+
+   //MENÚ
+.menu-icon {
+    width: 40px;
+    height: 40px;
+    /* background-color: black; */
+    position: absolute;
+    top: 50px;
+    right: 98px;
+    background-image: url('../../assets/menu2.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    z-index: 10000000000000002000;
+
+
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 10px;
+    z-index: 999999999999999999999999999999999999999999;
+
+    ul {
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 1em; 
+
+        a {
+            cursor: pointer;
+
+            &:nth-child(1){
+                text-align:right;
+                font-size: 2.5em;
+            }
+        }
+    }
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
 }
 
 
 @media (max-width: 700px) { 
- .is-mobile{display: inline-block ;}
- .is-descktop{display: none;}
+    .is-mobile{display: inline-block ;}
+    .is-descktop{display: none;}
+    header{width: 100% !important;}
+    .menu-icon {
+        width: 30px;
+        height: 30px;
+        top: 43px;
+        right: 17px;
+        z-index: 10000000000000002000;
+
+
+    }
+ 
 }
 
