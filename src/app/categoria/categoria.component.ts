@@ -120,9 +120,8 @@ export class CategoriaComponent implements OnInit {
   }
 
 
-  salir(page){
+  redirect(page){
     this.route.navigate([`${page}`])
-
   }
 
   setTipoPedido(message,codigo,page) {

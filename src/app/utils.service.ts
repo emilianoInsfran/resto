@@ -17,6 +17,7 @@ export class UtilsService {
 	callService:boolean = true;
 	typeLogin:boolean = false //si es qr es false y me logie con codigo es true
 	codigoMesa:string;
+	callServiceEstado:number=0;
 	private header = new HttpHeaders({ 'content-type': 'application/json','Access-Control-Allow-Origin':'*' });
 	constructor(private http: HttpClient) { }
 
@@ -97,7 +98,6 @@ export class UtilsService {
 
 	urlProd(){
 		return 'https://serviceresto.herokuapp.com/';
-	
 	}
 	//maspedidos
 
@@ -158,6 +158,14 @@ export class UtilsService {
 	}
 	getCodigoMesa(){
 		return this.codigoMesa;
+	}
+
+	getActiveEstado(){
+		return this.callServiceEstado;
+	}
+
+	setActiveEstado(data){
+		this.callServiceEstado = data;
 	}
 
 

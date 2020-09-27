@@ -44,6 +44,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ListaPlatosComponent } from './perfil/menu/lista-platos/lista-platos.component';
 import { TomarPedidosComponent } from './perfil/tomar-pedidos/tomar-pedidos.component';
 import { QrGenerateComponent } from './perfil/qr-generate/qr-generate.component';
+import { EstadoPedidoComponent } from './estado-pedido/estado-pedido.component';
 
 const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
   // Change this to your Google API key
@@ -72,7 +73,8 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     NavbarComponent,
     ListaPlatosComponent,
     TomarPedidosComponent,
-    QrGenerateComponent
+    QrGenerateComponent,
+    EstadoPedidoComponent
 
   ],
   imports: [

@@ -6,6 +6,8 @@ import { ScannerComponent } from './scanner/scanner.component';
 import { PedidoComponent } from './pedido/pedido.component';
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
+import { EstadoPedidoComponent } from './estado-pedido/estado-pedido.component';
+
 //----------------------
 //PERFIL - secciones
 //----------------------
@@ -35,6 +37,7 @@ const routes: Routes = [
   { path:'general', component: GeneralComponent },
   { path:'tomarPedidos', component: TomarPedidosComponent },
   { path:'qr', component: QrGenerateComponent },
+  { path:'estado', component: EstadoPedidoComponent },
 ];
 
 @NgModule({
