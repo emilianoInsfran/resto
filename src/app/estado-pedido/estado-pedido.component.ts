@@ -19,13 +19,15 @@ export class EstadoPedidoComponent implements OnInit {
   isLoading:boolean=false;
   ngOnInit(): void {
     this.utils.setActiveEstado(1);
+    this.goCategoria();
+
   }
 
   goCategoria(){
     if(this.utils.getActiveEstado() == 1 ){
       setTimeout(()=>{
         this.route.navigate(['categoria'])
-      }, 45000);
+      }, 95000);
     }
 
   }
@@ -57,7 +59,6 @@ export class EstadoPedidoComponent implements OnInit {
   
   getArrayEstado(data){
     if(data.ok){
-      this.goCategoria();
       this.setCodigo=false;
       this.arrayPedido = data.pedido; 
       if(this.utils.getActiveEstado() == 1 ){
