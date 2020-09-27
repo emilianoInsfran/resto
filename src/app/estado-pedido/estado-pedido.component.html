@@ -3,7 +3,14 @@
         <h3>Estado de pedidos</h3>
     </header>
     
-    <section>
+    <section *ngIf="setCodigo"> 
+        <div class="input-wrapper ">
+            <input type="number"  [(ngModel)]="tokenPedido" name="tokenPedidon2" id="tokenPedidon2"  required >
+            <label class="label" for="user">CÓDIGO </label>
+        </div>
+        <button class="button1" (click)="setCodigoService()">Aceptar</button>
+    </section>
+    <section *ngIf="!setCodigo">
         <article *ngIf="arrayPedido.length > 0">
             <ul>
                 <li *ngFor="let misPedidos of arrayPedido ">
